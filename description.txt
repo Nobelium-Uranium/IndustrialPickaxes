@@ -1,0 +1,288 @@
+Industrial Pickaxes adds some pickaxes with a special ability at their disposal, inspired by the Zenith Forge from Keybrands+.
+They can smelt whole bars from ores, the chance is based on how many ores it takes to smelt a bar, the less ore needed, the better the chance.
+There is a catch of course, they're much more expensive than ordinary pickaxes and are considerably slower, plus they can't smelt alloys of the same or a later tier.
+For an example of what an industrial pickaxe can do, the Blazing Molten Pickaxe can smelt Copper/Tin, Iron/Lead, Silver/Tungsten, Gold/Platinum and Cobalt/Palladium (etc), but not Hellstone since it's an alloy of the same tier as the pickaxe.
+There are Industrial Pickaxes for pretty much every tier, starting at Molten, skipping to Chlorophyte, and continuing normally from then on.
+
+TL;DR
+Adds several new pickaxes that can smelt bars from ores
+
+It even has mod support!
+
+Currently supported mods...
+ - Shadows of Abaddon (Solus Flarium Pickaxe + Ores)
+ - Calamity (Viridescent Blossom Pickaxe + Ores)
+ - Thorium (Ores Only)
+ - Mod of Redemption (Experimental Nano Pickaxe + Ores)
+ - Ancients Awakened (Ores Only)
+ - Elements Awoken (Master Manipulator Only)
+ - Spirit Mod (Ores Only)
+
+Next planned mod: Qwerty's Random Content
+
+Support for mods will be added one by one (But in some special cases, multiple may be added)
+Let it be known that the more you demand support for a specific mod, the more it'll be delayed.
+The same goes for demanding support to be rushed, we'll take as much time as we need, no more no less.
+Support for just about every mod is already planned.
+As for what pickaxes will be industrialized, we only have plans for those obtained post-Moonlord.
+They must be a considerable upgrade from Lunar tier. (So tools like the Terrarium Canyon Splitter or the Gallant Pickaxe won't be supported, since you get them shortly after Moon lord, and Industrial Celestial Pickaxe already exists for that purpose)
+
+
+This mod pairs very well with Veinminer, just make sure to have the tool equipped while veinmining, otherwise remaining ore will drop as normal.
+
+Developers...
+ Ideas and sprites - Crimsoneye495
+ Code and Master Manipulator sprite - NobeliumUranium_
+ Multiplayer support, bug fixes and code cleaner - GoodPro712
+
+Contributers...
+ Glowmask helper - Qwerty
+
+Spceial Thanks...
+Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
+ 
+Version History:
+4.5
+[~] Optimized ModPlayer
+[~] Made world entry message shorter
+[~] Item spawn optimizations
+[~] Weak referenced mods that were supposed to be weak refereneced
+[~] Cleaned modded smelting code
+[~] Cleaned DraconicStaffOfPower code
+[+] Added Draonic Evolution Achievement
+[~] Changed Frostburn? buff tooltip
+[~] Optimized Violet Thaumaturgy
+[~] Cleaned all ExperimentalNanoPickaxes code and merged all into one file
+[~] VioletThaumaturgy pickaxe power works for all pickaxes now
+[~] Cleaned VioletThaumaturgy code
+[~] Cleaned DraconicStaffOfPowerAsiimov code
+[~] Cleaned DraconicStaffOfPowerDemonic code
+[~] Cleaned IndustrialNPC code
+[~] Cleaned AscendedFishaxe code and now works correctly in multiplayer
+[~] Cleaned DevNull code
+[~] Cleaned EclipsiumBar code
+[~] Cleaned IndustrialSingularity code
+[~] Put Materials in its own folder
+[~] Cleaned OreRejuvenator
+[~] Added Fishaxe and Misc folder
+[~] Cleaned GracefulChlorophytePickaxe and its reskin and merged both into one file
+[~] Changed Glowmasks folder path
+[~] Renamed Cosmetic to Reskins
+[~] Cleaned LaserDrillBolt
+[~] LaserDrillBolt mining now works correctly in multiplayer
+[~] Cleaned BeamExcavator code
+
+4.4
+[~] Fixed multiplayer again
+
+4.3.1
+[~] Fixed error in description
+
+4.3
+[~] Fixed multiple bugs
+[~] Cleaned up code
+
+4.2
+[~] Fixed Tin and Iron specifically not smelting
+
+4.1
+[~] Fixed /dev/null not giving anything
+
+4.0 - The Multiplayer Update!
+[~] Completely rewrote the code used to smelt ores with the help of GoodPro712, now works in multiplayer finally!
+PLEASE let me know if something goes wrong, I haven't tested everything so there's a good chance that I missed something!
+
+3.13
+[~] Under the hood stuff to prepare an actual multiplayer fix
+
+3.12
+[~] Library stuff, dev items are now given to devs without the need to have a specific name, thanks GoodPro!
+[~] Made Fishaxe more common (1 in 10 compared to 1 in 30), but you'll need a special version of the Fishaxe to make the Ascended Fishaxe, this only has a 20% chance to appear when hooking up one (total of 1 in 50)
+There's no apparent difference between the two, but try hitting it against a test dummy...
+[~] Ascended Fishaxe is now uncraftable by hand, you'll now have to drop the special Fishaxe into Eclipsium Bars with a specific exact stack amount in lava, not telling how many but it's related to the old recipe
+
+3.11.1
+[~] Forgot something whoops
+
+3.11
+[~] Added a normal Fishaxe, fished up from the ocean with a 1 in 30 chance, regardless of fishing power, this is now a material for the Ascended Fishaxe
+[~] In addition, Ascended Fishaxe is now craftable without Calamity enabled, but it is still ludicrously expensive
+[-] Removed AchievementLib functionality as it is outdated
+
+3.10
+[~] Tier-locked Experimental Nano Pickaxe to post Blisterface by adding a single Xenium Bar to the recipe
+
+3.9
+[+] Avali Manipulator and Violet Thaumaturgy added, unobtainable by normal means
+[~] Behind the scenes cleanup so that it's easier to develop this mod
+[~] Fixed alt skins for Industrial Picksaw not using the smelting code
+[~] Made Lihzahrdian Picksaw significantly cheaper, now needs a Lihzahrd Power Cell
+[-] Reduced Ore Rejuvenator's range, though this is less of a nerf than you'd think
+
+3.8
+[~] Rolled back tiles being forcibly removed, as it broke compatibility with Veinminer
+
+3.7
+[~] Tiles are now forcibly removed if the code related to smelting ores is run at all to prevent possible exploits that would smelt infinite bars
+[~] Oh yeah, updated for 0.11.6, I don't think it matters too much, just means you can't use this mod in 0.11.5 anymore
+
+3.6
+[+] Added Loreholder quotes for Redemption ores
+[~] MotD now appears 5 seconds later rather than 1
+
+3.5
+[~] Fixed a minor bug concerning the MODT (That's the text that appears when you enter a world, for those that were wondering)
+[~] Speaking of the MOTD, I've now programmed it to appear a second after entering a world, that way it should appear in full without getting cut off
+
+3.4
+[+] Mod Homepage now links to our Discord server!
+[~] Fixed Astral Ore giving infinite Astral Bars
+[-] Pre-Lunar tier industrial pickaxes can no longer smelt Astral Ore, just to be safe
+
+3.3
+[+] Added support for Spirit Mod ores
+
+3.2
+[+] Added some fancy messages when you enter a world like some other mods do (Gotta jump on that bandwagon eventually)
+[~] Reskin recipes are disabled if the respective mod that pickaxe originates from is not enabled to prevent recipe bloat
+
+3.1
+[+] Added Loreholder, Cursed Pickaxe, exclusive to Redemption, it tells you information about supported ores
+Not all ores have entries due to current time constraints
+In addition, Loreholder lines are subject to change
+
+3.0 - Reworks!
+[+] Reworked industrial pickaxes, they can now smelt ores of the same plus one tier ahead, although they won't be able to smelt same/later tier alloys
+[-] However, they are more expensive (but no longer require a base pickaxe, Industrial Picksaw is not craftable until Golem is defeated) and are noticably slower
+Adjusted the mod description to reflect these changes
+
+2.24
+[+] Added a skin for the Industrial Nano Pickaxe, as well as 2 for the Industrial Picksaw
+[~] Adjusted Reality Breaker Pickaxe skin very slightly
+[~] Renamed Means to an End (Glacier) to Glaciation Catalyst and changed its flavor text, also changed the other MtaE skins' flavor text for consistency's sake
+
+2.23
+[~] Adjusted flavor text for the Asthraltite skin for Industrial Flarium Pickaxe and renamed the skin to Mirage Asthraltite Pickaxe (Dan still seems to care about lore even if it's only a cosmetic thing)
+
+2.22
+[+] Added a cosmetic variation for the Industrial Flarium Pickaxe, we plan to add even more cosmetic variations for even more industrial pickaxes in the future, so stay tuned for those! (This is a bit of a late addition btw, it was supposed to be in the previous update)
+
+2.21
+[+] Added a cosmetic variation for each of the following: Industrial Molten Pickaxe, Industrial Chlorophyte Pickaxe, Industrial Celestial Pickaxe, and Industrial Blossom Pickaxe.
+[~] Renamed Blooming Chlorophyte Pickaxe to Graceful Chlorophyte Pickaxe and made its old name the name of its cosmetic variation
+
+2.20
+[~] I just forgot about something important heck heck I'm sorry now the cosmetic variations actually work
+
+2.19
+[+] Now you can use any cosmetic variation of a pickaxe in recipes that require it (Not sure why I didn't do this earlier)
+
+2.18
+[+] Some pickaxes have been given cosmetic variations, give your pickaxe a fresh coat of paint at a dye vat! (1 for Flarium, 1 for Nano, 3 for Means to an End)
+
+2.17
+[~] Industrial Singularity looks cooler (I forgot to do this for the previous update)
+[~] I'm not trying anything as far as multiplayer compatability, that's officially dead, unless someone can assist me with that
+
+2.16
+[~] Gave glowmasks to the rest of the pickaxes (Industrial Chlorophyte Pickaxe's glowmask is still not completely decided, expect it to change if I'm still not happy with it)
+
+2.15
+[~] Fixed weirdness with Master Manipulator glowmask when being used (I knew something would go wrong)
+
+2.14
+[~] Added glowmasks to some of the pickaxes, and the Ascended Fishaxe has a kickass rainbow outline instead of a boring static effect
+[~] Changed Industrial Celestial Pickaxe's flavor text... again.
+
+2.13
+[+] Surprise Elements Awoken support! Added the Master Manipulator, the industrial version of the Matter Manipulator
+
+2.12
+[~] Added some reverse compatability in the Eclipsium Bar recipe for Calamity, with Auric Bars being replaced with a Bar of Life and other endgame materials similar to its previous recipe if the Auric Tesla Bar is not present
+
+2.11
+[+] Added the ability to smelt Auric Ore into Auric Tesla Bars, this is exclusive to Means to an End and Ascended Fishaxe
+[~] Changed the recipe for Eclipsium Bars
+[~] Fixed some inconsistencies in the mod description
+
+2.10
+[~] Fixed an inconsistency in the Industrial Nano Pickaxe's tooltip
+
+2.9
+[~] Fixed a bug causing Means to an End being unable to deal damage
+
+2.8
+[+] Gave Means to an End right-click hammer ability (About time!)
+[+] Added the Industrial Nano Pickaxe, finally
+[~] Redesigned the Industrial Celestial Pickaxe's sprite
+[~] Renamed most of the pickaxes to be more unique, they will still be referred to as Industrial (x) Pickaxe in the changelog
+[~] Made fishaxe slightly less expensive, but also added a few things to the recipe
+[-] Lowered fishaxe tile boost to +100, this is more of to reduce lag when using smart cursor
+[-] Lowered Means to an End tile boost to +10, for better use as a weapon without accidentally mining blocks
+
+2.7
+[+] Fishaxe beam now pierces tiles
+
+2.6
+[~] Fixed a typo in the code (Incenerite? It's Incinerite! Who am I, Redigit?)
+
+2.5
+[+] Added support for Ancients Awakened ores
+NOTE: The only industrial pickaxe that can smelt Daybreak Incinerite and Eventide Abyssium is the Means to an End, no other industrial pickaxe is able to smelt an alloy without the use of regular Incinerite and Abyssium bars
+[~] Fixed Kanite Ore not being smelted properly
+[~] Added a check to see if an item/tile actually exists in the game, meaning that this mod will (hopefully) work with older versions of supported mods if you're still using those versions for whatever reason, this also helps a lot for future proofing
+Please note that I still have to assume you're using the latest version of all supported mods, I will not fix any incompatabilities with older versions, only latest versions
+[-] Dropped multiplayer compatability completely
+Screw mp debugging, my workaround didn't even work so why even bother??
+
+2.4
+[~] Added a workaround that hopefully makes the mod work properly in multiplayer, a proper fix will be made eventually which will require another rewrite of the code
+[-] As a result, veinminer won't work with this mod in multiplayer (as in you won't smelt veinmined ores with it)
+
+2.3
+[+] Achievement Get! Added an achievement using AchievementLib, obtain it by crafting Means to an End!
+
+2.2
+[+] Added support for Mod of Redemption's ores, an Industrial Nano Pickaxe will be added soon!
+[~] Adjusted Means to an End sprite
+
+2.1
+[+] Added Means to an End, the Industrial Pickaxe to end all others
+[+] Along with it, the Industrial Singularity and Eclipsium Bars have been added as materials for this penultimate pickaxe
+
+2.0 - Major Optimization Update!
+[+] Vastly optimized tile checking code, now uses functions! (This also means additional mod support will take way less time than before!)
+[+] Industrial Picksaw can now smelt Astral Ore
+[~] Ascended Fishaxe recipe has been made even more brutally complicated than it should be
+
+1.6
+[+] Added support for most if not all Calamity and Thorium ores
+[+] Added Industrial Blossom Pickaxe (Calamity)
+[-] Ore Rejuvenator no longer smelts ores
+
+1.5
+[+] Added the Beam Excavator, which is unobtainable, but serves as a proof of concept for a potential new tools mod. Give it a try!
+
+1.4
+[-] Shortened Fishaxe's display name to just "Ascended Fishaxe"
+[~] Ascended Fishaxe has a unique sprite (Yeet Haw)
+[~] Ascended Fishaxe's rarity is a bit fancier I guess
+[~] Reworked Ascended Fishaxe's alt ability, it's more reasonable but still very powerful
+
+1.3
+[~] Changed Fishaxe tooltip slightly
+
+1.2
+[+] The Fishaxe now counts as an axe when using it normally
+[~] The Fishaxe is now craftable, but don't expect to obtain it so easily, the recipe is quite absurd and only available if Calamity is enabled!
+
+1.1
+[+] Added Bismuth to supported ores because it wasn't on SoA's wiki for some reason (and yes, I rely on wikis, especially for determining pickaxe stats, make sure yours is updated!)
+[+] Flame Razed Forest enemies slain by the Industrial Flarium Pickaxe will poof into Flarium Crystals
+[+] Changed Dimensional Obliterator into the Dimension-Obliterating Fishaxe and gave it an immensely destructive alt ability ;)
+[~] Removed Ore Rejuvenator useturn ability, this is more of a buff for easier use as a weapon
+[~] Changed Industrial Celestial Pickaxe's sprite slightly
+[~] Enemies slain by the Ore Rejuvenator have a poof effect to further the reference
+
+1.0
+Initial release
