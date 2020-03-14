@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BRA0007\\OneDrive - Officer Secondary College\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
+      "projectUniqueName": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
       "projectName": "IndustrialPickaxes",
-      "projectPath": "C:\\Users\\BRA0007\\OneDrive - Officer Secondary College\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
+      "projectPath": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
       "packagesPath": "C:\\Users\\BRA0007\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BRA0007\\OneDrive - Officer Secondary College\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\obj\\",
+      "outputPath": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\BRA0007\\AppData\\Roaming\\NuGet\\NuGet.Config",

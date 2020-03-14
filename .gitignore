@@ -2,5 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/IndustrialPickaxes/DesignTimeBuild
-/.vs/IndustrialPickaxes/v15/Server/sqlite3
+/.vs
+/obj
