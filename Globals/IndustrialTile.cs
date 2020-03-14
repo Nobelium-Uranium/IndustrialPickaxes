@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace IndustrialPickaxes
+namespace IndustrialPickaxes.Globals
 {
 	internal class IndustrialTile : GlobalTile
 	{

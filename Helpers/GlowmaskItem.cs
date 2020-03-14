@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace IndustrialPickaxes
+namespace IndustrialPickaxes.Helpers
 {
 	public abstract class GlowmaskItem : ModItem
 	{

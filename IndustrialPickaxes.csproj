@@ -12,10 +12,10 @@
   </Target>
   <ItemGroup>
     <Reference Include="GoodProLib">
-      <HintPath>..\..\references\mods\GoodProLib_v0.2.dll</HintPath>
+      <HintPath>lib\GoodProLib_v0.2.dll</HintPath>
     </Reference>
     <Reference Include="WebmilioCommons">
-      <HintPath>WebmilioCommons.dll</HintPath>
+      <HintPath>lib\WebmilioCommons.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

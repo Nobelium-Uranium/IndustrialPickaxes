@@ -1,4 +1,5 @@
 using IndustrialPickaxes.Achievements;
+using IndustrialPickaxes.Helpers;
 using IndustrialPickaxes.Items.Materials;
 using IndustrialPickaxes.Projectiles;
 using Microsoft.Xna.Framework;

@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace IndustrialPickaxes
+namespace IndustrialPickaxes.Helpers
 {
 	internal class GlowmaskHelper : GlobalItem
 	{

@@ -8,19 +8,19 @@
     ".NETFramework,Version=v4.5": []
   },
   "packageFolders": {
-    "C:\\Users\\Alex\\.nuget\\packages\\": {}
+    "C:\\Users\\BRA0007\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
+      "projectUniqueName": "C:\\Users\\BRA0007\\OneDrive - Officer Secondary College\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
       "projectName": "IndustrialPickaxes",
-      "projectPath": "C:\\Users\\Alex\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
-      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\obj\\",
+      "projectPath": "C:\\Users\\BRA0007\\OneDrive - Officer Secondary College\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
+      "packagesPath": "C:\\Users\\BRA0007\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\BRA0007\\OneDrive - Officer Secondary College\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\BRA0007\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -34,10 +34,17 @@
         "net45": {
           "projectReferences": {}
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
-      "net45": {}
+      "net45": {
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+      }
     }
   }
 }

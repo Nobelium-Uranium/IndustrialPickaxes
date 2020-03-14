@@ -1,4 +1,4 @@
-namespace IndustrialPickaxes
+namespace IndustrialPickaxes.Helpers
 {
 	public abstract class IndustrialPickaxe : GlowmaskItem
 	{
