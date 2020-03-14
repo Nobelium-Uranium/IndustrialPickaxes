@@ -13,7 +13,7 @@ namespace IndustrialPickaxes.Items.Developer
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Pickaxe power is dependant on what other industrial pickaxes you have\nShreds foes on contact, cannot critically hit\n'Full of fancy modified matter manipulator tech'");
+			Tooltip.SetDefault("Pickaxe power is dependant on what other pickaxes you have\nShreds foes on contact, cannot critically hit\n'Full of fancy modified matter manipulator tech'");
 		}
 
 		public override void SetDefaults()

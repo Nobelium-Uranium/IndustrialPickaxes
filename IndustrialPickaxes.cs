@@ -10,9 +10,9 @@ namespace IndustrialPickaxes
 {
 	public class IndustrialPickaxes : Mod
 	{
-		/*When public github, uncomment and fill out values
+		//When public github, uncomment and fill out values
 		public static string GithubUserName { get { return "Nobelium-Uranium"; } }
-		public static string GithubProjectName { get { return "IndustrialPickaxes"; } }*/
+		public static string GithubProjectName { get { return "IndustrialPickaxes"; } }
 
 		public static Mod SacredTools;
 		public static bool SoALoaded;
