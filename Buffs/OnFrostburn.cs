@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using IndustrialPickaxes.Globals;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Buffs

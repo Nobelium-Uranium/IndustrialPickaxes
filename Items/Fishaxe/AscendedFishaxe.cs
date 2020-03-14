@@ -1,3 +1,4 @@
+using IndustrialPickaxes.Helpers;
 using IndustrialPickaxes.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
