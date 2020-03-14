@@ -158,11 +158,11 @@ namespace IndustrialPickaxes.Globals
 				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
 			}
 
-			if (npc.type == NPCID.SpikedJungleSlime)
+			/*if (npc.type == NPCID.SpikedJungleSlime)
 			{
 				if (Main.rand.Next(20) == 0)
 					Item.NewItem(npc.getRect(), ItemID.JungleRose);
-			}
+			}*/
 		}
 	}
 }
