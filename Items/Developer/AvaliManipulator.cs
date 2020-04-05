@@ -33,10 +33,10 @@ namespace IndustrialPickaxes.Items.Developer
 			item.useAnimation = 10;
 			item.pick = 35;
 			item.axe = 25;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.knockBack = 0;
 			item.value = Item.sellPrice(platinum: 5);
-			item.rare = 9;
+			item.rare = ItemRarityID.Cyan;
 			item.UseSound = SoundID.Item75;
 			item.autoReuse = true;
 			item.channel = true;

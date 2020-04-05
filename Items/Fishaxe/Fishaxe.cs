@@ -22,7 +22,7 @@ namespace IndustrialPickaxes.Items.Fishaxe
 			item.useTime = 10;
 			item.useAnimation = 30;
 			item.pick = 5;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 1;
 			item.value = 1;
 			item.rare = -1;

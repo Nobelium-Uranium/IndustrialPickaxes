@@ -39,7 +39,7 @@ namespace IndustrialPickaxes.Items
 			item.axe = 150;
 			item.knockBack = 10;
 			item.value = Item.sellPrice(5, 0, 0, 0);
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.tileBoost += 10;
 			item.UseSound = SoundID.Item1;
 		}

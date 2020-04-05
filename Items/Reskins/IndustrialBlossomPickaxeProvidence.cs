@@ -27,10 +27,10 @@ namespace IndustrialPickaxes.Items.Reskins
 				item.useTime = 10;
 				item.useAnimation = 14;
 				item.pick = 275;
-				item.useStyle = 1;
+				item.useStyle = ItemUseStyleID.SwingThrow;
 				item.knockBack = 7.5f;
 				item.value = Item.sellPrice(0, 24, 0, 0);
-				item.rare = 11;
+				item.rare = ItemRarityID.Purple;
 				item.UseSound = SoundID.Item1;
 				item.autoReuse = true;
 				item.useTurn = true;

@@ -22,7 +22,7 @@ namespace IndustrialPickaxes.Items.Materials
 			item.height = 24;
 			item.maxStack = 999;
 			item.value = Item.sellPrice(0, 1, 0, 0);
-			item.rare = 9;
+			item.rare = ItemRarityID.Cyan;
 		}
 
 		public override void AddRecipes()

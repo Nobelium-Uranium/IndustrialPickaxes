@@ -11,6 +11,9 @@
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
   <ItemGroup>
+    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.0" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="GoodProLib">
       <HintPath>lib\GoodProLib_v0.2.dll</HintPath>
     </Reference>

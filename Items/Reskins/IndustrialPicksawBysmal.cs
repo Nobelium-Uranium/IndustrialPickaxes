@@ -26,10 +26,10 @@ namespace IndustrialPickaxes.Items.Reskins
 			item.scale = 1.15f;
 			item.pick = 210;
 			item.axe = 25;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 5.5f;
 			item.value = 216000;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.tileBoost++;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
