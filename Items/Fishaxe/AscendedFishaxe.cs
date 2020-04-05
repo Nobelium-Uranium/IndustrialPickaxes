@@ -38,13 +38,16 @@ namespace IndustrialPickaxes.Items.Fishaxe
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 		{
 			Texture2D texture = mod.GetTexture("Glowmasks/FishaxeAura");
+
 			Vector2 position = item.position - Main.screenPosition + new Vector2(item.width / 2, item.height - texture.Height * 0.5f + 2f);
+
 			// We redraw the item's sprite 4 times, each time shifted 2 pixels on each direction, using Main.DiscoColor to give it the color changing effect
 			for (int i = 0; i < 4; i++)
 			{
 				Vector2 offsetPositon = Vector2.UnitY.RotatedBy(MathHelper.PiOver2 * i) * 2;
 				spriteBatch.Draw(texture, position + offsetPositon, null, Main.DiscoColor, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
 			}
+
 			// Return true so the original sprite is drawn right after
 			return true;
 		}
@@ -84,13 +87,20 @@ namespace IndustrialPickaxes.Items.Fishaxe
 				item.UseSound = SoundID.Item1;
 				item.noMelee = false;
 			}
+
 			return base.CanUseItem(player);
 		}
 
 		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
 		{
-			for (int i = 0; i < 49; i++)
+			for (int i = 0; i < 50; i++)
+			{
 				target.StrikeNPC(Main.DamageVar(damage), knockBack, player.direction, true);
+
+				//#TODO Check if this is the correct way to sync
+				if (Main.netMode == NetmodeID.MultiplayerClient)
+					NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, 0, Main.DamageVar(damage), knockBack, player.direction, item.crit);
+			}
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)

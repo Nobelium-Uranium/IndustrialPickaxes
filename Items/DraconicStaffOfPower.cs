@@ -120,9 +120,7 @@ namespace IndustrialPickaxes.Items
 
 		private class DraconicStaffOfPowerRecipeAchievement : ModRecipe
 		{
-			public DraconicStaffOfPowerRecipeAchievement(Mod mod) : base(mod)
-			{
-			}
+			public DraconicStaffOfPowerRecipeAchievement(Mod mod) : base(mod) { }
 
 			public override void OnCraft(Item item) => ModAchievement.CompleteFlag<DraconicEvolution>(Main.LocalPlayer);
 		}

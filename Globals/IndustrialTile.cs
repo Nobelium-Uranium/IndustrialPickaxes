@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Globals
 {
-	internal class IndustrialTile : GlobalTile
+	public class IndustrialTile : GlobalTile
 	{
 		private void SpawnSyncedItem(int i, int j, int type, int stack = 1)
 		{
@@ -17,6 +17,18 @@ namespace IndustrialPickaxes.Globals
 
 			if (item >= 0 && Main.netMode == NetmodeID.MultiplayerClient)
 				NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item, 1f);
+		}
+
+		private void Smelt(int chanceSubtraction, int i, int j, int itemType, ref int chanceCounter)
+		{
+			if (Main.rand.NextBool(chanceSubtraction - chanceCounter))
+			{
+				Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+				SpawnSyncedItem(i, j, itemType);
+				chanceCounter = 0;
+			}
+			else
+				chanceCounter++;
 		}
 
 		#region Chance Varibles
@@ -82,223 +94,83 @@ namespace IndustrialPickaxes.Globals
 			switch (type)
 			{
 				case TileID.Copper:
-					if (Main.rand.NextBool(4 - chanceCopperTin))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.CopperBar);
-						chanceCopperTin = 0;
-					}
-					else
-						chanceCopperTin++;
+					Smelt(4, i, j, ItemID.CopperBar, ref chanceCopperTin);
 					break;
 
 				case TileID.Tin:
-					if (Main.rand.NextBool(4 - chanceCopperTin))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.TinBar);
-						chanceCopperTin = 0;
-					}
-					else
-						chanceCopperTin++;
+					Smelt(4, i, j, ItemID.TinBar, ref chanceCopperTin);
 					break;
 
 				case TileID.Iron:
-					if (Main.rand.NextBool(4 - chanceIronLead))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.IronBar);
-						chanceIronLead = 0;
-					}
-					else
-						chanceIronLead++;
+					Smelt(4, i, j, ItemID.IronBar, ref chanceIronLead);
 					break;
 
 				case TileID.Lead:
-					if (Main.rand.NextBool(4 - chanceIronLead))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.LeadBar);
-						chanceIronLead = 0;
-					}
-					else
-						chanceIronLead++;
+					Smelt(4, i, j, ItemID.LeadBar, ref chanceIronLead);
 					break;
 
 				case TileID.Silver:
-					if (Main.rand.NextBool(5 - chanceSilverTungsten))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.SilverBar);
-						chanceSilverTungsten = 0;
-					}
-					else
-						chanceSilverTungsten++;
+					Smelt(5, i, j, ItemID.SilverBar, ref chanceSilverTungsten);
 					break;
 
 				case TileID.Tungsten:
-					if (Main.rand.NextBool(5 - chanceSilverTungsten))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.TungstenBar);
-						chanceSilverTungsten = 0;
-					}
-					else
-						chanceSilverTungsten++;
+					Smelt(5, i, j, ItemID.TungstenBar, ref chanceSilverTungsten);
 					break;
 
 				case TileID.Gold:
-					if (Main.rand.NextBool(5 - chanceGoldPlatinum))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.GoldBar);
-						chanceGoldPlatinum = 0;
-					}
-					else
-						chanceGoldPlatinum++;
+					Smelt(5, i, j, ItemID.GoldBar, ref chanceGoldPlatinum);
 					break;
 
 				case TileID.Platinum:
-					if (Main.rand.NextBool(5 - chanceGoldPlatinum))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.PlatinumBar);
-						chanceGoldPlatinum = 0;
-					}
-					else
-						chanceGoldPlatinum++;
+					Smelt(5, i, j, ItemID.PlatinumBar, ref chanceGoldPlatinum);
 					break;
 
 				case TileID.Meteorite:
-					if (Main.rand.NextBool(4 - chanceMeteorite))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.MeteoriteBar);
-						chanceMeteorite = 0;
-					}
-					else
-						chanceMeteorite++;
+					Smelt(4, i, j, ItemID.Meteorite, ref chanceMeteorite);
 					break;
 
 				case TileID.Crimtane:
-					if (Main.rand.NextBool(4 - chanceDemoniteCrimtane))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.CrimtaneBar);
-						chanceDemoniteCrimtane = 0;
-					}
-					else
-						chanceDemoniteCrimtane++;
+					Smelt(4, i, j, ItemID.CrimtaneBar, ref chanceDemoniteCrimtane);
 					break;
 
 				case TileID.Demonite:
-					if (Main.rand.NextBool(4 - chanceDemoniteCrimtane))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.DemoniteBar);
-						chanceDemoniteCrimtane = 0;
-					}
-					else
-						chanceDemoniteCrimtane++;
+					Smelt(4, i, j, ItemID.DemoniteBar, ref chanceDemoniteCrimtane);
 					break;
 
 				case TileID.Hellstone:
-					if (Main.rand.NextBool(4 - chanceHellstone))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.HellstoneBar);
-						chanceHellstone = 0;
-					}
-					else
-						chanceHellstone++;
+					Smelt(4, i, j, ItemID.HellstoneBar, ref chanceHellstone);
 					break;
 
 				case TileID.Cobalt:
-					if (Main.rand.NextBool(4 - chanceCobaltPalladium))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.CobaltBar);
-						chanceCobaltPalladium = 0;
-					}
-					else
-						chanceCobaltPalladium++;
+					Smelt(4, i, j, ItemID.CobaltBar, ref chanceCobaltPalladium);
 					break;
 
 				case TileID.Palladium:
-					if (Main.rand.NextBool(4 - chanceCobaltPalladium))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.PalladiumBar);
-						chanceCobaltPalladium = 0;
-					}
-					else
-						chanceCobaltPalladium++;
+					Smelt(4, i, j, ItemID.PalladiumBar, ref chanceCobaltPalladium);
 					break;
 
 				case TileID.Mythril:
-					if (Main.rand.NextBool(5 - chanceMythrilOrichalcum))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.MythrilBar);
-						chanceMythrilOrichalcum = 0;
-					}
-					else
-						chanceMythrilOrichalcum++;
+					Smelt(5, i, j, ItemID.MythrilBar, ref chanceMythrilOrichalcum);
 					break;
 
 				case TileID.Orichalcum:
-					if (Main.rand.NextBool(5 - chanceMythrilOrichalcum))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.OrichalcumBar);
-						chanceMythrilOrichalcum = 0;
-					}
-					else
-						chanceMythrilOrichalcum++;
+					Smelt(5, i, j, ItemID.OrichalcumBar, ref chanceMythrilOrichalcum);
 					break;
 
 				case TileID.Adamantite:
-					if (Main.rand.NextBool(6 - chanceAdamantiteTitanium))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.AdamantiteBar);
-						chanceAdamantiteTitanium = 0;
-					}
-					else
-						chanceAdamantiteTitanium++;
+					Smelt(6, i, j, ItemID.AdamantiteBar, ref chanceAdamantiteTitanium);
 					break;
 
 				case TileID.Titanium:
-					if (Main.rand.NextBool(6 - chanceAdamantiteTitanium))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.TitaniumBar);
-						chanceAdamantiteTitanium = 0;
-					}
-					else
-						chanceAdamantiteTitanium++;
+					Smelt(6, i, j, ItemID.TitaniumBar, ref chanceAdamantiteTitanium);
 					break;
 
 				case TileID.Chlorophyte:
-					if (Main.rand.NextBool(7 - chanceChlorophyte))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.ChlorophyteBar);
-						chanceChlorophyte = 0;
-					}
-					else
-						chanceChlorophyte++;
+					Smelt(7, i, j, ItemID.ChlorophyteBar, ref chanceChlorophyte);
 					break;
 
 				case TileID.LunarOre:
-					if (Main.rand.NextBool(5 - chanceLuminite))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, ItemID.LunarBar);
-						chanceLuminite = 0;
-					}
-					else
-						chanceLuminite++;
+					Smelt(5, i, j, ItemID.LunarBar, ref chanceLuminite);
 					break;
 
 				default:
@@ -867,35 +739,12 @@ namespace IndustrialPickaxes.Globals
 
 						if (usedTool == ModContent.ItemType<GracefulChlorophytePickaxe>() || usedTool == ModContent.ItemType<GracefulChlorophytePickaxePlantera>())
 						{
-							switch (type)
-							{
-								case TileID.Copper:
-								case TileID.Tin:
-								case TileID.Iron:
-								case TileID.Lead:
-								case TileID.Silver:
-								case TileID.Tungsten:
-								case TileID.Gold:
-								case TileID.Platinum:
-								case TileID.Meteorite:
-								case TileID.Demonite:
-								case TileID.Crimtane:
-								case TileID.Hellstone:
-								case TileID.Cobalt:
-								case TileID.Palladium:
-								case TileID.Mythril:
-								case TileID.Orichalcum:
-								case TileID.Adamantite:
-								case TileID.Titanium:
-								case TileID.Chlorophyte:
-									SmeltVanillaBars(i, j, type);
-									return false;
-							}
+							if (type != TileID.LunarOre) {
+								return SmeltVanillaBars(i, j, type);}
 
 							if (type == IndustrialPickaxes.SacredTools?.TileType("LapisOre") || type == IndustrialPickaxes.SacredTools?.TileType("BismuthOre"))
 							{
-								SmeltSoABars(i, j, type);
-								return false;
+								return SmeltSoABars(i, j, type);
 							}
 
 							if (type == Mods.Calamity?.TileType("AerialiteOre") || type == Mods.Calamity?.TileType("CryonicOre") || type == Mods.Calamity?.TileType("CharredOre") || type == Mods.Calamity?.TileType("PerennialOre"))

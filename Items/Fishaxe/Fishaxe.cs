@@ -67,14 +67,7 @@ namespace IndustrialPickaxes.Items.Fishaxe
 			}
 		}
 
-		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
-		{
-			/*crit = target.type switch
-			{
-				NPCID.TargetDummy => true,
-				_ => false
-			};*/
-		}
+		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit) => crit = target.type == NPCID.TargetDummy;
 
 		public override void AddRecipes()
 		{
