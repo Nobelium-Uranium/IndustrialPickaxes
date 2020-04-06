@@ -37,7 +37,6 @@ namespace IndustrialPickaxes.Items.Developer
 			item.knockBack = 0;
 			item.value = Item.sellPrice(platinum: 5);
 			item.rare = ItemRarityID.Cyan;
-			item.UseSound = SoundID.Item75;
 			item.autoReuse = true;
 			item.channel = true;
 			item.shoot = ModContent.ProjectileType<OtherworldlyForces>();
