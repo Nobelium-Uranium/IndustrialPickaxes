@@ -13,7 +13,7 @@ namespace IndustrialPickaxes.Items
 
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/SolusFlariumPickaxe");
 
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(253, 143, 76) };
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(253, 143, 76), new Color(253, 143, 76) };
 
 		public override void SetDefaults()
 		{
@@ -59,7 +59,7 @@ namespace IndustrialPickaxes.Items
 
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/SolusFlariumPickaxeCernium");
 
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(115, 204, 219) };
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(115, 204, 219), new Color(115, 204, 219) };
 
 		public override void AddRecipes()
 		{
@@ -98,7 +98,7 @@ namespace IndustrialPickaxes.Items
 
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/SolusFlariumPickaxeAsthraltite");
 
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(185, 0, 67) };
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(185, 0, 67), new Color(185, 0, 67) };
 
 		public override void AddRecipes()
 		{

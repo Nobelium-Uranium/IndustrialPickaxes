@@ -13,7 +13,7 @@ namespace IndustrialPickaxes.Items
 
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/OreRejuvenator");
 
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 75, 255) };
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 75, 255), new Color(255, 75, 255) };
 
 		public override void SetDefaults()
 		{
