@@ -12,9 +12,9 @@ namespace IndustrialPickaxes.Items
 	{
         // TODO: Clean up and fix smelting for SoA behavior
 
-        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/MasterManipulator");
+        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/MasterManipulator"); // TODO: Figure out why glowmask isn't showing up while being used
 
-        public override Color[] ItemNameCycleColors => new Color[] { new Color(186, 0, 67) };
+        public override Color[] ItemNameCycleColors => new Color[] { new Color(186, 0, 67) }; // TODO: Fix name color
 
         string PickaxePower;
 		public override void SetStaticDefaults()
