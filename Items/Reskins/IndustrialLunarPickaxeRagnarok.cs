@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items.Reskins
 {
+	//TODO use new system
 	public class IndustrialLunarPickaxeRagnarok : ModItem
 	{
 		public override void SetStaticDefaults()

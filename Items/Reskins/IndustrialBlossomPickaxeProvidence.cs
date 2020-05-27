@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items.Reskins
 {
+	//TODO use new system
 	public class IndustrialBlossomPickaxeProvidence : ModItem
 	{
 		public override void SetStaticDefaults()

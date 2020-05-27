@@ -10,9 +10,7 @@ namespace IndustrialPickaxes.Items
 	{
 		public class PicksawRecipeHelper : ModRecipe
 		{
-			public PicksawRecipeHelper(Mod mod) : base(mod)
-			{
-			}
+			public PicksawRecipeHelper(Mod mod) : base(mod) { }
 
 			public override bool RecipeAvailable() => NPC.downedGolemBoss;
 		}
