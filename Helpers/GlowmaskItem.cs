@@ -53,8 +53,8 @@ namespace IndustrialPickaxes.Helpers
 					if (line.mod == "Terraria" && line.Name == "ItemName")
 					{
 						float fade = Main.GameUpdateCount % 60 / 60f;
-						int index = (int)(Main.GameUpdateCount / 60 % 2);
-						line.overrideColor = Color.Lerp(ItemNameCycleColors[index], ItemNameCycleColors[(index + 1) % 2], fade);
+						int index = (int)(Main.GameUpdateCount / 60 % ItemNameCycleColors.Length);
+						line.overrideColor = Color.Lerp(ItemNameCycleColors[index], ItemNameCycleColors[(index + 1) % ItemNameCycleColors.Length], fade);
 					}
 				}
 			}

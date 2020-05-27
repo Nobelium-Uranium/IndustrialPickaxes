@@ -20,6 +20,10 @@ namespace IndustrialPickaxes.Items.Developer
 				case "76561198278238685":
 					item.SetDefaults(ModContent.ItemType<VioletThaumaturgy>());
 					break;
+
+				default:
+					item.TurnToAir();
+					break;
 			}
 		}
 	}

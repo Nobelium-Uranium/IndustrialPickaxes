@@ -1,4 +1,3 @@
-using IndustrialPickaxes.Achievements;
 using IndustrialPickaxes.Helpers;
 using IndustrialPickaxes.Items.Materials;
 using IndustrialPickaxes.Projectiles;
@@ -7,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using WebmilioCommons.Achievements;
 
 namespace IndustrialPickaxes.Items
 {
@@ -86,7 +84,8 @@ namespace IndustrialPickaxes.Items
 
 		public override void AddRecipes()
 		{
-			DraconicStaffOfPowerRecipeAchievement recipe = new DraconicStaffOfPowerRecipeAchievement(mod);
+			//DraconicStaffOfPowerRecipeAchievement recipe = new DraconicStaffOfPowerRecipeAchievement(mod);
+			ModRecipe recipe = new ModRecipe(mod);
 
 			recipe.AddIngredient(ModContent.ItemType<IndustrialSingularity>());
 			recipe.AddIngredient(ModContent.ItemType<EclipsiumBar>(), 24);
@@ -118,12 +117,12 @@ namespace IndustrialPickaxes.Items
 			recipe.AddRecipe();
 		}
 
-		private class DraconicStaffOfPowerRecipeAchievement : ModRecipe
+		/*private class DraconicStaffOfPowerRecipeAchievement : ModRecipe
 		{
 			public DraconicStaffOfPowerRecipeAchievement(Mod mod) : base(mod) { }
 
 			public override void OnCraft(Item item) => ModAchievement.CompleteFlag<DraconicEvolution>(Main.LocalPlayer);
-		}
+		}*/
 	}
 
 	public class DraconicStaffOfPowerAsiimov : DraconicStaffOfPower
