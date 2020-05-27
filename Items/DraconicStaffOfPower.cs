@@ -9,7 +9,6 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items
 {
-	// Todo - way too fast when hammering
 	public class DraconicStaffOfPower : IndustrialPickaxe
 	{
 		public override Color[] ItemNameCycleColors => new Color[] { Color.Black, new Color(255, 170, 0) };
@@ -41,6 +40,7 @@ namespace IndustrialPickaxes.Items
 			item.rare = ItemRarityID.Purple;
 			item.tileBoost += 10;
 			item.UseSound = SoundID.Item1;
+			item.autoReuse = false;
 		}
 
 		public override bool AltFunctionUse(Player player) => true;
@@ -49,10 +49,12 @@ namespace IndustrialPickaxes.Items
 		{
 			if (player.altFunctionUse == 2)
 			{
+				item.autoReuse = false;
 				item.pick = 0;
 				item.axe = 0;
 				item.hammer = 200;
-				item.useAnimation = 4;
+				item.useAnimation = 20;
+				item.useTime = 20;
 				item.noMelee = true;
 			}
 			else
@@ -62,6 +64,7 @@ namespace IndustrialPickaxes.Items
 				item.hammer = 0;
 				item.useAnimation = 7;
 				item.noMelee = false;
+				item.autoReuse = true;
 			}
 
 			return base.CanUseItem(player);
