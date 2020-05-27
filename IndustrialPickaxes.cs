@@ -1,6 +1,5 @@
 using IndustrialPickaxes.Items;
 using IndustrialPickaxes.Items.Fishaxe;
-using IndustrialPickaxes.Items.Reskins;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

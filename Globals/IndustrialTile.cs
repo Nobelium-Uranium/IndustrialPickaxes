@@ -2,7 +2,6 @@
 using IndustrialPickaxes.Items;
 using IndustrialPickaxes.Items.Developer;
 using IndustrialPickaxes.Items.Fishaxe;
-using IndustrialPickaxes.Items.Reskins;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

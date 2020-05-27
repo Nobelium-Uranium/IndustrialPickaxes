@@ -8,7 +8,7 @@ namespace IndustrialPickaxes.Items
 {
 	public class IndustrialPicksaw : IndustrialPickaxe
 	{
-		public class PicksawRecipeHelper : ModRecipe
+		private class PicksawRecipeHelper : ModRecipe
 		{
 			public PicksawRecipeHelper(Mod mod) : base(mod) { }
 
@@ -38,9 +38,6 @@ namespace IndustrialPickaxes.Items
 			item.rare = ItemRarityID.Lime;
 			item.tileBoost++;
 			item.UseSound = SoundID.Item1;
-
-			if (!Main.dedServ)
-				item.GetGlobalItem<GlowmaskHelper>().glowTexture = mod.GetTexture("Glowmasks/IndustrialPicksaw");
 		}
 
 		public override void AddRecipes()
@@ -49,6 +46,74 @@ namespace IndustrialPickaxes.Items
 			recipe.AddIngredient(ItemID.LihzahrdBrick, 60);
 			recipe.AddIngredient(ItemID.LihzahrdPowerCell);
 			recipe.AddTile(TileID.LihzahrdFurnace);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
+
+	public class IndustrialPicksawBysmal : IndustrialPicksaw
+	{
+		public override string Texture => mod.Name + "/Items/Reskins/IndustrialPicksawBysmal";
+
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialPicksawBysmal");
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Etherial Picksaw"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Schrodinger's pickaxe'");
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(this);
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(ModContent.ItemType<IndustrialPicksaw>());
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<IndustrialPicksawMartian>());
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<IndustrialPicksaw>());
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
+
+	public class IndustrialPicksawMartian : IndustrialPicksaw
+	{
+		public override string Texture => mod.Name + "/Items/Reskins/IndustrialPicksawMartian";
+
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialPicksawMartian");
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Alien Picksaw");
+			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Far out, man!'");
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(this);
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(ModContent.ItemType<IndustrialPicksaw>());
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<IndustrialPicksawBysmal>());
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<IndustrialPicksaw>());
+			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
