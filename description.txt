@@ -33,7 +33,7 @@ This mod pairs very well with Veinminer, just make sure to have the tool equippe
 Developers...
  Ideas and sprites - Crimsoneye495
  Code and Master Manipulator sprite - NobeliumUranium_
- Multiplayer support, bug fixes and code cleaner - GoodPro712
+ Multiplayer support, bug fixes and code cleaning - GoodPro712
 
 Contributers...
  Glowmask helper - Qwerty
@@ -54,6 +54,7 @@ Version History:
 [~] Fixed various exceptions casusing the game to crash
 [~] Restructurized files
 [~] Unobtainable item now disappears if in inventory
+[~] Fixed various bugs
 
 4.4
 [~] Fixed multiplayer again
