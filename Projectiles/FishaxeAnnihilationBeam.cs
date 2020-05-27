@@ -7,7 +7,7 @@ using Terraria.ID;
 
 namespace IndustrialPickaxes.Projectiles
 {
-	//SupremeNeoBlockDestroyerEXPrime
+	// Old internal name: SupremeNeoBlockDestroyerEXPrime
 	public class FishaxeAnnihilationBeam : ModProjectile
 	{
 		public override void SetDefaults()
@@ -40,7 +40,7 @@ namespace IndustrialPickaxes.Projectiles
 
 		public override void AI()
 		{
-			int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 0, 0, 107);
+			int dustIndex = Dust.NewDust(projectile.position, 0, 0, 107);
 			Main.dust[dustIndex].noGravity = true;
 
 			int explosionRadius = 3;
