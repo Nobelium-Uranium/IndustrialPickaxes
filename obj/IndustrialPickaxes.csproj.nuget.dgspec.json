@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj": {}
+    "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj": {
+    "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
+        "projectUniqueName": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
         "projectName": "IndustrialPickaxes",
-        "projectPath": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
-        "packagesPath": "C:\\Users\\BRA0007\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\obj\\",
+        "projectPath": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
+        "packagesPath": "C:\\Users\\Charlie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\BRA0007\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Charlie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,10 +43,10 @@
           "dependencies": {
             "tModLoader.CodeAssist": {
               "target": "Package",
-              "version": "[0.1.0, )"
+              "version": "[0.1.*, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

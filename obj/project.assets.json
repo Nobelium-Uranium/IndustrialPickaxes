@@ -2,23 +2,23 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.5": {
-      "tModLoader.CodeAssist/0.1.0": {
+      "tModLoader.CodeAssist/0.1.1": {
         "type": "package"
       }
     }
   },
   "libraries": {
-    "tModLoader.CodeAssist/0.1.0": {
-      "sha512": "6lqDlvQ7MaG7cj0E3cag2K+pwj6G+IL73wLTZUa0WkD+mcMPtEA7NZr1RogIuRCJRnPjKG4yywZJ3qxl+RCHwQ==",
+    "tModLoader.CodeAssist/0.1.1": {
+      "sha512": "bUQ4HAiRYq8Zisms7FI9ffSf4nZHwFFZU5j8Hpc/9rFB16GOGJg2ulHV0ZDErzoAAbXBeRdO8/VbSltBwmDcpA==",
       "type": "package",
-      "path": "tmodloader.codeassist/0.1.0",
+      "path": "tmodloader.codeassist/0.1.1",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "NugetIcon.png",
         "analyzers/dotnet/cs/tModLoader.CodeAssist.dll",
-        "tmodloader.codeassist.0.1.0.nupkg.sha512",
+        "tmodloader.codeassist.0.1.1.nupkg.sha512",
         "tmodloader.codeassist.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
@@ -27,23 +27,27 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.5": [
-      "tModLoader.CodeAssist >= 0.1.0"
+      "tModLoader.CodeAssist >= 0.1.*"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BRA0007\\.nuget\\packages\\": {}
+    "C:\\Users\\Charlie\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
+      "projectUniqueName": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
       "projectName": "IndustrialPickaxes",
-      "projectPath": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
-      "packagesPath": "C:\\Users\\BRA0007\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BRA0007\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\obj\\",
+      "projectPath": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\IndustrialPickaxes.csproj",
+      "packagesPath": "C:\\Users\\Charlie\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Charlie\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\IndustrialPickaxes\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\BRA0007\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Charlie\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -69,10 +73,10 @@
         "dependencies": {
           "tModLoader.CodeAssist": {
             "target": "Package",
-            "version": "[0.1.0, )"
+            "version": "[0.1.*, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

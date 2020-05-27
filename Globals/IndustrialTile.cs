@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Globals
 {
+	//OOP plz
 	public class IndustrialTile : GlobalTile
 	{
 		private void SpawnSyncedItem(int i, int j, int type, int stack = 1)
@@ -851,7 +852,7 @@ namespace IndustrialPickaxes.Globals
 								return false;
 							}
 
-							bool ret = SmeltVanillaBars(i, j, type) || SmeltSoABars(i, j, type) || SmeltThoriumBars(i, j, type) && SmeltRedemptionBars(i, j, type) && SmeltSpiritBars(i, j, type);
+							//bool ret = SmeltVanillaBars(i, j, type) || SmeltSoABars(i, j, type) || SmeltThoriumBars(i, j, type) && SmeltRedemptionBars(i, j, type) && SmeltSpiritBars(i, j, type);
 							return false;
 						}
 
