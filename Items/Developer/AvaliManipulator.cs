@@ -44,8 +44,9 @@ namespace IndustrialPickaxes.Items.Developer
 			item.shootSpeed = 2f;
 		}
 
+		// TODO: Figure out why the pickaxe retains highest pickaxe power if other pickaxes are absent
 		public override void UpdateInventory(Player player)
-		{ // TODO: Figure out why the pickaxe retains highest pickaxe power if other pickaxes are absent
+		{
 		  //Set the pickaxe power to the highest pickaxe power pickaxe in the inventory
 			item.pick = player.inventory.Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
 

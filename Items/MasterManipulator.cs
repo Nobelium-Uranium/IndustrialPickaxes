@@ -8,11 +8,10 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items
 {
+	// TODO: Clean up and fix smelting for SoA behavior
 	public class MasterManipulator : IndustrialPickaxe
 	{
-		// TODO: Clean up and fix smelting for SoA behavior
-
-		private string PickaxePower;
+		private string PickaxePower = string.Empty;
 
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/MasterManipulator"); // TODO: Figure out why glowmask isn't showing up while being used
 
@@ -22,9 +21,7 @@ namespace IndustrialPickaxes.Items
 		{
 			if (IndustrialPickaxes.SoALoaded) // Had to get a little creative since pickaxe power is irrelevant for the SoA version
 				PickaxePower = "300% pickaxe power\n";
-			else
-				PickaxePower = ""; // Unsure if this is needed
-			DisplayName.SetDefault("Master Manipulator"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+
 			Tooltip.SetDefault(PickaxePower + "Manipulates matter precisely to smelt bars from ores, slow as a result\n'The Cultivator's gift that can manipulate everything that matters'");
 		}
 
@@ -32,6 +29,7 @@ namespace IndustrialPickaxes.Items
 		{
 			item.width = 20;
 			item.height = 20;
+
 			if (IndustrialPickaxes.SoALoaded)
 			{
 				item.noMelee = true;
@@ -69,27 +67,34 @@ namespace IndustrialPickaxes.Items
 		public override bool CanUseItem(Player player)
 		{
 			if (player.noBuilding)
-			{
 				return false;
-			}
+			
 			if (IndustrialPickaxes.SoALoaded)
 			{
 				float distance = Vector2.Distance(player.Center, Main.MouseWorld);
-				if (distance > 160) return false;
+
+				if (distance > 160) 
+					return false;
+
 				int i = (int)(Main.MouseWorld.X / 16);
 				int j = (int)(Main.MouseWorld.Y / 16);
 				int tileX, tileY;
+
 				for (int y = -2; y <= 2; y++)
 				{
 					for (int x = -2; x <= 2; x++)
 					{
 						tileX = i + x;
 						tileY = j + y;
-						if (!Main.tile[tileX, tileY].active() || !WorldGen.InWorld(tileX, tileY, 0)) continue;
+
+						if (!Main.tile[tileX, tileY].active() || !WorldGen.InWorld(tileX, tileY, 0))
+							continue;
+
 						player.PickTile(tileX, tileY, 300);
 					}
 				}
 			}
+
 			return true;
 		}
 
@@ -101,6 +106,7 @@ namespace IndustrialPickaxes.Items
 				{
 					overrideColor = new Color(186, 0, 67)
 				};
+
 				tooltips.Add(line);
 			}
 		}
