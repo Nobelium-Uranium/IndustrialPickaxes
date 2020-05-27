@@ -15,8 +15,8 @@ namespace IndustrialPickaxes
 {
 	public class IndustrialPickaxes : Mod
 	{
-		public static string GithubUserName { get { return "Nobelium-Uranium"; } }
-		public static string GithubProjectName { get { return "IndustrialPickaxes"; } }
+		public static string GithubUserName => "Nobelium-Uranium"; 
+		public static string GithubProjectName => "IndustrialPickaxes"; 
 
 		internal static PropertyInfo SteamID = null;
 
