@@ -44,4 +44,35 @@ namespace IndustrialPickaxes.Items
 			recipe.AddRecipe();
 		}
 	}
+
+	public class ViridescentBlossomPickaxeProvidence : ViridescentBlossomPickaxe
+	{
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialBlossomPickaxeProvidence");
+
+		public override string Texture => mod.Name + "/Items/Reskins/IndustrialBlossomPickaxeProvidence";
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Profaned Shard Pickaxe");
+			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'It radiates immense amounts of divine heat'");
+		}
+
+		public override void AddRecipes()
+		{
+			if (!IndustrialPickaxes.CalamityLoaded)
+				return;
+			
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(this);
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(ModContent.ItemType<ViridescentBlossomPickaxe>());
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<ViridescentBlossomPickaxe>());
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
 }

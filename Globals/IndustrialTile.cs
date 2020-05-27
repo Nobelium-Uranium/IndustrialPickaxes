@@ -212,7 +212,7 @@ namespace IndustrialPickaxes.Globals
 							return false;
 						}
 
-						if (usedTool == ModContent.ItemType<ViridescentBlossomPickaxe>() || usedTool == ModContent.ItemType<IndustrialBlossomPickaxeProvidence>())
+						if (usedTool == ModContent.ItemType<ViridescentBlossomPickaxe>() || usedTool == ModContent.ItemType<ViridescentBlossomPickaxeProvidence>())
 						{
 							if (type == IndustrialPickaxes.Calamity?.TileType("AerialiteOre") || type == IndustrialPickaxes.Calamity?.TileType("CryonicOre") || type == IndustrialPickaxes.Calamity?.TileType("CharredOre") || type == IndustrialPickaxes.Calamity?.TileType("PerennialOre") || type == IndustrialPickaxes.Calamity?.TileType("AstralOre") || type == IndustrialPickaxes.Calamity?.TileType("ChaoticOre") || type == IndustrialPickaxes.Calamity?.TileType("Uelibloom"))
 							{

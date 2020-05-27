@@ -176,7 +176,7 @@ namespace IndustrialPickaxes
 			group = new RecipeGroup(() => "Viridescent Blossom Pickaxe", new int[]
 			{
 				ModContent.ItemType<ViridescentBlossomPickaxe>(),
-				ModContent.ItemType<IndustrialBlossomPickaxeProvidence>(),
+				ModContent.ItemType<ViridescentBlossomPickaxeProvidence>(),
 			});
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialBlossom", group);
