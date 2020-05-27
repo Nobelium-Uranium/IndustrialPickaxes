@@ -56,5 +56,48 @@ namespace IndustrialPickaxes.Items
 				Main.dust[dust].noGravity = true;
 			}
 		}
+	} 
+
+	public class IndustrialMoltenPickaxeFrostburn : IndustrialMoltenPickaxe
+	{
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialMoltenPickaxeFrostburn");
+
+		public override string Texture => mod.Name + "/Items/Reskins/IndustrialMoltenPickaxeFrostburn";
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Frost Flare Pickaxe");
+			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'It's either really hot or really cold, either way it's really useful!'");
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(this);
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(ModContent.ItemType<IndustrialMoltenPickaxe>());
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<IndustrialMoltenPickaxe>());
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+		{
+			if (Main.rand.Next(10) == 0)
+				target.AddBuff(ModContent.BuffType<Buffs.OnFrostburn>(), 180);
+		}
+
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			if (Main.rand.NextBool(1))
+			{
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 135, 0f, 0f, 100, default, 2f);
+				Main.dust[dust].noGravity = true;
+			}
+		}
 	}
 }
