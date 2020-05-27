@@ -49,6 +49,7 @@ namespace IndustrialPickaxes.Items.Fishaxe
 		public override void Update(ref float gravity, ref float maxFallSpeed)
 		{
 			// TODO change to whatever its supposed to be?? Temporary but keep in
+            // It was supposed to be more complicated than this but I'll likely keep it as is for now
 			for (int i = 0; i < Main.maxItems; i++)
 			{
 				Item item = Main.item[i];

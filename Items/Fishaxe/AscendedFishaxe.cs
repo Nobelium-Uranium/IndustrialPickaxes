@@ -97,7 +97,7 @@ namespace IndustrialPickaxes.Items.Fishaxe
 			{
 				target.StrikeNPC(Main.DamageVar(damage), knockBack, player.direction, true);
 
-				//#TODO Check if this is the correct way to sync
+				// This should work, others'll let us know if it doesn't
 				if (Main.netMode == NetmodeID.MultiplayerClient)
 					NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, 0, Main.DamageVar(damage), knockBack, player.direction, item.crit);
 			}

@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 namespace IndustrialPickaxes.Items
 {
 	// TODO: Clean up and fix smelting for SoA behavior
+    // I thought you were going to do that, GoodPro? I don't want to try and figure out why player.PickTile doesn't run the smelting code myself, that's the exact thing I wanted to avoid, blame redcode
 	public class MasterManipulator : IndustrialPickaxe
 	{
 		private string PickaxePower = string.Empty;
