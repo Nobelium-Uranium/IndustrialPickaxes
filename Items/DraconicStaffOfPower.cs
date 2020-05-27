@@ -9,9 +9,10 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items
 {
+	// Todo - way too fast when hammering
 	public class DraconicStaffOfPower : IndustrialPickaxe
 	{
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(0, 0, 0), new Color(255, 170, 0) };
+		public override Color[] ItemNameCycleColors => new Color[] { Color.Black, new Color(255, 170, 0) };
 
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/DraconicStaffOfPower");
 
