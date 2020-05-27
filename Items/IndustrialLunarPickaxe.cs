@@ -46,4 +46,32 @@ namespace IndustrialPickaxes.Items
 			recipe.AddRecipe();
 		}
 	}
+
+	public class IndustrialLunarPickaxeRagnarok : IndustrialPickaxe
+	{
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialLunarPickaxeRagnarok");
+
+		public override string Texture => mod.Name + "/Items/Reskins/IndustrialLunarPickaxeRagnarok";
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Reality Breaker Pickaxe");
+			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'The earth trembles...'");
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(this);
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(ModContent.ItemType<IndustrialLunarPickaxe>());
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<IndustrialLunarPickaxe>());
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
 }
