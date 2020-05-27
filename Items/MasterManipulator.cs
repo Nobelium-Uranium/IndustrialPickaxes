@@ -13,7 +13,7 @@ namespace IndustrialPickaxes.Items
 	{
 		private string PickaxePower = string.Empty;
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/MasterManipulator"); // TODO: Figure out why glowmask isn't showing up while being used
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/MasterManipulator");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(186, 0, 67) };
 
@@ -27,6 +27,7 @@ namespace IndustrialPickaxes.Items
 
 		public override void SetDefaults()
 		{
+			base.SetDefaults();
 			item.width = 20;
 			item.height = 20;
 
