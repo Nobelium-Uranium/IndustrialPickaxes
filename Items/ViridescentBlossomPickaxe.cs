@@ -9,11 +9,11 @@ namespace IndustrialPickaxes.Items
 {
 	public class ViridescentBlossomPickaxe : IndustrialPickaxe
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'The blessing of Mother Nature herself'");
-
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/IndustrialBlossomPickaxe");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(0, 255, 200) };
+
+		public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'The blessing of Mother Nature herself'");
 
 		public override void SetDefaults()
 		{

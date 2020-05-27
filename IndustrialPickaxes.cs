@@ -1,41 +1,55 @@
 using IndustrialPickaxes.Items;
-using IndustrialPickaxes.Items.Reskins;
 using IndustrialPickaxes.Items.Fishaxe;
+using IndustrialPickaxes.Items.Reskins;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria.UI;
-using System.Reflection;
 
 namespace IndustrialPickaxes
 {
 	public class IndustrialPickaxes : Mod
 	{
-		public static string GithubUserName => "Nobelium-Uranium"; 
-		public static string GithubProjectName => "IndustrialPickaxes"; 
-
-		internal static PropertyInfo SteamID = null;
-
 		public static Mod SacredTools;
+
 		public static bool SoALoaded;
+
 		public static Mod Calamity;
+
 		public static bool CalamityLoaded;
+
 		public static Mod Thorium;
+
 		public static bool ThoriumLoaded;
+
 		public static Mod Redemption;
+
 		public static bool RedemptionLoaded;
+
 		public static Mod AncientsAwakened;
+
 		public static bool AALoaded;
+
 		public static Mod ElementsAwoken;
+
 		public static bool EALoaded;
+
 		public static Mod SpiritMod;
+
 		public static bool SpiritLoaded;
 
 		public static Mod Veinminer;
+
+		internal static PropertyInfo SteamID = null;
+
+		public static string GithubUserName => "Nobelium-Uranium";
+
+		public static string GithubProjectName => "IndustrialPickaxes";
 
 		public override void Load()
 		{
@@ -191,7 +205,6 @@ namespace IndustrialPickaxes
 				return true;
 			}, InterfaceScaleType.Game));
 		}
-
 
 		public void DrawMasterManipulator(Player player)
 		{

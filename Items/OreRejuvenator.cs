@@ -9,11 +9,11 @@ namespace IndustrialPickaxes.Items
 {
 	public class OreRejuvenator : GlowmaskItem
 	{ // TODO: Figure out why hovering over the item crashes the game
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Makes for a decent weapon\nPoofs slain enemies into gems\nEmbedded gems drop triple the amount, also sometimes dropping a different random gem as a bonus\n'Lives on the line, winner takes all, ready or not, let's begin!'");
-
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/OreRejuvenator");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 75, 255), new Color(255, 75, 255) };
+
+		public override void SetStaticDefaults() => Tooltip.SetDefault("Makes for a decent weapon\nPoofs slain enemies into gems\nEmbedded gems drop triple the amount, also sometimes dropping a different random gem as a bonus\n'Lives on the line, winner takes all, ready or not, let's begin!'");
 
 		public override void SetDefaults()
 		{

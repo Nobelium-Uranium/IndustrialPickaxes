@@ -9,11 +9,11 @@ namespace IndustrialPickaxes.Items
 {
 	public class SolusFlariumPickaxe : IndustrialPickaxe
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\nThis isn't a scythe I swear\n'Furiously forged with the blaze of a thousand flames'");
-
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/SolusFlariumPickaxe");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(253, 143, 76), new Color(253, 143, 76) };
+
+		public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\nThis isn't a scythe I swear\n'Furiously forged with the blaze of a thousand flames'");
 
 		public override void SetDefaults()
 		{
@@ -51,15 +51,15 @@ namespace IndustrialPickaxes.Items
 	{
 		public override string Texture => mod.Name + "/Items/Reskins/SolusFlariumPickaxeCernium";
 
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/SolusFlariumPickaxeCernium");
+
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(115, 204, 219), new Color(115, 204, 219) };
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cryo Cernium Pickaxe");
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'A remnant of a frozen wasteland'");
 		}
-
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/SolusFlariumPickaxeCernium");
-
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(115, 204, 219), new Color(115, 204, 219) };
 
 		public override void AddRecipes()
 		{
@@ -90,15 +90,15 @@ namespace IndustrialPickaxes.Items
 	{
 		public override string Texture => mod.Name + "/Items/Reskins/SolusFlariumPickaxeAsthraltite";
 
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/SolusFlariumPickaxeAsthraltite");
+
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(185, 0, 67), new Color(185, 0, 67) };
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mirage Asthraltite Pickaxe");
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Lore friendly? As if! ...Well, it's actually just illusion magic.' -Neil");
 		}
-
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/SolusFlariumPickaxeAsthraltite");
-
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(185, 0, 67), new Color(185, 0, 67) };
 
 		public override void AddRecipes()
 		{

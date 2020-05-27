@@ -8,6 +8,17 @@ namespace IndustrialPickaxes.Items
 {
 	public class IndustrialPicksaw : IndustrialPickaxe
 	{
+		public class PicksawRecipeHelper : ModRecipe
+		{
+			public PicksawRecipeHelper(Mod mod) : base(mod)
+			{
+			}
+
+			public override bool RecipeAvailable() => NPC.downedGolemBoss;
+		}
+
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/IndustrialPicksaw");
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Lihzahrdian Picksaw");
@@ -34,8 +45,6 @@ namespace IndustrialPickaxes.Items
 				item.GetGlobalItem<GlowmaskHelper>().glowTexture = mod.GetTexture("Glowmasks/IndustrialPicksaw");
 		}
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/IndustrialPicksaw");
-
 		public override void AddRecipes()
 		{
 			PicksawRecipeHelper recipe = new PicksawRecipeHelper(mod);
@@ -44,15 +53,6 @@ namespace IndustrialPickaxes.Items
 			recipe.AddTile(TileID.LihzahrdFurnace);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
-
-		public class PicksawRecipeHelper : ModRecipe
-		{
-			public PicksawRecipeHelper(Mod mod) : base(mod)
-			{
-			}
-
-			public override bool RecipeAvailable() => NPC.downedGolemBoss;
 		}
 	}
 }

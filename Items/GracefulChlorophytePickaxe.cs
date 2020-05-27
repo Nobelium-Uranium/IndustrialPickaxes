@@ -7,9 +7,9 @@ namespace IndustrialPickaxes.Items
 {
 	public class GracefulChlorophytePickaxe : IndustrialPickaxe
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Every rose has its thorn'");
-
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/GracefulChlorophytePickaxe");
+
+		public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Every rose has its thorn'");
 
 		public override void SetDefaults()
 		{
@@ -41,13 +41,13 @@ namespace IndustrialPickaxes.Items
 	{
 		public override string Texture => mod.Name + "/Items/Reskins/GracefulChlorophytePickaxePlantera";
 
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/GracefulChlorophytePickaxePlantera");
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blooming Chlorophyte Pickaxe");
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'The ultimate trendkiller'");
 		}
-
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/GracefulChlorophytePickaxePlantera");
 
 		public override void AddRecipes()
 		{

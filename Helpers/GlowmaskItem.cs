@@ -8,15 +8,15 @@ namespace IndustrialPickaxes.Helpers
 {
 	public abstract class GlowmaskItem : ModItem
 	{
+		public virtual Texture2D GlowmaskTexture => null;
+
+		public virtual Color[] ItemNameCycleColors => null;
+
 		public override void SetDefaults()
 		{
 			if (!Main.dedServ && GlowmaskTexture != null)
 				item.GetGlobalItem<GlowmaskHelper>().glowTexture = GlowmaskTexture;
 		}
-
-		public virtual Texture2D GlowmaskTexture => null;
-
-		public virtual Color[] ItemNameCycleColors => null;
 
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{

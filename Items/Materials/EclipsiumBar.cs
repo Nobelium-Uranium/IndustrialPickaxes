@@ -9,11 +9,20 @@ namespace IndustrialPickaxes.Items.Materials
 {
 	public class EclipsiumBar : GlowmaskItem
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Only craftable during a Solar Eclipse\n'A brilliant alloy of the dark sun'");
+		private class EclipseRecipe : ModRecipe
+		{
+			public EclipseRecipe(Mod mod) : base(mod)
+			{
+			}
+
+			public override bool RecipeAvailable() => Main.eclipse;
+		}
 
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/EclipsiumBar");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(0, 0, 0), new Color(255, 170, 0) };
+
+		public override void SetStaticDefaults() => Tooltip.SetDefault("Only craftable during a Solar Eclipse\n'A brilliant alloy of the dark sun'");
 
 		public override void SetDefaults()
 		{
@@ -75,15 +84,6 @@ namespace IndustrialPickaxes.Items.Materials
 
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
-
-		private class EclipseRecipe : ModRecipe
-		{
-			public EclipseRecipe(Mod mod) : base(mod)
-			{
-			}
-
-			public override bool RecipeAvailable() => Main.eclipse;
 		}
 	}
 }

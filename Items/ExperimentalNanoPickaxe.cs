@@ -8,9 +8,9 @@ namespace IndustrialPickaxes.Items
 {
 	public class ExperimentalNanoPickaxe : IndustrialPickaxe
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Can mine Black Hardened Sludge\nUses precise strikes to smelt bars from ores, slow as a result\n'Overcharged with cybertech'");
-
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/ExperimentalNanoPickaxe");
+
+		public override void SetStaticDefaults() => Tooltip.SetDefault("Can mine Black Hardened Sludge\nUses precise strikes to smelt bars from ores, slow as a result\n'Overcharged with cybertech'");
 
 		public override void SetDefaults()
 		{
@@ -59,13 +59,13 @@ namespace IndustrialPickaxes.Items
 	{
 		public override string Texture => mod.Name + "/Items/Reskins/ExperimentalNanoPickaxeCreative";
 
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ExperimentalNanoPickaxeCreative");
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Experimental Nano Pickaxe (Creative)");
 			Tooltip.SetDefault("Can mine Black Hardened Sludge\nUses precise strikes to smelt bars from ores, slow as a result\n'Unfortunately, it can't mine lab tiles'");
 		}
-
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ExperimentalNanoPickaxeCreative");
 
 		public override void AddRecipes()
 		{
@@ -96,13 +96,13 @@ namespace IndustrialPickaxes.Items
 	{
 		public override string Texture => mod.Name + "/Items/Reskins/ExperimentalNanoPickaxeXenium";
 
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ExperimentalNanoPickaxeXenium");
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Prototype Xenium Pickaxe");
 			Tooltip.SetDefault("Can mine Black Hardened Sludge\nUses precise strikes to smelt bars from ores, slow as a result\n'Purified Xenomite crystals power this prototype pickaxe'");
 		}
-
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ExperimentalNanoPickaxeXenium");
 
 		public override void AddRecipes()
 		{

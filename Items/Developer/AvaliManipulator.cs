@@ -12,6 +12,7 @@ namespace IndustrialPickaxes.Items.Developer
 	public class AvaliManipulator : IndustrialPickaxe
 	{
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/AvaliManipulator");
+
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(246, 255, 255), new Color(255, 106, 0) };
 
 		public override void SetStaticDefaults()
@@ -45,7 +46,7 @@ namespace IndustrialPickaxes.Items.Developer
 
 		public override void UpdateInventory(Player player)
 		{ // TODO: Figure out why the pickaxe retains highest pickaxe power if other pickaxes are absent
-			//Set the pickaxe power to the highest pickaxe power pickaxe in the inventory
+		  //Set the pickaxe power to the highest pickaxe power pickaxe in the inventory
 			item.pick = player.inventory.Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
 
 			if (item.pick < 65 && NPC.downedBoss2) //If that highest pickaxe power is below 65, and EoW or BoC is defeated, set the pickaxe power to 65

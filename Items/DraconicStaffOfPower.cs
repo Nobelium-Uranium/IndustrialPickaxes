@@ -129,15 +129,15 @@ namespace IndustrialPickaxes.Items
 	{
 		public override string Texture => mod.Name + "/Items/Reskins/DraconicStaffOfPowerAsiimov";
 
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerAsiimov");
+
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 255, 255), new Color(255, 128, 0) };
+
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Means to an End (Asiimov)");
 		}
-
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerAsiimov");
-
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 255, 255), new Color(255, 128, 0) };
 
 		public override void AddRecipes()
 		{
@@ -171,15 +171,15 @@ namespace IndustrialPickaxes.Items
 	{
 		public override string Texture => mod.Name + "/Items/Reskins/DraconicStaffOfPowerDemonic";
 
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerDemonic");
+
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(0, 0, 0), new Color(255, 0, 0) };
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Demonic Staff of Power");
 			Tooltip.SetDefault("Serves as an excellent weapon\nHas a sweeping edge, inflicting extra AoE damage\n<right> to use as a hammer\nCan't be used as a weapon while hammering\nSmelts all ores!\n'Revel in the power of darkness!'");
 		}
-
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerDemonic");
-
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(0, 0, 0), new Color(255, 0, 0) };
 
 		public override void AddRecipes()
 		{
@@ -213,15 +213,15 @@ namespace IndustrialPickaxes.Items
 	{
 		public override string Texture => mod.Name + "/Items/Reskins/DraconicStaffOfPowerGlacier";
 
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerGlacier");
+
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 255, 255), new Color(0, 255, 255) };
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Glaciation Catalyst");
 			Tooltip.SetDefault("Serves as an excellent weapon\nHas a sweeping edge, inflicting extra AoE damage\n<right> to use as a hammer\nCan't be used as a weapon while hammering\nSmelts all ores!\n'When the blue moon rises upon the landscape, all shall be frozen by your might'");
 		}
-
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerGlacier");
-
-		public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 255, 255), new Color(0, 255, 255) };
 
 		public override void AddRecipes()
 		{

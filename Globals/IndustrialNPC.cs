@@ -9,46 +9,23 @@ namespace IndustrialPickaxes.Globals
 {
 	internal class IndustrialNPC : GlobalNPC
 	{
-		public override bool InstancePerEntity => true;
-		public override bool CloneNewInstances => true;
-
-		private int LastHitByRejuvenator;
-		private int LastHitByFlarium;
-
 		public bool OnFrostburn;
 
-		public override void ResetEffects(NPC npc) => OnFrostburn = false;
+		private int LastHitByFlarium;
 
-		public override void SetDefaults(NPC npc) => npc.buffImmune[ModContent.BuffType<OnFrostburn>()] = npc.buffImmune[BuffID.OnFire];
+		private int LastHitByRejuvenator;
 
-		public override void UpdateLifeRegen(NPC npc, ref int damage)
+		public override bool CloneNewInstances => true;
+
+		public override bool InstancePerEntity => true;
+
+		public override void AI(NPC npc)
 		{
-			if (OnFrostburn)
-			{
-				int dust = Dust.NewDust(npc.position, npc.width, npc.height, 135, 0, Main.rand.Next(2, 5), 100, default, 2f);
+			if (LastHitByRejuvenator > 0)
+				LastHitByRejuvenator -= 1;
 
-				if (Main.rand.Next(4) < 5) // 4 out of 5 chance
-					Main.dust[dust].noGravity = true;
-
-				if (npc.lifeRegen > 0)
-					npc.lifeRegen = 0;
-
-				npc.lifeRegen -= 8;
-			}
-
-			if (npc.oiled)
-			{
-				if (OnFrostburn)
-					npc.lifeRegen -= 20;
-			}
-		}
-
-		public override bool PreAI(NPC npc)
-		{
-			if (npc.HasBuff(BuffID.OnFire) && npc.HasBuff(ModContent.BuffType<OnFrostburn>()))
-				npc.DelBuff(ModContent.BuffType<OnFrostburn>());
-
-			return base.PreAI(npc);
+			if (LastHitByFlarium > 0)
+				LastHitByFlarium -= 1;
 		}
 
 		public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
@@ -58,15 +35,6 @@ namespace IndustrialPickaxes.Globals
 
 			if (item.type == ModContent.ItemType<SolusFlariumPickaxe>())
 				LastHitByFlarium = 10;
-		}
-
-		public override void AI(NPC npc)
-		{
-			if (LastHitByRejuvenator > 0)
-				LastHitByRejuvenator -= 1;
-
-			if (LastHitByFlarium > 0)
-				LastHitByFlarium -= 1;
 		}
 
 		public override void NPCLoot(NPC npc)
@@ -163,6 +131,40 @@ namespace IndustrialPickaxes.Globals
 				if (Main.rand.Next(20) == 0)
 					Item.NewItem(npc.getRect(), ItemID.JungleRose);
 			}*/
+		}
+
+		public override bool PreAI(NPC npc)
+		{
+			if (npc.HasBuff(BuffID.OnFire) && npc.HasBuff(ModContent.BuffType<OnFrostburn>()))
+				npc.DelBuff(ModContent.BuffType<OnFrostburn>());
+
+			return base.PreAI(npc);
+		}
+
+		public override void ResetEffects(NPC npc) => OnFrostburn = false;
+
+		public override void SetDefaults(NPC npc) => npc.buffImmune[ModContent.BuffType<OnFrostburn>()] = npc.buffImmune[BuffID.OnFire];
+
+		public override void UpdateLifeRegen(NPC npc, ref int damage)
+		{
+			if (OnFrostburn)
+			{
+				int dust = Dust.NewDust(npc.position, npc.width, npc.height, 135, 0, Main.rand.Next(2, 5), 100, default, 2f);
+
+				if (Main.rand.Next(4) < 5) // 4 out of 5 chance
+					Main.dust[dust].noGravity = true;
+
+				if (npc.lifeRegen > 0)
+					npc.lifeRegen = 0;
+
+				npc.lifeRegen -= 8;
+			}
+
+			if (npc.oiled)
+			{
+				if (OnFrostburn)
+					npc.lifeRegen -= 20;
+			}
 		}
 	}
 }

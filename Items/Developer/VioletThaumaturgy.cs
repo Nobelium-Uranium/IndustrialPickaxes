@@ -10,6 +10,7 @@ namespace IndustrialPickaxes.Items.Developer
 	public class VioletThaumaturgy : IndustrialPickaxe
 	{
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/VioletThaumaturgy");
+
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(24, 28, 33), new Color(98, 0, 198) };
 
 		public override void SetStaticDefaults() => Tooltip.SetDefault("Pickaxe power is dependant on what other pickaxes you have\nAlchemically transmutes ores into their counterpart, if they have one\nCurrently only supports vanilla ores\n'Not at its full potential... for now'");

@@ -39,6 +39,28 @@ namespace IndustrialPickaxes.Projectiles
 			return base.OnTileCollide(oldVelocity);
 		}
 
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+			if (!target.boss)
+			{
+				// Spawn 50 dusts
+				for (int k = 0; k < 50; k++)
+					Dust.NewDust(target.Center, target.width, target.height, 240); // TODO use DustID
+
+				// Play a sound
+				Main.PlaySound(SoundID.NPCDeath15, target.position);
+
+				// Strike the npc to deal the amount of damage as its life
+				target.StrikeNPC(target.life, 0, 0, true);
+			}
+		}
+
+		public override void AI()
+		{
+			int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 0, 0, 107); // TODO use DustID
+			Main.dust[dustIndex].noGravity = true;
+		}
+
 		private void MineTiles(Player player)
 		{
 			int explosionRadius = 2;
@@ -106,28 +128,6 @@ namespace IndustrialPickaxes.Projectiles
 			goreIndex = gore;
 			Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
 			Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-		}
-
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if (!target.boss)
-			{
-				// Spawn 50 dusts
-				for (int k = 0; k < 50; k++)
-					Dust.NewDust(target.Center, target.width, target.height, 240); // TODO use DustID
-
-				// Play a sound
-				Main.PlaySound(SoundID.NPCDeath15, target.position);
-
-				// Strike the npc to deal the amount of damage as its life
-				target.StrikeNPC(target.life, 0, 0, true);
-			}
-		}
-
-		public override void AI()
-		{
-			int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 0, 0, 107); // TODO use DustID
-			Main.dust[dustIndex].noGravity = true;
 		}
 	}
 }
