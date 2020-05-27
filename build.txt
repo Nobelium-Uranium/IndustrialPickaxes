@@ -1,4 +1,4 @@
-displayName = Industrial Pickaxes - Optimizing Update
+displayName = Industrial Pickaxes - General Update
 author = NobeliumUranium_ & Crimsoneye495
 version = 4.5
 hideResources = true

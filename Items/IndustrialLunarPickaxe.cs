@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items
 {
-	//TODO use IndustrialPickaxe
+	//TODO use new system
 	public class IndustrialLunarPickaxe : ModItem
 	{
 		public override void SetStaticDefaults()

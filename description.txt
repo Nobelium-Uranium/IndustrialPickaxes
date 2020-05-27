@@ -43,34 +43,17 @@ Very special thanks to FuryForged for giving this mod a quick spotlight, I appre
  
 Version History:
 4.5
-[~] Optimized ModPlayer
 [~] Made world entry message shorter
-[~] Item spawn optimizations
 [~] Weak referenced mods that were supposed to be weak refereneced
-[~] Cleaned modded smelting code
-[~] Cleaned DraconicStaffOfPower code
-[+] Added Draonic Evolution Achievement
 [~] Changed Frostburn? buff tooltip
-[~] Optimized Violet Thaumaturgy
-[~] Cleaned all ExperimentalNanoPickaxes code and merged all into one file
 [~] VioletThaumaturgy pickaxe power works for all pickaxes now
-[~] Cleaned VioletThaumaturgy code
-[~] Cleaned DraconicStaffOfPowerAsiimov code
-[~] Cleaned DraconicStaffOfPowerDemonic code
-[~] Cleaned IndustrialNPC code
-[~] Cleaned AscendedFishaxe code and now works correctly in multiplayer
-[~] Cleaned DevNull code
-[~] Cleaned EclipsiumBar code
-[~] Cleaned IndustrialSingularity code
-[~] Put Materials in its own folder
-[~] Cleaned OreRejuvenator
-[~] Added Fishaxe and Misc folder
-[~] Cleaned GracefulChlorophytePickaxe and its reskin and merged both into one file
-[~] Changed Glowmasks folder path
-[~] Renamed Cosmetic to Reskins
-[~] Cleaned LaserDrillBolt
+[~] Cleaned 90% of the existing code
+[~] Added optimizations throughout the code
 [~] LaserDrillBolt mining now works correctly in multiplayer
-[~] Cleaned BeamExcavator code
+[~] Removed GoodProLib dependency
+[~] Fixed various exceptions casusing the game to crash
+[~] Restructurized files
+[~] Unobtainable item now disappears if in inventory
 
 4.4
 [~] Fixed multiplayer again

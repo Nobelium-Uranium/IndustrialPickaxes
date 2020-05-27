@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items
 {
-	//TODO no ModItem
+	//TODO use new system
 	public class IndustrialMoltenPickaxe : ModItem
 	{
 		public override void SetStaticDefaults()

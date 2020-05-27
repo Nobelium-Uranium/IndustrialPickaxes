@@ -19,7 +19,7 @@ namespace IndustrialPickaxes.Helpers
 		public override bool CloneNewInstances => true;
 	}
 
-	//TODO holy frick rewrite plz
+	//TODO holy frick rewrite plz (low priority not needed for 4.5 update)
 	internal class GlowmaskHelperPlayer : ModPlayer
 	{
 		public static readonly PlayerLayer Glowmask = new PlayerLayer("IndustrialPickaxes", "Glowmask", PlayerLayer.HeldItem, delegate (PlayerDrawInfo drawInfo)
@@ -46,16 +46,15 @@ namespace IndustrialPickaxes.Helpers
 					bool staff = Item.staff[item.type];
 					if (staff)
 					{
-						float num104 = drawPlayer.itemRotation + 0.785f * drawPlayer.direction; //TODO rename
-						int textureWidth = 0; //TODO rename
-						Vector2 zero3 = new Vector2(0f, Main.itemTexture[item.type].Height); //TODO rename
+						float num104 = drawPlayer.itemRotation + 0.785f * drawPlayer.direction;
+						int textureWidth = 0;
+						Vector2 zero3 = new Vector2(0f, Main.itemTexture[item.type].Height);
 
 						if (drawPlayer.gravDir == -1f)
 						{
-							//TODO explain this
 							if (drawPlayer.direction == -1)
 							{
-								num104 += 1.57f; //TODO comment meaning
+								num104 += 1.57f;
 								zero3 = new Vector2(Main.itemTexture[item.type].Width, 0f);
 								textureWidth -= Main.itemTexture[item.type].Width;
 							}
@@ -65,7 +64,7 @@ namespace IndustrialPickaxes.Helpers
 								zero3 = Vector2.Zero;
 							}
 						}
-						//TODO explain
+						
 						else if (drawPlayer.direction == -1)
 						{
 							zero3 = new Vector2(Main.itemTexture[item.type].Width, Main.itemTexture[item.type].Height);
@@ -89,13 +88,12 @@ namespace IndustrialPickaxes.Helpers
 					}
 					else
 					{
-						Vector2 halfTexture = new Vector2(Main.itemTexture[item.type].Width / 2, Main.itemTexture[item.type].Height / 2); //TODO rename
+						Vector2 halfTexture = new Vector2(Main.itemTexture[item.type].Width / 2, Main.itemTexture[item.type].Height / 2);
 
-						Vector2 vector11 = new Vector2(10, texture.Height / 2); //TODO rename
+						Vector2 vector11 = new Vector2(10, texture.Height / 2);
 
 						GlowmaskHelper glowmaskHelper = item.GetGlobalItem<GlowmaskHelper>();
 
-						//TODO explain below
 						if (glowmaskHelper.glowOffsetX != 0)
 							vector11.X = glowmaskHelper.glowOffsetX;
 
