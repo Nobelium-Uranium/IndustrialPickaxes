@@ -24,7 +24,7 @@ namespace IndustrialPickaxes.Projectiles
 		{
 			for (int k = 0; k < 10; k++)
 			{
-				SpawnDust(259); //TODO use DustID
+				SpawnDust(259);
 				SpawnDust(DustID.AmberBolt);
 			}
 		}

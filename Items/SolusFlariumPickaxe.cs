@@ -38,7 +38,7 @@ namespace IndustrialPickaxes.Items
 			if (!IndustrialPickaxes.SoALoaded)
 				return;
 
-			ModRecipe recipe = new ModRecipe(mod); // TODO dont use string overloads
+			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(IndustrialPickaxes.SacredTools.ItemType("FlariumItem"), 75);
 			recipe.AddIngredient(IndustrialPickaxes.SacredTools.ItemType("DraconiumAlloy"), 15);
 			recipe.AddTile(IndustrialPickaxes.SacredTools.TileType("FlameAnvil"));

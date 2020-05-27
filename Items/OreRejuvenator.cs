@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace IndustrialPickaxes.Items
 {
 	public class OreRejuvenator : GlowmaskItem
-	{ // TODO: Figure out why hovering over the item crashes the game
+	{
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/OreRejuvenator");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 75, 255), new Color(255, 75, 255) };

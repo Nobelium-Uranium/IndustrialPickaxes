@@ -9,7 +9,7 @@ namespace IndustrialPickaxes.Projectiles
 {
 	public class LaserDrillBolt : ModProjectile
 	{
-		public override void SetStaticDefaults() => DisplayName.SetDefault("hax"); // TODO rename plz
+		public override void SetStaticDefaults() => DisplayName.SetDefault("hax");
 
 		public override void SetDefaults()
 		{
@@ -30,7 +30,7 @@ namespace IndustrialPickaxes.Projectiles
 
 			//Spawn 10 dusts
 			for (int k = 0; k < 10; k++)
-				Dust.NewDust(projectile.Center, 0, 0, 226); // TODO use DustID
+				Dust.NewDust(projectile.Center, 0, 0, 226);
 
 			SpawnGore();
 
@@ -45,7 +45,7 @@ namespace IndustrialPickaxes.Projectiles
 			{
 				// Spawn 50 dusts
 				for (int k = 0; k < 50; k++)
-					Dust.NewDust(target.Center, target.width, target.height, 240); // TODO use DustID
+					Dust.NewDust(target.Center, target.width, target.height, 240);
 
 				// Play a sound
 				Main.PlaySound(SoundID.NPCDeath15, target.position);
@@ -57,7 +57,7 @@ namespace IndustrialPickaxes.Projectiles
 
 		public override void AI()
 		{
-			int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 0, 0, 107); // TODO use DustID
+			int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 0, 0, 107);
 			Main.dust[dustIndex].noGravity = true;
 		}
 

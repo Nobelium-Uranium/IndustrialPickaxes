@@ -38,7 +38,7 @@ namespace IndustrialPickaxes.Items
 				return;
 
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("UeliaceBar"), 11); //TODO no string overloads
+			recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("UeliaceBar"), 11);
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
