@@ -44,11 +44,10 @@ namespace IndustrialPickaxes.Items.Developer
 			item.shootSpeed = 2f;
 		}
 
-		// TODO: Figure out why the pickaxe retains highest pickaxe power if other pickaxes are absent
 		public override void UpdateInventory(Player player)
 		{
-		  //Set the pickaxe power to the highest pickaxe power pickaxe in the inventory
-			item.pick = player.inventory.Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
+			//Set the pickaxe power to the highest pickaxe power pickaxe in the inventory
+			item.pick = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>()).Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
 
 			if (item.pick < 65 && NPC.downedBoss2) //If that highest pickaxe power is below 65, and EoW or BoC is defeated, set the pickaxe power to 65
 				item.pick = 65;
