@@ -11,14 +11,11 @@
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define &quot;$(DefineConstants)&quot; -unsafe $(AllowUnsafeBlocks)" />
   </Target>
   <ItemGroup>
-    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+    <Compile Remove="UnusedSprites\**" />
+    <EmbeddedResource Remove="UnusedSprites\**" />
+    <None Remove="UnusedSprites\**" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="GoodProLib">
-      <HintPath>lib\GoodProLib_v0.2.dll</HintPath>
-    </Reference>
-    <Reference Include="WebmilioCommons">
-      <HintPath>lib\WebmilioCommons.dll</HintPath>
-    </Reference>
+    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
 </Project>

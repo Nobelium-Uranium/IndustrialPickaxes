@@ -3,5 +3,4 @@ author = NobeliumUranium_ & Crimsoneye495
 version = 4.5
 hideResources = true
 homepage = https://discord.gg/3ccTk8v
-modReferences = GoodProLib
-weakReferences = CalamityMod, ThoriumMod, SpiritMod, SacredTools, AAMod, Redemption, WebmilioCommons
+weakReferences = CalamityMod, ThoriumMod, SpiritMod, SacredTools, AAMod, Redemption

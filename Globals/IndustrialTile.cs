@@ -1,4 +1,4 @@
-﻿using GoodProLib.Bindings;
+﻿using IndustrialPickaxes.Helpers;
 using IndustrialPickaxes.Items;
 using IndustrialPickaxes.Items.Reskins;
 using IndustrialPickaxes.Items.Developer;

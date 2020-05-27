@@ -1,4 +1,3 @@
-using GoodProLib.GUtils;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -12,7 +11,7 @@ namespace IndustrialPickaxes.Items.Developer
 
 		public override void UpdateInventory(Player player)
 		{
-			switch (SteamUtils.SteamID()) // TODO SteamID() => SteamID in GPLib 1.0
+			switch (IndustrialPickaxes.SteamID.GetValue(null))
 			{
 				case "76561198079106803":
 					item.SetDefaults(ModContent.ItemType<AvaliManipulator>());
