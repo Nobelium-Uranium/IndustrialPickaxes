@@ -18,6 +18,7 @@ namespace IndustrialPickaxes.Helpers
 		public override bool CloneNewInstances => true;
 	}
 
+	//TODO holy frick rewrite plz
 	internal class GlowmaskHelperPlayer : ModPlayer
 	{
 		public static readonly PlayerLayer Glowmask = new PlayerLayer("IndustrialPickaxes", "Glowmask", PlayerLayer.HeldItem, delegate (PlayerDrawInfo drawInfo)
@@ -46,7 +47,6 @@ namespace IndustrialPickaxes.Helpers
 					{
 						float num104 = drawPlayer.itemRotation + 0.785f * drawPlayer.direction; //TODO rename
 						int textureWidth = 0; //TODO rename
-						int num = 0; //TODO rename
 						Vector2 zero3 = new Vector2(0f, Main.itemTexture[item.type].Height); //TODO rename
 
 						if (drawPlayer.gravDir == -1f)
@@ -74,7 +74,7 @@ namespace IndustrialPickaxes.Helpers
 						DrawData value = new DrawData
 						(
 							texture,
-							new Vector2((int)(position.X - Main.screenPosition.X + zero3.X + textureWidth), (int)(position.Y - Main.screenPosition.Y + num)),
+							position - Main.screenPosition + new Vector2(zero3.X + textureWidth, 0),
 							new Rectangle?(new Rectangle(0, 0, Main.itemTexture[item.type].Width, Main.itemTexture[item.type].Height)),
 							Color.White,
 							num104,
