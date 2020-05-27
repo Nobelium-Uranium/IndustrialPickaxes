@@ -123,8 +123,8 @@ namespace IndustrialPickaxes.Projectiles
 									{
 										WorldGen.KillWall(x, y, false);
 
-										if (Main.tile[x, y]?.wall == 0 && Main.netMode != 0)
-											NetMessage.SendData(17, -1, -1, null, 2, x, y);
+										if (Main.tile[x, y]?.wall == 0 && Main.netMode != NetmodeID.SinglePlayer)
+											NetMessage.SendData(MessageID.TileChange, -1, -1, null, 2, x, y);
 									}
 								}
 							}
