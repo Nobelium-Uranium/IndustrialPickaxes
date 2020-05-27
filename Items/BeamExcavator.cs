@@ -15,9 +15,9 @@ namespace IndustrialPickaxes.Items
 			item.width = 38;
 			item.height = 18;
 			item.useTime = item.useAnimation = 7;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.value = Item.sellPrice(0, 10, 0, 0);
-			item.rare = 8; //TODO use ItemRarityID
+			item.rare = ItemRarityID.Yellow;
 			item.UseSound = SoundID.Item75;
 			item.autoReuse = true;
 			item.useTurn = false;

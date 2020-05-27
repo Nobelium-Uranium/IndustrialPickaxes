@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using Terraria.GameContent.Achievements;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace IndustrialPickaxes.Projectiles
 {
@@ -107,8 +108,8 @@ namespace IndustrialPickaxes.Projectiles
 							{
 								WorldGen.KillTile(i, j, false, false, true);
 
-								if (!Main.tile[i, j].active() && Main.netMode != 0)
-									NetMessage.SendData(17, -1, -1, null, 0, i, j);
+								if (!Main.tile[i, j].active() && Main.netMode != NetmodeID.SinglePlayer)
+									NetMessage.SendData(MessageID.TileChange, -1, -1, null, 0, i, j);
 							}
 						}
 

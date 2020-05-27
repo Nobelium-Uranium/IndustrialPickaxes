@@ -98,8 +98,8 @@ namespace IndustrialPickaxes.Projectiles
 						{
 							player.PickTile(i, j, 230);
 
-							if (Main.netMode != 0)
-								NetMessage.SendData(17, -1, -1, null, 0, i, j);
+							if (Main.netMode != NetmodeID.SinglePlayer)
+								NetMessage.SendData(MessageID.TileChange, -1, -1, null, 0, i, j);
 						}
 					}
 				}

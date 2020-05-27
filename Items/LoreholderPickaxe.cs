@@ -31,7 +31,7 @@ namespace IndustrialPickaxes.Items
 			item.pick = 200;
 			item.knockBack = 4.75f;
 			item.value = Item.sellPrice(0, 4, 40, 0);
-			item.rare = 4; // TODO use ItemRarityID
+			item.rare = ItemRarityID.LightRed; // TODO use ItemRarityID
 			item.UseSound = SoundID.Item1;
 		}
 

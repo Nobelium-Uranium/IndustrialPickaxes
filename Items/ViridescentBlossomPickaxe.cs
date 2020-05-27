@@ -28,7 +28,7 @@ namespace IndustrialPickaxes.Items
 			item.pick = 275;
 			item.knockBack = 7.5f;
 			item.value = Item.sellPrice(0, 24, 0, 0);
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.UseSound = SoundID.Item1;
 		}
 

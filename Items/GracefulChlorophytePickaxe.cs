@@ -22,7 +22,7 @@ namespace IndustrialPickaxes.Items
 			item.pick = 200;
 			item.knockBack = 5;
 			item.value = 216000;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.tileBoost++;
 			item.UseSound = SoundID.Item1;
 		}

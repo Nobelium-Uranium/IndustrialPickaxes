@@ -20,7 +20,7 @@ namespace IndustrialPickaxes.Items.Materials
 			item.height = 30;
 			item.maxStack = 999;
 			item.value = Item.sellPrice(0, 15, 0, 0);
-			item.rare = 11; //TODO use ItemRarityID
+			item.rare = ItemRarityID.Purple; //TODO use ItemRarityID
 		}
 
 		public override Color? GetAlpha(Color lightColor) => Color.White;

@@ -26,10 +26,10 @@ namespace IndustrialPickaxes.Items
 			item.useTime = 8;
 			item.useAnimation = 30;
 			item.pick = 200;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 2;
 			item.value = Item.sellPrice(0, 2, 75, 0);
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.tileBoost--;
 			item.UseSound = SoundID.Item71;
 			item.autoReuse = true;

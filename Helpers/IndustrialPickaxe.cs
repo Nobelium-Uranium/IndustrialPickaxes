@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace IndustrialPickaxes.Helpers
 {
 	public abstract class IndustrialPickaxe : GlowmaskItem
@@ -6,7 +8,7 @@ namespace IndustrialPickaxes.Helpers
 		{
 			base.SetDefaults();
 			item.maxStack = 1;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.useTurn = true;
 			item.autoReuse = true;
 			item.melee = true;

@@ -41,7 +41,7 @@ namespace IndustrialPickaxes.Items
 				item.autoReuse = true;
 				item.shoot = IndustrialPickaxes.SacredTools.ProjectileType("AAAA");
 				item.shootSpeed = 1f;
-				item.useStyle = 5;
+				item.useStyle = ItemUseStyleID.HoldingOut;
 			}
 			else if (IndustrialPickaxes.EALoaded)
 			{

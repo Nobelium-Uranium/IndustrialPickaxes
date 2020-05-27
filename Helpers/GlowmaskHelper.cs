@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace IndustrialPickaxes.Helpers
 {
@@ -40,7 +41,7 @@ namespace IndustrialPickaxes.Helpers
 
 				Vector2 position = drawInfo.itemLocation;
 
-				if (item.useStyle == 5)
+				if (item.useStyle == ItemUseStyleID.HoldingOut)
 				{
 					bool staff = Item.staff[item.type];
 					if (staff)

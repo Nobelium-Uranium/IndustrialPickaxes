@@ -37,7 +37,7 @@ namespace IndustrialPickaxes.Items
 			item.axe = 25;
 			item.knockBack = 5.5f;
 			item.value = 216000;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.tileBoost++;
 			item.UseSound = SoundID.Item1;
 

@@ -27,7 +27,7 @@ namespace IndustrialPickaxes.Items.Fishaxe
 			item.axe = 200000;
 			item.knockBack = 9001;
 			item.value = 0;
-			item.rare = 11;
+			item.rare = ItemRarityID.Purple;
 			item.shootSpeed = 20f;
 			item.tileBoost += 100;
 			item.UseSound = SoundID.Item1;
@@ -80,7 +80,7 @@ namespace IndustrialPickaxes.Items.Fishaxe
 			}
 			else
 			{
-				item.shoot = 0;
+				item.shoot = ProjectileID.None;
 				item.pick = 1000000;
 				item.axe = 200000;
 				item.useTime = 2;
