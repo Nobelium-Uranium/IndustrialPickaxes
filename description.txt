@@ -43,6 +43,7 @@ Very special thanks to FuryForged for giving this mod a quick spotlight, I appre
  
 Version History:
 4.5
+[~] Updated to latest tModLoader version
 [~] Made world entry message shorter
 [~] Weak referenced mods that were supposed to be weak refereneced
 [~] Changed Frostburn? buff tooltip
