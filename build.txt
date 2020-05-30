@@ -1,4 +1,4 @@
-displayName = Industrial Pickaxes - Optimization Update Part 1
+displayName = Industrial Pickaxes - Optimization Pt.1
 author = NobeliumUranium_ & Crimsoneye495
 version = 4.5
 hideResources = true
