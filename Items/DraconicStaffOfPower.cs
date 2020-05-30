@@ -53,8 +53,7 @@ namespace IndustrialPickaxes.Items
 				item.pick = 0;
 				item.axe = 0;
 				item.hammer = 200;
-				item.useAnimation = 10;
-				item.useTime = 10;
+				item.useTime = 5;
 				item.noMelee = true;
 			}
 			else
@@ -62,8 +61,8 @@ namespace IndustrialPickaxes.Items
 				item.pick = 1000;
 				item.axe = 150;
 				item.hammer = 0;
-				item.useAnimation = 7;
-				item.noMelee = false;
+                item.useTime = 3;
+                item.noMelee = false;
 				item.autoReuse = true;
 			}
 
