@@ -39,7 +39,8 @@ namespace IndustrialPickaxes.Items.Developer
 			item.value = Item.sellPrice(platinum: 5);
 			item.rare = ItemRarityID.Cyan;
 			item.autoReuse = true;
-			item.channel = true;
+            item.channel = true;
+            item.useTurn = false;
 			item.shoot = ModContent.ProjectileType<OtherworldlyForces>();
 			item.shootSpeed = 2f;
 		}
