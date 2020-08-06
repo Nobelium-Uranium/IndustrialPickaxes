@@ -1,6 +1,6 @@
 displayName = Industrial Pickaxes - Rollback
-author = NobeliumUranium_ & Crimsoneye495
-version = 4.6
+author = Chem, Crimsoneye495, and GoodPro712
+version = 4.6.1
 hideResources = true
 homepage = https://discord.gg/3ccTk8v
 weakReferences = CalamityMod, ThoriumMod, SpiritMod, SacredTools, AAMod, Redemption

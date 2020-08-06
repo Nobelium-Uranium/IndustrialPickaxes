@@ -25,8 +25,8 @@ namespace IndustrialPickaxes.Items
             item.damage = 360;
             item.width = 108;
             item.height = 92;
-            item.useTime = 2;
-            item.useAnimation = 14;
+            item.useTime = 7;
+            item.useAnimation = 19;
             item.pick = 340;
             item.axe = 60;
             item.knockBack = 8;

@@ -42,6 +42,9 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.6.1
+[~] Slowed down Draconic Asthraltite Picksaw slightly for consistency with other industrial pickaxes
+
 4.6
 [!] Rolled back smelting code to how it was before 4.0, this means that it will no longer work in multiplayer!
 [+] Added Draconic Asthraltite Picksaw for SoA support
