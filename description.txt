@@ -10,7 +10,7 @@ Adds several new pickaxes that can smelt bars from ores
 It even has mod support!
 
 Currently supported mods...
- - Shadows of Abaddon (Solus Flarium Pickaxe + Ores)
+ - Shadows of Abaddon (Solus Flarium Pickaxe and Draconic Asthraltite Picksaw + Ores)
  - Calamity (Viridescent Blossom Pickaxe + Ores)
  - Thorium (Ores Only)
  - Mod of Redemption (Experimental Nano Pickaxe + Ores)
@@ -20,10 +20,10 @@ Currently supported mods...
 
 Next planned mod: Qwerty's Random Content
 
-Support for mods will be added one by one (But in some special cases, multiple may be added)
-Let it be known that the more you demand support for a specific mod, the more it'll be delayed.
+Support for mods will be added one by one. (But in some special cases, multiple may be added)
+Let it be known that the more you demand support for a specific mod, the more it'll be delayed. (Well not really, but it's very annoying)
 The same goes for demanding support to be rushed, we'll take as much time as we need, no more no less.
-Support for just about every mod is already planned.
+Support for just about every mod that have pickaxes and ore are already planned.
 As for what pickaxes will be industrialized, we only have plans for those obtained post-Moonlord.
 They must be a considerable upgrade from Lunar tier. (So tools like the Terrarium Canyon Splitter or the Gallant Pickaxe won't be supported, since you get them shortly after Moon lord, and Industrial Celestial Pickaxe already exists for that purpose)
 
@@ -33,7 +33,7 @@ This mod pairs very well with Veinminer, just make sure to have the tool equippe
 Developers...
  Ideas and sprites - Crimsoneye495
  Code and Master Manipulator sprite - NobeliumUranium_
- Multiplayer support, bug fixes and code cleaning - GoodPro712
+ (Failed) Multiplayer support (Thanks for trying anyway), bug fixes and code cleaning - GoodPro712
 
 Contributers...
  Glowmask helper - Qwerty
@@ -42,6 +42,16 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.6
+[!] Rolled back smelting code to how it was before 4.0, this means that it will no longer work in multiplayer!
+[+] Added Draconic Asthraltite Picksaw for SoA support
+[~] Renamed Etherial Picksaw to Bysmal Picksaw and Alien Picksaw to Martian Picksaw
+[~] Avali Manipulator and Violet Thaumaturgy should now play nice with eachother, Violet Thaumaturgy also now properly changes pickaxe power
+[~] Made Fishaxe slightly less common, however the ritual Fishaxe is made slightly less rare as compensation (It should be just as rare as before)
+[~] Adjusted several other things...
+[-] Removed functionality of the SoA variant of Master Manipulator, as it didn't handle smelting very well
+[-] Removed Beam Excavator and related code
+
 4.5
 [~] Updated to latest tModLoader version
 [~] Made world entry message shorter

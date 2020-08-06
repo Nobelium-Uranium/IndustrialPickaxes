@@ -16,8 +16,10 @@ namespace IndustrialPickaxes.Items
 		public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\nThis isn't a scythe I swear\n'Furiously forged with the blaze of a thousand flames'");
 
 		public override void SetDefaults()
-		{
-			if (!IndustrialPickaxes.SoALoaded)
+        {
+            base.SetDefaults();
+
+            if (!IndustrialPickaxes.SoALoaded)
 				return;
 
 			item.damage = 100;

@@ -53,15 +53,15 @@ namespace IndustrialPickaxes.Items
 				item.pick = 0;
 				item.axe = 0;
 				item.hammer = 200;
-				item.useTime = 5;
-				item.noMelee = true;
+                item.useAnimation = 3;
+                item.noMelee = true;
 			}
 			else
 			{
 				item.pick = 1000;
 				item.axe = 150;
 				item.hammer = 0;
-                item.useTime = 3;
+                item.useAnimation = 7;
                 item.noMelee = false;
 				item.autoReuse = true;
 			}
@@ -100,7 +100,10 @@ namespace IndustrialPickaxes.Items
 				recipe.AddIngredient(IndustrialPickaxes.Thorium.ItemType("TerrariumCanyonSplitter"));
 
 			if (IndustrialPickaxes.SoALoaded)
-				recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialFlarium");
+            {
+                recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialFlarium");
+                recipe.AddIngredient(ModContent.ItemType<DraconicAsthraltitePicksaw>());
+            }
 
 			if (IndustrialPickaxes.RedemptionLoaded)
 				recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialNano");
@@ -140,7 +143,8 @@ namespace IndustrialPickaxes.Items
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Means to an End (Asiimov)");
-		}
+            Tooltip.SetDefault("Serves as an excellent weapon\nHas a sweeping edge, inflicting extra AoE damage\n<right> to use as a hammer\nCan't be used as a weapon while hammering\nSmelts all ores!\n'Get good, get TerrariaBox!'");
+        }
 
 		public override void AddRecipes()
 		{

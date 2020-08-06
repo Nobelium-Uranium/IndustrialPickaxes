@@ -24,8 +24,9 @@ namespace IndustrialPickaxes.Items
 		}
 
 		public override void SetDefaults()
-		{
-			item.damage = 34;
+        {
+            base.SetDefaults();
+            item.damage = 34;
 			item.width = 44;
 			item.height = 46;
 			item.useTime = 11;
@@ -59,7 +60,7 @@ namespace IndustrialPickaxes.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Etherial Picksaw"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+			DisplayName.SetDefault("Bysmal Picksaw"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Schrodinger's pickaxe'");
 		}
 
@@ -93,11 +94,11 @@ namespace IndustrialPickaxes.Items
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Alien Picksaw");
+			DisplayName.SetDefault("Martian Picksaw");
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Far out, man!'");
 		}
 
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(this);

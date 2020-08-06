@@ -101,7 +101,7 @@ namespace IndustrialPickaxes.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Prototype Xenium Pickaxe");
-			Tooltip.SetDefault("Can mine Black Hardened Sludge\nUses precise strikes to smelt bars from ores, slow as a result\n'Purified Xenomite crystals power this prototype pickaxe'");
+			Tooltip.SetDefault("Can mine Black Hardened Sludge\nUses precise strikes to smelt bars from ores, slow as a result\n'Purified Xenomite crystals power this prototype pickaxe, don't ask me how that works'");
 		}
 
 		public override void AddRecipes()

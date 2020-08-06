@@ -12,7 +12,7 @@ namespace IndustrialPickaxes.Items.Fishaxe
 	//CrimsSupremeDimensionObliteratingFishaxeOfYeehawEXV2UltraTimelineDestructionEdition no
 	public class AscendedFishaxe : IndustrialPickaxe
 	{
-		public override void SetStaticDefaults() => Tooltip.SetDefault("admin hax\n<right> to fire a constant annihilation beam\nNon-boss enemies that touch the beam turn into ash\n'NOW you mine laser sharks.'");
+		public override void SetStaticDefaults() => Tooltip.SetDefault("admin hax\n<right> to fire a constant annihilation beam\nNon-boss enemies that touch the beam turn into ash\n'Who knew a trout had so much godly power?'");
 
 		public override void SetDefaults()
 		{

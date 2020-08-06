@@ -1,6 +1,6 @@
-displayName = Industrial Pickaxes - Optimization Pt.1
+displayName = Industrial Pickaxes - Rollback
 author = NobeliumUranium_ & Crimsoneye495
-version = 4.5
+version = 4.6
 hideResources = true
 homepage = https://discord.gg/3ccTk8v
 weakReferences = CalamityMod, ThoriumMod, SpiritMod, SacredTools, AAMod, Redemption

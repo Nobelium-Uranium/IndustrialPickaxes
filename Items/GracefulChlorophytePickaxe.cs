@@ -1,5 +1,6 @@
 using IndustrialPickaxes.Helpers;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,8 +13,9 @@ namespace IndustrialPickaxes.Items
 		public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Every rose has its thorn'");
 
 		public override void SetDefaults()
-		{
-			item.damage = 40;
+        {
+            base.SetDefaults();
+            item.damage = 40;
 			item.width = 42;
 			item.height = 40;
 			item.useTime = 12;

@@ -1,1196 +1,2009 @@
-﻿using IndustrialPickaxes.Helpers;
-using IndustrialPickaxes.Items;
-using IndustrialPickaxes.Items.Developer;
-using IndustrialPickaxes.Items.Fishaxe;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
-namespace IndustrialPickaxes.Globals
+namespace IndustrialPickaxes.Items
 {
-	//OOP plz
-	public class IndustrialTile : GlobalTile
-	{
-		public override bool Drop(int i, int j, int type)
-		{
-			if (Main.netMode != NetmodeID.MultiplayerClient && !WorldGen.noTileActions && !WorldGen.gen)
-			{
-				for (int playerIndex = 0; playerIndex < Main.maxPlayers; playerIndex++)
-				{
-					Player player = Main.player[playerIndex];
-
-					if (player == null || !player.active)
-						continue;
-
-					int usedTool = player.HeldItem.type;
-
-					if (!player.HasBuff(BuffID.DrillMount))
-					{
-						if (usedTool == ModContent.ItemType<AvaliManipulator>() || usedTool == ModContent.ItemType<AscendedFishaxe>() || usedTool == ModContent.ItemType<DraconicStaffOfPower>() || usedTool == ModContent.ItemType<DraconicStaffOfPowerAsiimov>() || usedTool == ModContent.ItemType<DraconicStaffOfPowerDemonic>() || usedTool == ModContent.ItemType<DraconicStaffOfPowerGlacier>())
-						{
-							bool ret = SmeltVanillaBars(i, j, type) || SmeltSoABars(i, j, type) || SmeltCalamityBars(i, j, type) || SmeltThoriumBars(i, j, type) || SmeltRedemptionBars(i, j, type) || SmeltAncientsAwakenedBars(i, j, type) || SmeltSpiritBars(i, j, type);
-							return ret;
-						}
-
-						if (usedTool == ModContent.ItemType<IndustrialMoltenPickaxe>() || usedTool == ModContent.ItemType<IndustrialMoltenPickaxeFrostburn>())
-						{
-							switch (type)
-							{
-								case TileID.Copper:
-								case TileID.Tin:
-								case TileID.Iron:
-								case TileID.Lead:
-								case TileID.Silver:
-								case TileID.Tungsten:
-								case TileID.Gold:
-								case TileID.Platinum:
-								case TileID.Meteorite:
-								case TileID.Demonite:
-								case TileID.Crimtane:
-								case TileID.Hellstone:
-								case TileID.Cobalt:
-								case TileID.Palladium:
-									bool ret = SmeltVanillaBars(i, j, type);
-									return ret;
-							}
-
-							if (type == IndustrialPickaxes.SacredTools?.TileType("LapisOre") || type == IndustrialPickaxes.SacredTools?.TileType("BismuthOre"))
-							{
-								SmeltSoABars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.Calamity?.TileType("AerialiteOre"))
-							{
-								SmeltCalamityBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.Thorium?.TileType("ThoriumOre") || type == IndustrialPickaxes.Thorium?.TileType("MagmaOre") || type == IndustrialPickaxes.Thorium?.TileType("AquaiteBare"))
-							{
-								SmeltThoriumBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.Redemption?.TileType("KaniteOreTile"))
-							{
-								SmeltRedemptionBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.AncientsAwakened?.TileType("IncineriteOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("AbyssiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("YtriumOre"))
-							{
-								SmeltAncientsAwakenedBars(i, j, type);
-								return false;
-							}
-
-							if (type == Mods.Spirit?.TileType("FloranOreTile") || type == Mods.Spirit?.TileType("CryoliteOreTile"))
-							{
-								SmeltSpiritBars(i, j, type);
-								return false;
-							}
-						}
-
-						if (usedTool == ModContent.ItemType<GracefulChlorophytePickaxe>() || usedTool == ModContent.ItemType<GracefulChlorophytePickaxePlantera>())
-						{
-							if (type != TileID.LunarOre)
-							{
-								return SmeltVanillaBars(i, j, type);
-							}
-
-							if (type == IndustrialPickaxes.SacredTools?.TileType("LapisOre") || type == IndustrialPickaxes.SacredTools?.TileType("BismuthOre"))
-							{
-								return SmeltSoABars(i, j, type);
-							}
-
-							if (type == Mods.Calamity?.TileType("AerialiteOre") || type == Mods.Calamity?.TileType("CryonicOre") || type == Mods.Calamity?.TileType("CharredOre") || type == Mods.Calamity?.TileType("PerennialOre"))
-							{
-								SmeltCalamityBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.AncientsAwakened?.TileType("IncineriteOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("AbyssiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("YtriumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("UraniumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("HallowedOre"))
-							{
-								SmeltAncientsAwakenedBars(i, j, type);
-								return false;
-							}
-
-							bool ret = SmeltThoriumBars(i, j, type) || SmeltRedemptionBars(i, j, type) || SmeltSpiritBars(i, j, type);
-							return ret;
-						}
-
-						if (usedTool == ModContent.ItemType<IndustrialPicksaw>() || usedTool == ModContent.ItemType<IndustrialPicksawBysmal>() || usedTool == ModContent.ItemType<IndustrialPicksawMartian>())
-						{
-							if (type == IndustrialPickaxes.SacredTools?.TileType("LapisOre") || type == IndustrialPickaxes.SacredTools?.TileType("BismuthOre"))
-							{
-								SmeltSoABars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.Calamity?.TileType("AerialiteOre") || type == IndustrialPickaxes.Calamity?.TileType("CryonicOre") || type == IndustrialPickaxes.Calamity?.TileType("CharredOre") || type == IndustrialPickaxes.Calamity?.TileType("PerennialOre") || type == IndustrialPickaxes.Calamity?.TileType("ChaoticOre"))
-							{
-								SmeltCalamityBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.AncientsAwakened?.TileType("IncineriteOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("AbyssiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("YtriumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("UraniumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("HallowedOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("TechneciumOre"))
-							{
-								SmeltAncientsAwakenedBars(i, j, type);
-								return false;
-							}
-
-							bool ret = SmeltVanillaBars(i, j, type) || SmeltThoriumBars(i, j, type) || SmeltRedemptionBars(i, j, type) || SmeltSpiritBars(i, j, type);
-							return ret;
-						}
-
-						if (usedTool == ModContent.ItemType<IndustrialLunarPickaxe>() || usedTool == ModContent.ItemType<IndustrialLunarPickaxeRagnarok>())
-						{
-							switch (type)
-							{
-								case TileID.Copper:
-								case TileID.Tin:
-								case TileID.Iron:
-								case TileID.Lead:
-								case TileID.Silver:
-								case TileID.Tungsten:
-								case TileID.Gold:
-								case TileID.Platinum:
-								case TileID.Meteorite:
-								case TileID.Demonite:
-								case TileID.Crimtane:
-								case TileID.Hellstone:
-								case TileID.Cobalt:
-								case TileID.Palladium:
-								case TileID.Mythril:
-								case TileID.Orichalcum:
-								case TileID.Adamantite:
-								case TileID.Titanium:
-								case TileID.Chlorophyte:
-								case TileID.LunarOre:
-									SmeltVanillaBars(i, j, type);
-									return false;
-							}
-
-							if (type == IndustrialPickaxes.SacredTools?.TileType("LapisOre") || type == IndustrialPickaxes.SacredTools?.TileType("BismuthOre"))
-							{
-								SmeltSoABars(i, j, type);
-								return false;
-							}
-
-							if (type == Mods.Calamity?.TileType("AerialiteOre") || type == Mods.Calamity?.TileType("CryonicOre") || type == Mods.Calamity?.TileType("CharredOre") || type == Mods.Calamity?.TileType("PerennialOre") || type == Mods.Calamity?.TileType("AstralOre") || type == Mods.Calamity?.TileType("ChaoticOre"))
-							{
-								SmeltCalamityBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.AncientsAwakened?.TileType("IncineriteOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("AbyssiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("YtriumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("UraniumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("HallowedOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("TechneciumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("RadiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("Apocalyptite"))
-							{
-								SmeltAncientsAwakenedBars(i, j, type);
-								return false;
-							}
-
-							bool ret = SmeltSpiritBars(i, j, type) || SmeltThoriumBars(i, j, type) || SmeltRedemptionBars(i, j, type);
-							return ret;
-						}
-
-						if (usedTool == ModContent.ItemType<SolusFlariumPickaxe>() || usedTool == ModContent.ItemType<SolusFlariumPickaxeCernium>() || usedTool == ModContent.ItemType<SolusFlariumPickaxeAsthraltite>())
-						{
-							if (type == Mods.Calamity?.TileType("AerialiteOre") || type == Mods.Calamity?.TileType("CryonicOre") || type == Mods.Calamity?.TileType("CharredOre") || type == Mods.Calamity?.TileType("PerennialOre") || type == Mods.Calamity?.TileType("AstralOre") || type == Mods.Calamity?.TileType("ChaoticOre") || type == Mods.Calamity?.TileType("Uelibloom"))
-							{
-								SmeltCalamityBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.AncientsAwakened?.TileType("IncineriteOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("AbyssiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("YtriumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("UraniumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("HallowedOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("TechneciumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("RadiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("Apocalyptite"))
-							{
-								SmeltAncientsAwakenedBars(i, j, type);
-								return false;
-							}
-
-							//bool ret = SmeltVanillaBars(i, j, type) || SmeltSoABars(i, j, type) || SmeltThoriumBars(i, j, type) && SmeltRedemptionBars(i, j, type) && SmeltSpiritBars(i, j, type);
-							return false;
-						}
-
-						if (usedTool == ModContent.ItemType<ViridescentBlossomPickaxe>() || usedTool == ModContent.ItemType<ViridescentBlossomPickaxeProvidence>())
-						{
-							if (type == IndustrialPickaxes.Calamity?.TileType("AerialiteOre") || type == IndustrialPickaxes.Calamity?.TileType("CryonicOre") || type == IndustrialPickaxes.Calamity?.TileType("CharredOre") || type == IndustrialPickaxes.Calamity?.TileType("PerennialOre") || type == IndustrialPickaxes.Calamity?.TileType("AstralOre") || type == IndustrialPickaxes.Calamity?.TileType("ChaoticOre") || type == IndustrialPickaxes.Calamity?.TileType("Uelibloom"))
-							{
-								SmeltCalamityBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.AncientsAwakened?.TileType("IncineriteOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("AbyssiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("YtriumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("UraniumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("HallowedOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("TechneciumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("RadiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("Apocalyptite"))
-							{
-								SmeltAncientsAwakenedBars(i, j, type);
-								return false;
-							}
-
-							bool ret = SmeltVanillaBars(i, j, type) || SmeltSoABars(i, j, type) || SmeltThoriumBars(i, j, type) || SmeltRedemptionBars(i, j, type) || SmeltSpiritBars(i, j, type);
-							return ret;
-						}
-
-						if (usedTool == ModContent.ItemType<ExperimentalNanoPickaxe>() || usedTool == ModContent.ItemType<ExperimentalNanoPickaxeCreative>())
-						{
-							if (type == IndustrialPickaxes.Calamity?.TileType("AerialiteOre") || type == IndustrialPickaxes.Calamity?.TileType("CryonicOre") || type == IndustrialPickaxes.Calamity?.TileType("CharredOre") || type == IndustrialPickaxes.Calamity?.TileType("PerennialOre") || type == IndustrialPickaxes.Calamity?.TileType("AstralOre") || type == IndustrialPickaxes.Calamity?.TileType("ChaoticOre") || type == IndustrialPickaxes.Calamity?.TileType("Uelibloom"))
-							{
-								SmeltCalamityBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.AncientsAwakened?.TileType("IncineriteOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("AbyssiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("YtriumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("UraniumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("HallowedOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("TechneciumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("RadiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("Apocalyptite"))
-							{
-								SmeltAncientsAwakenedBars(i, j, type);
-								return false;
-							}
-
-							bool ret = SmeltVanillaBars(i, j, type) || SmeltSoABars(i, j, type) || SmeltThoriumBars(i, j, type) || SmeltRedemptionBars(i, j, type) || SmeltSpiritBars(i, j, type);
-							return ret;
-						}
-
-						if (usedTool == ModContent.ItemType<MasterManipulator>())
-						{
-							if (type == IndustrialPickaxes.Calamity?.TileType("AerialiteOre") || type == IndustrialPickaxes.Calamity?.TileType("CryonicOre") || type == IndustrialPickaxes.Calamity?.TileType("CharredOre") || type == IndustrialPickaxes.Calamity?.TileType("PerennialOre") || type == IndustrialPickaxes.Calamity?.TileType("AstralOre") || type == IndustrialPickaxes.Calamity?.TileType("ChaoticOre") || type == IndustrialPickaxes.Calamity?.TileType("Uelibloom"))
-							{
-								SmeltCalamityBars(i, j, type);
-								return false;
-							}
-
-							if (type == IndustrialPickaxes.AncientsAwakened?.TileType("IncineriteOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("AbyssiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("YtriumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("UraniumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("HallowedOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("TechneciumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("RadiumOre") || type == IndustrialPickaxes.AncientsAwakened?.TileType("Apocalyptite"))
-							{
-								SmeltAncientsAwakenedBars(i, j, type);
-								return false;
-							}
-
-							bool ret = SmeltVanillaBars(i, j, type) || SmeltSoABars(i, j, type) || SmeltThoriumBars(i, j, type) || SmeltRedemptionBars(i, j, type) || SmeltSpiritBars(i, j, type);
-							return ret;
-						}
-
-						if (usedTool == ModContent.ItemType<OreRejuvenator>())
-						{
-							int droppedGem = Main.rand.Next(6);
-
-							switch (type)
-							{
-								case TileID.Diamond:
-									if (Main.rand.Next(8) == 0)
-									{
-										switch (droppedGem)
-										{
-											case 0:
-												SpawnSyncedItem(i, j, ItemID.Ruby);
-												break;
-
-											case 1:
-												SpawnSyncedItem(i, j, ItemID.Emerald);
-												break;
-
-											case 2:
-												SpawnSyncedItem(i, j, ItemID.Sapphire);
-												break;
-
-											case 3:
-												SpawnSyncedItem(i, j, ItemID.Amethyst);
-												break;
-
-											case 4:
-												SpawnSyncedItem(i, j, ItemID.Topaz);
-												break;
-
-											case 5:
-												SpawnSyncedItem(i, j, ItemID.Amber);
-												break;
-										}
-									}
-
-									SpawnSyncedItem(i, j, ItemID.Diamond, 2);
-									return false;
-
-								case TileID.Ruby:
-									if (Main.rand.Next(8) == 0)
-									{
-										switch (droppedGem)
-										{
-											case 0:
-												SpawnSyncedItem(i, j, ItemID.Diamond);
-												break;
-
-											case 1:
-												SpawnSyncedItem(i, j, ItemID.Emerald);
-												break;
-
-											case 2:
-												SpawnSyncedItem(i, j, ItemID.Sapphire);
-												break;
-
-											case 3:
-												SpawnSyncedItem(i, j, ItemID.Amethyst);
-												break;
-
-											case 4:
-												SpawnSyncedItem(i, j, ItemID.Topaz);
-												break;
-
-											case 5:
-												SpawnSyncedItem(i, j, ItemID.Amber);
-												break;
-										}
-									}
-
-									SpawnSyncedItem(i, j, ItemID.Ruby, 2);
-									return false;
-
-								case TileID.Emerald:
-									if (Main.rand.Next(8) == 0)
-									{
-										switch (droppedGem)
-										{
-											case 0:
-												SpawnSyncedItem(i, j, ItemID.Diamond);
-												break;
-
-											case 1:
-												SpawnSyncedItem(i, j, ItemID.Ruby);
-												break;
-
-											case 2:
-												SpawnSyncedItem(i, j, ItemID.Sapphire);
-												break;
-
-											case 3:
-												SpawnSyncedItem(i, j, ItemID.Amethyst);
-												break;
-
-											case 4:
-												SpawnSyncedItem(i, j, ItemID.Topaz);
-												break;
-
-											case 5:
-												SpawnSyncedItem(i, j, ItemID.Amber);
-												break;
-										}
-									}
-
-									SpawnSyncedItem(i, j, ItemID.Emerald, 2);
-									return false;
-
-								case TileID.Sapphire:
-									if (Main.rand.Next(8) == 0)
-									{
-										switch (droppedGem)
-										{
-											case 0:
-												SpawnSyncedItem(i, j, ItemID.Diamond);
-												break;
-
-											case 1:
-												SpawnSyncedItem(i, j, ItemID.Ruby);
-												break;
-
-											case 2:
-												SpawnSyncedItem(i, j, ItemID.Emerald);
-												break;
-
-											case 3:
-												SpawnSyncedItem(i, j, ItemID.Amethyst);
-												break;
-
-											case 4:
-												SpawnSyncedItem(i, j, ItemID.Topaz);
-												break;
-
-											case 5:
-												SpawnSyncedItem(i, j, ItemID.Amber);
-												break;
-										}
-									}
-
-									SpawnSyncedItem(i, j, ItemID.Sapphire, 2);
-									return false;
-
-								case TileID.Amethyst:
-									if (Main.rand.Next(8) == 0)
-									{
-										switch (droppedGem)
-										{
-											case 0:
-												SpawnSyncedItem(i, j, ItemID.Diamond);
-												break;
-
-											case 1:
-												SpawnSyncedItem(i, j, ItemID.Ruby);
-												break;
-
-											case 2:
-												SpawnSyncedItem(i, j, ItemID.Emerald);
-												break;
-
-											case 3:
-												SpawnSyncedItem(i, j, ItemID.Sapphire);
-												break;
-
-											case 4:
-												SpawnSyncedItem(i, j, ItemID.Topaz);
-												break;
-
-											case 5:
-												SpawnSyncedItem(i, j, ItemID.Amber);
-												break;
-										}
-									}
-
-									SpawnSyncedItem(i, j, ItemID.Amethyst, 2);
-									return false;
-
-								case TileID.Topaz:
-									if (Main.rand.Next(8) == 0)
-									{
-										switch (droppedGem)
-										{
-											case 0:
-												SpawnSyncedItem(i, j, ItemID.Diamond);
-												break;
-
-											case 1:
-												SpawnSyncedItem(i, j, ItemID.Ruby);
-												break;
-
-											case 2:
-												SpawnSyncedItem(i, j, ItemID.Emerald);
-												break;
-
-											case 3:
-												SpawnSyncedItem(i, j, ItemID.Sapphire);
-												break;
-
-											case 4:
-												SpawnSyncedItem(i, j, ItemID.Amethyst);
-												break;
-
-											case 5:
-												SpawnSyncedItem(i, j, ItemID.Amber);
-												break;
-										}
-									}
-
-									SpawnSyncedItem(i, j, ItemID.Topaz, 2);
-									return false;
-							}
-						}
-
-						if (usedTool == ModContent.ItemType<VioletThaumaturgy>())
-						{
-							switch (type)
-							{
-								case TileID.Copper:
-									SpawnSyncedItem(i, j, ItemID.TinOre);
-									return false;
-
-								case TileID.Tin:
-									SpawnSyncedItem(i, j, ItemID.CopperOre);
-									return false;
-
-								case TileID.Iron:
-									SpawnSyncedItem(i, j, ItemID.LeadOre);
-									return false;
-
-								case TileID.Lead:
-									SpawnSyncedItem(i, j, ItemID.IronOre);
-									return false;
-
-								case TileID.Silver:
-									SpawnSyncedItem(i, j, ItemID.TungstenOre);
-									return false;
-
-								case TileID.Tungsten:
-									SpawnSyncedItem(i, j, ItemID.SilverOre);
-									return false;
-
-								case TileID.Gold:
-									SpawnSyncedItem(i, j, ItemID.PlatinumOre);
-									return false;
-
-								case TileID.Platinum:
-									SpawnSyncedItem(i, j, ItemID.GoldOre);
-									return false;
-
-								case TileID.Demonite:
-									SpawnSyncedItem(i, j, ItemID.CrimtaneOre);
-									return false;
-
-								case TileID.Crimtane:
-									SpawnSyncedItem(i, j, ItemID.DemoniteOre);
-									return false;
-
-								case TileID.Cobalt:
-									SpawnSyncedItem(i, j, ItemID.PalladiumOre);
-									return false;
-
-								case TileID.Palladium:
-									SpawnSyncedItem(i, j, ItemID.CobaltOre);
-									return false;
-
-								case TileID.Mythril:
-									SpawnSyncedItem(i, j, ItemID.OrichalcumOre);
-									return false;
-
-								case TileID.Orichalcum:
-									SpawnSyncedItem(i, j, ItemID.MythrilOre);
-									return false;
-
-								case TileID.Adamantite:
-									SpawnSyncedItem(i, j, ItemID.TitaniumOre);
-									return false;
-
-								case TileID.Titanium:
-									SpawnSyncedItem(i, j, ItemID.AdamantiteOre);
-									return false;
-							}
-						}
-					}
-				}
-			}
-
-			return base.Drop(i, j, type);
-		}
-
-		private void Smelt(int chanceSubtraction, int i, int j, int itemType, ref int chanceCounter)
-		{
-			if (Main.rand.NextBool(chanceSubtraction - chanceCounter))
-			{
-				Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-				SpawnSyncedItem(i, j, itemType);
-				chanceCounter = 0;
-			}
-			else
-				chanceCounter++;
-		}
-
-		private bool SmeltAncientsAwakenedBars(int i, int j, int type)
-		{
-			if (!IndustrialPickaxes.AALoaded)
-				return true;
-
-			if (type == IndustrialPickaxes.AncientsAwakened.TileType("IncineriteOre"))
-			{
-				if (Main.rand.NextBool(4 - chanceIncinerite))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("IncineriteBar"));
-					chanceIncinerite = 0;
-					return false;
-				}
-				else
-					chanceIncinerite++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("AbyssiumOre"))
-			{
-				if (Main.rand.NextBool(4 - chanceAbyssium))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("AbyssiumBar"));
-					chanceAbyssium = 0;
-					return false;
-				}
-				else
-					chanceAbyssium++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("YtriumOre"))
-			{
-				if (Main.rand.NextBool(4 - chanceYtrium))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("YtriumBar"));
-					chanceYtrium = 0;
-					return false;
-				}
-				else
-					chanceYtrium++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("UraniumOre"))
-			{
-				if (Main.rand.NextBool(5 - chanceUranium))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("UraniumBar"));
-					chanceUranium = 0;
-					return false;
-				}
-				else
-					chanceUranium++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("HallowedOre"))
-			{
-				if (Main.rand.NextBool(5 - chanceHallowed))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, ItemID.HallowedBar);
-					chanceHallowed = 0;
-					return false;
-				}
-				else
-					chanceHallowed++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("TechneciumOre"))
-			{
-				if (Main.rand.NextBool(4 - chanceTechnecium))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("TechneciumBar"));
-					chanceTechnecium = 0;
-					return false;
-				}
-				else
-					chanceTechnecium++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("RadiumOre"))
-			{
-				if (Main.rand.NextBool(6 - chanceRadium))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					if (Main.dayTime)
-						SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("RadiumBar"));
-					else
-						SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("DarkMatter"));
-					chanceRadium = 0;
-					return false;
-				}
-				else
-					chanceRadium++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("Apocalyptite"))
-			{
-				if (Main.rand.NextBool(6 - chanceApocalyptite))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("ApocalyptitePlate"));
-					chanceApocalyptite = 0;
-					return false;
-				}
-				else
-					chanceApocalyptite++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("DaybreakIncineriteOre"))
-			{
-				if (Main.rand.NextBool(6 - chanceDaybreakIncinerite))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("DaybreakIncinerite"));
-					chanceDaybreakIncinerite = 0;
-					return false;
-				}
-				else
-					chanceDaybreakIncinerite++;
-			}
-			else if (type == IndustrialPickaxes.AncientsAwakened.TileType("EventideAbyssiumOre"))
-			{
-				if (Main.rand.NextBool(6 - chanceEventideAbyssium))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.AncientsAwakened.ItemType("EventideAbyssium"));
-					chanceEventideAbyssium = 0;
-					return false;
-				}
-				else
-					chanceEventideAbyssium++;
-			}
-
-			return true;
-		}
-
-		private bool SmeltCalamityBars(int i, int j, int type)
-		{
-			if (Mods.Calamity != null)
-			{
-				if (type == Mods.Calamity.TileType("AerialiteOre"))
-				{
-					if (Main.rand.NextBool(5 - chanceAerialite))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Calamity.ItemType("AerialiteBar"));
-						chanceAerialite = 0;
-						return false;
-					}
-					else
-						chanceAerialite++;
-				}
-				else if (type == Mods.Calamity.TileType("CryonicOre"))
-				{
-					if (Main.rand.NextBool(6 - chanceCryonic))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Calamity.ItemType("VerstaltiteBar"));
-						chanceCryonic = 0;
-						return false;
-					}
-					else
-						chanceCryonic++;
-				}
-				else if (type == Mods.Calamity.TileType("CharredOre"))
-				{
-					if (Main.rand.NextBool(5 - chanceCharred))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Calamity.ItemType("UnholyCore"));
-						chanceCharred = 0;
-						return false;
-					}
-					else
-						chanceCharred++;
-				}
-				else if (type == IndustrialPickaxes.Calamity.TileType("PerennialOre"))
-				{
-					if (Main.rand.NextBool(6 - chancePerennial))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, IndustrialPickaxes.Calamity.ItemType("DraedonBar"));
-						chancePerennial = 0;
-						return false;
-					}
-					else
-						chancePerennial++;
-				}
-				else if (type == Mods.Calamity.TileType("AstralOre"))
-				{
-					if (Main.rand.NextBool(3 - chanceAstral))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Calamity.ItemType("AstralBar"));
-						chanceAstral = 0;
-						return false;
-					}
-					else
-						chanceAstral++;
-				}
-				else if (type == Mods.Calamity.TileType("ChaoticOre"))
-				{
-					if (Main.rand.NextBool(6 - chanceChaotic))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Calamity.ItemType("CruptixBar"));
-						chanceChaotic = 0;
-						return false;
-					}
-					else
-						chanceChaotic++;
-				}
-				else if (type == Mods.Calamity.TileType("UelibloomOre"))
-				{
-					if (Main.rand.NextBool(5 - chanceUelibloom))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Calamity.ItemType("UeliaceBar"));
-						chanceUelibloom = 0;
-						return false;
-					}
-					else
-						chanceUelibloom++;
-				}
-				else if (type == Mods.Calamity.TileType("AuricOre"))
-				{
-					if (Main.rand.NextBool(20 - chanceAuric))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Calamity.ItemType("AuricBar"));
-						chanceAuric = 0;
-						return false;
-					}
-					else
-						chanceAuric++;
-				}
-			}
-
-			return true;
-		}
-
-		private bool SmeltRedemptionBars(int i, int j, int type)
-		{
-			if (!IndustrialPickaxes.RedemptionLoaded)
-				return true;
-
-			if (type == IndustrialPickaxes.Redemption.TileType("KaniteOreTile"))
-			{
-				if (Main.rand.NextBool(3 - chanceKanite))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.Redemption.ItemType("KaniteBar"));
-					chanceKanite = 0;
-					return false;
-				}
-				else
-					chanceKanite++;
-			}
-			else if (type == IndustrialPickaxes.Redemption.TileType("DragonLeadOreTile"))
-			{
-				if (Main.rand.NextBool(4 - chanceDragonLead))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.Redemption.ItemType("DragonLeadBar"));
-					chanceDragonLead = 0;
-					return false;
-				}
-				else
-					chanceDragonLead++;
-			}
-			else if (type == IndustrialPickaxes.Redemption.TileType("SapphironOreTile"))
-			{
-				if (Main.rand.NextBool(4 - chanceSapphiron))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.Redemption.ItemType("SapphireBar"));
-					chanceSapphiron = 0;
-					return false;
-				}
-				else
-					chanceKanite++;
-			}
-			else if (type == IndustrialPickaxes.Redemption.TileType("ScarlionOreTile"))
-			{
-				if (Main.rand.NextBool(4 - chanceScarlion))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, IndustrialPickaxes.Redemption.ItemType("ScarletBar"));
-					chanceScarlion = 0;
-					return false;
-				}
-				else
-					chanceScarlion++;
-			}
-
-			return true;
-		}
-
-		private bool SmeltSoABars(int i, int j, int type)
-		{
-			if (IndustrialPickaxes.SoALoaded)
-			{
-				if (type == IndustrialPickaxes.SacredTools.TileType("LapisOre"))
-				{
-					if (Main.rand.NextBool(3 - chanceLapis))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, IndustrialPickaxes.SacredTools.ItemType("RefinedLapis"));
-						chanceLapis = 0;
-						return false;
-					}
-					else
-						chanceLapis++;
-				}
-				else if (type == IndustrialPickaxes.SacredTools.TileType("BismuthOre"))
-				{
-					if (Main.rand.NextBool(3 - chanceBismuth))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, IndustrialPickaxes.SacredTools.ItemType("RefinedBismuth"));
-						chanceBismuth = 0;
-						return false;
-					}
-					else
-						chanceBismuth++;
-				}
-				else if (type == IndustrialPickaxes.SacredTools.TileType("OblivionOreBlock"))
-				{
-					if (Main.rand.NextBool(5 - chanceOblivion))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, IndustrialPickaxes.SacredTools.ItemType("OblivionBar"));
-						chanceOblivion = 0;
-						return false;
-					}
-					else
-						chanceOblivion++;
-				}
-			}
-
-			return true;
-		}
-
-		private bool SmeltSpiritBars(int i, int j, int type)
-		{
-			if (Mods.Spirit == null)
-				return true;
-
-			if (type == Mods.Spirit.TileType("FloranOreTile"))
-			{
-				if (Main.rand.NextBool(4 - chanceFloran))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, Mods.Spirit.ItemType("FloranBar"));
-					chanceFloran = 0;
-					return false;
-				}
-				else
-					chanceFloran++;
-			}
-			else if (type == Mods.Spirit.TileType("CryoliteOreTile"))
-			{
-				if (Main.rand.NextBool(4 - chanceCryolite))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, Mods.Spirit.ItemType("CryoliteBar"));
-					chanceCryolite = 0;
-					return false;
-				}
-				else
-					chanceCryolite++;
-			}
-			else if (type == Mods.Spirit.TileType("SpiritOreTile"))
-			{
-				if (Main.rand.NextBool(5 - chanceSpirit))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, Mods.Spirit.ItemType("SpiritBar"));
-					chanceSpirit = 0;
-					return false;
-				}
-				else
-					chanceSpirit++;
-			}
-			else if (type == Mods.Spirit.TileType("ThermiteOre"))
-			{
-				if (Main.rand.NextBool(5 - chanceThermite))
-				{
-					Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-					SpawnSyncedItem(i, j, Mods.Spirit.ItemType("ThermiteBar"));
-					chanceThermite = 0;
-					return false;
-				}
-				else
-					chanceThermite++;
-			}
-
-			return true;
-		}
-
-		private bool SmeltThoriumBars(int i, int j, int type)
-		{
-			if (Mods.Thorium != null)
-			{
-				if (type == Mods.Thorium.TileType("ThoriumOre"))
-				{
-					if (Main.rand.NextBool(5 - chanceThorium))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Thorium.ItemType("ThoriumBar"));
-						chanceThorium = 0;
-						return false;
-					}
-					else
-						chanceThorium++;
-				}
-				else if (type == Mods.Thorium.TileType("MagmaOre"))
-				{
-					if (Main.rand.NextBool(6 - chanceMagma))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Thorium.ItemType("MagmaCore"));
-						chanceMagma = 0;
-						return false;
-					}
-					else
-						chanceMagma++;
-				}
-				else if (type == Mods.Thorium.TileType("AquaiteBare"))
-				{
-					if (Main.rand.NextBool(6 - chanceAquaite))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Thorium.ItemType("AquaiteBar"));
-						chanceAquaite = 0;
-						return false;
-					}
-					else
-						chanceAquaite++;
-				}
-				else if (type == Mods.Thorium.TileType("LodeStone"))
-				{
-					if (Main.rand.NextBool(5 - chanceLodestone))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Thorium.ItemType("LodeStoneIngot"));
-						chanceLodestone = 0;
-						return false;
-					}
-					else
-						chanceLodestone++;
-				}
-				else if (type == Mods.Thorium.TileType("ValadiumChunk"))
-				{
-					if (Main.rand.NextBool(5 - chanceValadium))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Thorium.ItemType("ValadiumIngot"));
-						chanceValadium = 0;
-						return false;
-					}
-					else
-						chanceValadium++;
-				}
-				else if (type == Mods.Thorium.TileType("IllumiteChunk"))
-				{
-					if (Main.rand.NextBool(5 - chanceIllumite))
-					{
-						Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
-						SpawnSyncedItem(i, j, Mods.Thorium.ItemType("IllumiteIngot"));
-						chanceIllumite = 0;
-						return false;
-					}
-					else
-						chanceIllumite++;
-				}
-			}
-
-			return true;
-		}
-
-		private bool SmeltVanillaBars(int i, int j, int type)
-		{
-			switch (type)
-			{
-				case TileID.Copper:
-					Smelt(4, i, j, ItemID.CopperBar, ref chanceCopperTin);
-					break;
-
-				case TileID.Tin:
-					Smelt(4, i, j, ItemID.TinBar, ref chanceCopperTin);
-					break;
-
-				case TileID.Iron:
-					Smelt(4, i, j, ItemID.IronBar, ref chanceIronLead);
-					break;
-
-				case TileID.Lead:
-					Smelt(4, i, j, ItemID.LeadBar, ref chanceIronLead);
-					break;
-
-				case TileID.Silver:
-					Smelt(5, i, j, ItemID.SilverBar, ref chanceSilverTungsten);
-					break;
-
-				case TileID.Tungsten:
-					Smelt(5, i, j, ItemID.TungstenBar, ref chanceSilverTungsten);
-					break;
-
-				case TileID.Gold:
-					Smelt(5, i, j, ItemID.GoldBar, ref chanceGoldPlatinum);
-					break;
-
-				case TileID.Platinum:
-					Smelt(5, i, j, ItemID.PlatinumBar, ref chanceGoldPlatinum);
-					break;
-
-				case TileID.Meteorite:
-					Smelt(4, i, j, ItemID.Meteorite, ref chanceMeteorite);
-					break;
-
-				case TileID.Crimtane:
-					Smelt(4, i, j, ItemID.CrimtaneBar, ref chanceDemoniteCrimtane);
-					break;
-
-				case TileID.Demonite:
-					Smelt(4, i, j, ItemID.DemoniteBar, ref chanceDemoniteCrimtane);
-					break;
-
-				case TileID.Hellstone:
-					Smelt(4, i, j, ItemID.HellstoneBar, ref chanceHellstone);
-					break;
-
-				case TileID.Cobalt:
-					Smelt(4, i, j, ItemID.CobaltBar, ref chanceCobaltPalladium);
-					break;
-
-				case TileID.Palladium:
-					Smelt(4, i, j, ItemID.PalladiumBar, ref chanceCobaltPalladium);
-					break;
-
-				case TileID.Mythril:
-					Smelt(5, i, j, ItemID.MythrilBar, ref chanceMythrilOrichalcum);
-					break;
-
-				case TileID.Orichalcum:
-					Smelt(5, i, j, ItemID.OrichalcumBar, ref chanceMythrilOrichalcum);
-					break;
-
-				case TileID.Adamantite:
-					Smelt(6, i, j, ItemID.AdamantiteBar, ref chanceAdamantiteTitanium);
-					break;
-
-				case TileID.Titanium:
-					Smelt(6, i, j, ItemID.TitaniumBar, ref chanceAdamantiteTitanium);
-					break;
-
-				case TileID.Chlorophyte:
-					Smelt(7, i, j, ItemID.ChlorophyteBar, ref chanceChlorophyte);
-					break;
-
-				case TileID.LunarOre:
-					Smelt(5, i, j, ItemID.LunarBar, ref chanceLuminite);
-					break;
-
-				default:
-					return true;
-			}
-
-			return false;
-		}
-
-		private void SpawnSyncedItem(int i, int j, int type, int stack = 1)
-		{
-			int item = Item.NewItem(i * 16, j * 16, 16, 16, type, stack, false);
-
-			if (item >= 0 && Main.netMode == NetmodeID.MultiplayerClient)
-				NetMessage.SendData(MessageID.SyncItem, -1, -1, null, item, 1f);
-		}
-
-		#region Chance Varibles
-
-		private int chanceAbyssium;
-		private int chanceAdamantiteTitanium;
-		private int chanceAerialite;
-		private int chanceApocalyptite;
-		private int chanceAquaite;
-		private int chanceAstral;
-		private int chanceAuric;
-		private int chanceBismuth;
-		private int chanceChaotic;
-		private int chanceCharred;
-		private int chanceChlorophyte;
-		private int chanceCobaltPalladium;
-		private int chanceCopperTin;
-		private int chanceCryolite;
-		private int chanceCryonic;
-		private int chanceDaybreakIncinerite;
-		private int chanceDemoniteCrimtane;
-		private int chanceDragonLead;
-		private int chanceEventideAbyssium;
-		private int chanceFloran;
-		private int chanceGoldPlatinum;
-		private int chanceHallowed;
-		private int chanceHellstone;
-		private int chanceIllumite;
-		private int chanceIncinerite;
-		private int chanceIronLead;
-		private int chanceKanite;
-		private int chanceLapis;
-		private int chanceLodestone;
-		private int chanceLuminite;
-		private int chanceMagma;
-		private int chanceMeteorite;
-		private int chanceMythrilOrichalcum;
-		private int chanceOblivion;
-		private int chancePerennial;
-		private int chanceRadium;
-		private int chanceSapphiron;
-		private int chanceScarlion;
-		private int chanceSilverTungsten;
-		private int chanceSpirit;
-		private int chanceTechnecium;
-		private int chanceThermite;
-		private int chanceThorium;
-		private int chanceUelibloom;
-		private int chanceUranium;
-		private int chanceValadium;
-		private int chanceYtrium;
-
-		#endregion Chance Varibles
-	}
+    class IndustrialTile : GlobalTile
+    {
+        bool KillableTile;
+
+        public override bool CanKillTile(int i, int j, int type, ref bool blockDamaged)
+        {
+            if (true)
+            {
+                KillableTile = true;
+            }
+            return base.CanKillTile(i, j, type, ref blockDamaged);
+        }
+
+        #region Smelt Vanilla Ores
+        int ChanceCopperTin;
+        int ChanceIronLead;
+        int ChanceSilverTungsten;
+        int ChanceGoldPlatinum;
+        int ChanceMeteorite;
+        int ChanceDemoniteCrimtane;
+        int ChanceHellstone;
+        int ChanceCobaltPalladium;
+        int ChanceMythrilOrichalcum;
+        int ChanceAdamantiteTitanium;
+        int ChanceChlorophyte;
+        int ChanceLuminite;
+
+        public void SmeltCopperTin(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Copper)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceCopperTin <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.CopperBar);
+                    ChanceCopperTin = 0;
+                }
+                else
+                {
+                    ChanceCopperTin++;
+                }
+
+            }
+            else if (type == TileID.Tin)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceCopperTin <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.TinBar);
+                    ChanceCopperTin = 0;
+                }
+                else
+                {
+                    ChanceCopperTin++;
+                }
+
+            }
+        }
+        public void SmeltIronLead(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Iron)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceIronLead <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.IronBar);
+                    ChanceIronLead = 0;
+                }
+                else
+                {
+                    ChanceIronLead++;
+                }
+
+            }
+            else if (type == TileID.Lead)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceIronLead <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.LeadBar);
+                    ChanceIronLead = 0;
+                }
+                else
+                {
+                    ChanceIronLead++;
+                }
+
+            }
+        }
+        public void SmeltSilverTungsten(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Silver)
+            {
+                noItem = true;
+                if (Main.rand.Next(5) - ChanceSilverTungsten <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.SilverBar);
+                    ChanceSilverTungsten = 0;
+                }
+                else
+                {
+                    ChanceSilverTungsten++;
+                }
+
+            }
+            else if (type == TileID.Tungsten)
+            {
+                noItem = true;
+                if (Main.rand.Next(5) - ChanceSilverTungsten <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.TungstenBar);
+                    ChanceSilverTungsten = 0;
+                }
+                else
+                {
+                    ChanceSilverTungsten++;
+                }
+
+            }
+        }
+        public void SmeltGoldPlatinum(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Gold)
+            {
+                noItem = true;
+                if (Main.rand.Next(5) - ChanceGoldPlatinum <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.GoldBar);
+                    ChanceGoldPlatinum = 0;
+                }
+                else
+                {
+                    ChanceGoldPlatinum++;
+                }
+
+            }
+            else if (type == TileID.Platinum)
+            {
+                noItem = true;
+                if (Main.rand.Next(5) - ChanceGoldPlatinum <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.PlatinumBar);
+                    ChanceGoldPlatinum = 0;
+                }
+                else
+                {
+                    ChanceGoldPlatinum++;
+                }
+
+            }
+        }
+        public void SmeltMeteorite(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Meteorite)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceMeteorite <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.MeteoriteBar);
+                    ChanceMeteorite = 0;
+                }
+                else
+                {
+                    ChanceMeteorite++;
+                }
+
+            }
+        }
+        public void SmeltDemoniteCrimtane(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Demonite)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceDemoniteCrimtane <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.DemoniteBar);
+                    ChanceDemoniteCrimtane = 0;
+                }
+                else
+                {
+                    ChanceDemoniteCrimtane++;
+                }
+
+            }
+            else if (type == TileID.Crimtane)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceDemoniteCrimtane <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.CrimtaneBar);
+                    ChanceDemoniteCrimtane = 0;
+                }
+                else
+                {
+                    ChanceDemoniteCrimtane++;
+                }
+
+            }
+        }
+        public void SmeltHellstone(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Hellstone)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceHellstone <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.HellstoneBar);
+                    ChanceHellstone = 0;
+                }
+                else
+                {
+                    ChanceHellstone++;
+                }
+
+            }
+        }
+        public void SmeltCobaltPalladium(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Cobalt)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceCobaltPalladium <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.CobaltBar);
+                    ChanceCobaltPalladium = 0;
+                }
+                else
+                {
+                    ChanceCobaltPalladium++;
+                }
+
+            }
+            else if (type == TileID.Palladium)
+            {
+                noItem = true;
+                if (Main.rand.Next(4) - ChanceCobaltPalladium <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.PalladiumBar);
+                    ChanceCobaltPalladium = 0;
+                }
+                else
+                {
+                    ChanceCobaltPalladium++;
+                }
+
+            }
+        }
+        public void SmeltMythrilOrichalcum(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Mythril)
+            {
+                noItem = true;
+                if (Main.rand.Next(5) - ChanceMythrilOrichalcum <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.MythrilBar);
+                    ChanceMythrilOrichalcum = 0;
+                }
+                else
+                {
+                    ChanceMythrilOrichalcum++;
+                }
+
+            }
+            else if (type == TileID.Orichalcum)
+            {
+                noItem = true;
+                if (Main.rand.Next(5) - ChanceMythrilOrichalcum <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.OrichalcumBar);
+                    ChanceMythrilOrichalcum = 0;
+                }
+                else
+                {
+                    ChanceMythrilOrichalcum++;
+                }
+
+            }
+        }
+        public void SmeltAdamantiteTitanium(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Adamantite)
+            {
+                noItem = true;
+                if (Main.rand.Next(6) - ChanceAdamantiteTitanium <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.AdamantiteBar);
+                    ChanceAdamantiteTitanium = 0;
+                }
+                else
+                {
+                    ChanceAdamantiteTitanium++;
+                }
+
+            }
+            else if (type == TileID.Titanium)
+            {
+                noItem = true;
+                if (Main.rand.Next(6) - ChanceAdamantiteTitanium <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.TitaniumBar);
+                    ChanceAdamantiteTitanium = 0;
+                }
+                else
+                {
+                    ChanceAdamantiteTitanium++;
+                }
+
+            }
+        }
+        public void SmeltChlorophyte(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.Chlorophyte)
+            {
+                noItem = true;
+                if (Main.rand.Next(7) - ChanceChlorophyte <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.ChlorophyteBar);
+                    ChanceChlorophyte = 0;
+                }
+                else
+                {
+                    ChanceChlorophyte++;
+                }
+
+            }
+        }
+        public void SmeltLuminite(int i, int j, int type, ref bool noItem)
+        {
+            if (type == TileID.LunarOre)
+            {
+                noItem = true;
+                if (Main.rand.Next(5) - ChanceLuminite <= 0)
+                {
+                    Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.LunarBar);
+                    ChanceLuminite = 0;
+                }
+                else
+                {
+                    ChanceLuminite++;
+                }
+
+            }
+        }
+        #endregion
+
+        #region Smelt Modded Ores
+
+        #region EXAMPLE
+        /*  public void Smelt(int i, int j, int type, ref bool noItem)
+            {
+                if (IndustrialPickaxes.Loaded)
+                {
+                    if (IndustrialPickaxes.mod.GetTile("Ore") != null && IndustrialPickaxes.mod.GetItem("Bar") != null)
+                    {
+                        if (type == IndustrialPickaxes.mod.TileType("Ore"))
+                        {
+                            noItem = true;
+                            if (Main.rand.Next(5) - Chance <= 0)
+                            {
+                                Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                                Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.mod.ItemType("Bar"));
+                                Chance = 0;
+                            }
+                            else
+                            {
+                                Chance++;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            */
+        #endregion
+
+        #region Shadows of Abaddon
+        int ChanceLapis;
+        int ChanceBismuth;
+        int ChanceOblivion;
+
+        public void SmeltLapis(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.SoALoaded)
+            {
+                if (IndustrialPickaxes.SacredTools.GetTile("LapisOre") != null && IndustrialPickaxes.SacredTools.GetItem("RefinedLapis") != null)
+                {
+                    if (type == IndustrialPickaxes.SacredTools.TileType("LapisOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(3) - ChanceLapis <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.SacredTools.ItemType("RefinedLapis"));
+                            ChanceLapis = 0;
+                        }
+                        else
+                        {
+                            ChanceLapis++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltBismuth(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.SoALoaded)
+            {
+                if (IndustrialPickaxes.SacredTools.GetTile("BismuthOre") != null && IndustrialPickaxes.SacredTools.GetItem("RefinedBismuth") != null)
+                {
+                    if (type == IndustrialPickaxes.SacredTools.TileType("BismuthOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(3) - ChanceBismuth <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.SacredTools.ItemType("RefinedBismuth"));
+                            ChanceBismuth = 0;
+                        }
+                        else
+                        {
+                            ChanceBismuth++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltOblivion(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.SoALoaded)
+            {
+                if (IndustrialPickaxes.SacredTools.GetTile("OblivionOreBlock") != null && IndustrialPickaxes.SacredTools.GetItem("OblivionBar") != null)
+                {
+                    if (type == IndustrialPickaxes.SacredTools.TileType("OblivionOreBlock"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceOblivion <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.SacredTools.ItemType("OblivionBar"));
+                            ChanceOblivion = 0;
+                        }
+                        else
+                        {
+                            ChanceOblivion++;
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Calamity
+        int ChanceAerialite;
+        int ChanceCryonic;
+        int ChanceCharred;
+        int ChancePerennial;
+        int ChanceAstral;
+        int ChanceChaotic;
+        int ChanceUelibloom;
+        int ChanceAuric;
+
+        public void SmeltAerialite(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.CalamityLoaded)
+            {
+                if (IndustrialPickaxes.Calamity.GetTile("AerialiteOre") != null && IndustrialPickaxes.Calamity.GetItem("AerialiteBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Calamity.TileType("AerialiteOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceAerialite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Calamity.ItemType("AerialiteBar"));
+                            ChanceAerialite = 0;
+                        }
+                        else
+                        {
+                            ChanceAerialite++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltCryonic(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.CalamityLoaded)
+            {
+                if (IndustrialPickaxes.Calamity.GetTile("CryonicOre") != null && IndustrialPickaxes.Calamity.GetItem("VerstaltiteBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Calamity.TileType("CryonicOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceCryonic <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Calamity.ItemType("VerstaltiteBar"));
+                            ChanceCryonic = 0;
+                        }
+                        else
+                        {
+                            ChanceCryonic++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltCharred(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.CalamityLoaded)
+            {
+                if (IndustrialPickaxes.Calamity.GetTile("CharredOre") != null && IndustrialPickaxes.Calamity.GetItem("UnholyCore") != null)
+                {
+                    if (type == IndustrialPickaxes.Calamity.TileType("CharredOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceCharred <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Calamity.ItemType("UnholyCore"));
+                            ChanceCharred = 0;
+                        }
+                        else
+                        {
+                            ChanceCharred++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltPerennial(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.CalamityLoaded)
+            {
+                if (IndustrialPickaxes.Calamity.GetTile("PerennialOre") != null && IndustrialPickaxes.Calamity.GetItem("DraedonBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Calamity.TileType("PerennialOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChancePerennial <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Calamity.ItemType("DraedonBar"));
+                            ChancePerennial = 0;
+                        }
+                        else
+                        {
+                            ChancePerennial++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltAstral(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.CalamityLoaded)
+            {
+                if (IndustrialPickaxes.Calamity.GetTile("AstralOre") != null && IndustrialPickaxes.Calamity.GetItem("AstralBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Calamity.TileType("AstralOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(3) - ChanceAstral <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Calamity.ItemType("AstralBar"));
+                            ChanceAstral = 0;
+                        }
+                        else
+                        {
+                            ChanceAstral++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltChaotic(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.CalamityLoaded)
+            {
+                if (IndustrialPickaxes.Calamity.GetTile("ChaoticOre") != null && IndustrialPickaxes.Calamity.GetItem("CruptixBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Calamity.TileType("ChaoticOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceChaotic <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Calamity.ItemType("CruptixBar"));
+                            ChanceChaotic = 0;
+                        }
+                        else
+                        {
+                            ChanceChaotic++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltUelibloom(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.CalamityLoaded)
+            {
+                if (IndustrialPickaxes.Calamity.GetTile("UelibloomOre") != null && IndustrialPickaxes.Calamity.GetItem("UeliaceBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Calamity.TileType("UelibloomOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceUelibloom <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Calamity.ItemType("UeliaceBar"));
+                            ChanceUelibloom = 0;
+                        }
+                        else
+                        {
+                            ChanceUelibloom++;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        public void SmeltAuric(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.CalamityLoaded)
+            {
+                if (IndustrialPickaxes.Calamity.GetTile("AuricOre") != null && IndustrialPickaxes.Calamity.GetItem("AuricBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Calamity.TileType("AuricOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(20) - ChanceAuric <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Calamity.ItemType("AuricBar"));
+                            ChanceAuric = 0;
+                        }
+                        else
+                        {
+                            ChanceAuric++;
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Thorium
+        int ChanceThorium;
+        int ChanceMagma;
+        int ChanceAquaite;
+        int ChanceLodestone;
+        int ChanceValadium;
+        int ChanceIllumite;
+
+        public void SmeltThorium(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.ThoriumLoaded)
+            {
+                if (IndustrialPickaxes.Thorium.GetTile("ThoriumOre") != null && IndustrialPickaxes.Thorium.GetItem("ThoriumBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Thorium.TileType("ThoriumOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceThorium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Thorium.ItemType("ThoriumBar"));
+                            ChanceThorium = 0;
+                        }
+                        else
+                        {
+                            ChanceThorium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltMagma(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.ThoriumLoaded)
+            {
+                if (IndustrialPickaxes.Thorium.GetTile("MagmaOre") != null && IndustrialPickaxes.Thorium.GetItem("MagmaCore") != null)
+                {
+                    if (type == IndustrialPickaxes.Thorium.TileType("MagmaOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceMagma <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Thorium.ItemType("MagmaCore"));
+                            ChanceMagma = 0;
+                        }
+                        else
+                        {
+                            ChanceMagma++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltAquaite(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.ThoriumLoaded)
+            {
+                if (IndustrialPickaxes.Thorium.GetTile("AquaiteBare") != null && IndustrialPickaxes.Thorium.GetItem("AquaiteBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Thorium.TileType("AquaiteBare"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceAquaite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Thorium.ItemType("AquaiteBar"));
+                            ChanceAquaite = 0;
+                        }
+                        else
+                        {
+                            ChanceAquaite++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltLodestone(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.ThoriumLoaded)
+            {
+                if (IndustrialPickaxes.Thorium.GetTile("LodeStone") != null && IndustrialPickaxes.Thorium.GetItem("LodeStoneIngot") != null)
+                {
+                    if (type == IndustrialPickaxes.Thorium.TileType("LodeStone"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceLodestone <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Thorium.ItemType("LodeStoneIngot"));
+                            ChanceLodestone = 0;
+                        }
+                        else
+                        {
+                            ChanceLodestone++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltValadium(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.ThoriumLoaded)
+            {
+                if (IndustrialPickaxes.Thorium.GetTile("ValadiumChunk") != null && IndustrialPickaxes.Thorium.GetItem("ValadiumIngot") != null)
+                {
+                    if (type == IndustrialPickaxes.Thorium.TileType("ValadiumChunk"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceValadium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Thorium.ItemType("ValadiumIngot"));
+                            ChanceValadium = 0;
+                        }
+                        else
+                        {
+                            ChanceValadium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltIllumite(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.ThoriumLoaded)
+            {
+                if (IndustrialPickaxes.Thorium.GetTile("IllumiteChunk") != null && IndustrialPickaxes.Thorium.GetItem("IllumiteIngot") != null)
+                {
+                    if (type == IndustrialPickaxes.Thorium.TileType("IllumiteChunk"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceIllumite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Thorium.ItemType("IllumiteIngot"));
+                            ChanceIllumite = 0;
+                        }
+                        else
+                        {
+                            ChanceIllumite++;
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Redemption
+        int ChanceKanite;
+        int ChanceDragonLead;
+        int ChanceSapphiron;
+        int ChanceScarlion;
+
+        public void SmeltKanite(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.RedemptionLoaded)
+            {
+                if (IndustrialPickaxes.Redemption.GetTile("KaniteOreTile") != null && IndustrialPickaxes.Redemption.GetItem("KaniteBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Redemption.TileType("KaniteOreTile"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(3) - ChanceKanite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Redemption.ItemType("KaniteBar"));
+                            ChanceKanite = 0;
+                        }
+                        else
+                        {
+                            ChanceKanite++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltDragonLead(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.RedemptionLoaded)
+            {
+                if (IndustrialPickaxes.Redemption.GetTile("DragonLeadOreTile") != null && IndustrialPickaxes.Redemption.GetItem("DragonLeadBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Redemption.TileType("DragonLeadOreTile"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceDragonLead <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Redemption.ItemType("DragonLeadBar"));
+                            ChanceDragonLead = 0;
+                        }
+                        else
+                        {
+                            ChanceDragonLead++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltSapphiron(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.RedemptionLoaded)
+            {
+                if (IndustrialPickaxes.Redemption.GetTile("SapphironOreTile") != null && IndustrialPickaxes.Redemption.GetItem("SapphireBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Redemption.TileType("SapphironOreTile"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceSapphiron <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Redemption.ItemType("SapphireBar"));
+                            ChanceSapphiron = 0;
+                        }
+                        else
+                        {
+                            ChanceSapphiron++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltScarlion(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.RedemptionLoaded)
+            {
+                if (IndustrialPickaxes.Redemption.GetTile("ScarlionOreTile") != null && IndustrialPickaxes.Redemption.GetItem("ScarletBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Redemption.TileType("ScarlionOreTile"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(3) - ChanceScarlion <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Redemption.ItemType("ScarletBar"));
+                            ChanceScarlion = 0;
+                        }
+                        else
+                        {
+                            ChanceScarlion++;
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Ancients Awakened
+        int ChanceIncinerite;
+        int ChanceAbyssium;
+        int ChanceYtrium;
+        int ChanceUranium;
+        int ChanceHallowed;
+        int ChanceTechnecium;
+        int ChanceRadium;
+        int ChanceApocalyptite;
+        int ChanceDaybreakIncinerite;
+        int ChanceEventideAbyssium;
+
+        public void SmeltChaos(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.AALoaded)
+            {
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("IncineriteOre") != null && IndustrialPickaxes.AncientsAwakened.GetItem("IncineriteBar") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("IncineriteOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceIncinerite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("IncineriteBar"));
+                            ChanceIncinerite = 0;
+                        }
+                        else
+                        {
+                            ChanceIncinerite++;
+                        }
+
+                    }
+                }
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("AbyssiumOre") != null && IndustrialPickaxes.AncientsAwakened.GetItem("AbyssiumBar") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("AbyssiumOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceAbyssium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("AbyssiumBar"));
+                            ChanceAbyssium = 0;
+                        }
+                        else
+                        {
+                            ChanceAbyssium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltYtrium(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.AALoaded)
+            {
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("YtriumOre") != null && IndustrialPickaxes.AncientsAwakened.GetItem("YtriumBar") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("YtriumOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceYtrium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("YtriumBar"));
+                            ChanceYtrium = 0;
+                        }
+                        else
+                        {
+                            ChanceYtrium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltUranium(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.AALoaded)
+            {
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("UraniumOre") != null && IndustrialPickaxes.AncientsAwakened.GetItem("UraniumBar") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("UraniumOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceUranium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("UraniumBar"));
+                            ChanceUranium = 0;
+                        }
+                        else
+                        {
+                            ChanceUranium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltHallowed(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.AALoaded)
+            {
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("HallowedOre") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("HallowedOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceHallowed <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.HallowedBar);
+                            ChanceHallowed = 0;
+                        }
+                        else
+                        {
+                            ChanceHallowed++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltTechnecium(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.AALoaded)
+            {
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("TechneciumOre") != null && IndustrialPickaxes.AncientsAwakened.GetItem("TechneciumBar") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("TechneciumOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(7) - ChanceTechnecium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("TechneciumBar"));
+                            ChanceTechnecium = 0;
+                        }
+                        else
+                        {
+                            ChanceTechnecium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltRadium(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.AALoaded)
+            {
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("RadiumOre") != null && IndustrialPickaxes.AncientsAwakened.GetItem("RadiumBar") != null && IndustrialPickaxes.AncientsAwakened.GetItem("DarkMatter") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("RadiumOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceRadium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            if (Main.dayTime)
+                            {
+                                Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("RadiumBar"));
+                            }
+                            else
+                            {
+                                Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("DarkMatter"));
+                            }
+                            ChanceRadium = 0;
+                        }
+                        else
+                        {
+                            ChanceRadium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltApocalyptite(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.AALoaded)
+            {
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("Apocalyptite") != null && IndustrialPickaxes.AncientsAwakened.GetItem("ApocalyptitePlate") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("Apocalyptite"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceApocalyptite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("ApocalyptitePlate"));
+                            ChanceApocalyptite = 0;
+                        }
+                        else
+                        {
+                            ChanceApocalyptite++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltAwakenedChaos(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.AALoaded)
+            {
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("DaybreakIncineriteOre") != null && IndustrialPickaxes.AncientsAwakened.GetItem("DaybreakIncinerite") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("DaybreakIncineriteOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceDaybreakIncinerite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("DaybreakIncinerite"));
+                            ChanceDaybreakIncinerite = 0;
+                        }
+                        else
+                        {
+                            ChanceDaybreakIncinerite++;
+                        }
+
+                    }
+                }
+                if (IndustrialPickaxes.AncientsAwakened.GetTile("EventideAbyssiumOre") != null && IndustrialPickaxes.AncientsAwakened.GetItem("EventideAbyssium") != null)
+                {
+                    if (type == IndustrialPickaxes.AncientsAwakened.TileType("EventideAbyssiumOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(6) - ChanceEventideAbyssium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.AncientsAwakened.ItemType("EventideAbyssium"));
+                            ChanceEventideAbyssium = 0;
+                        }
+                        else
+                        {
+                            ChanceEventideAbyssium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Spirit
+        int ChanceFloran;
+        int ChanceCryolite;
+        int ChanceSpirit;
+        int ChanceThermite;
+
+        public void SmeltFloran(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.SpiritLoaded)
+            {
+                if (IndustrialPickaxes.SpiritMod.GetTile("FloranOreTile") != null && IndustrialPickaxes.SpiritMod.GetItem("FloranBar") != null)
+                {
+                    if (type == IndustrialPickaxes.SpiritMod.TileType("FloranOreTile"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceFloran <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.SpiritMod.ItemType("FloranBar"));
+                            ChanceFloran = 0;
+                        }
+                        else
+                        {
+                            ChanceFloran++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltCryolite(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.SpiritLoaded)
+            {
+                if (IndustrialPickaxes.SpiritMod.GetTile("CryoliteOreTile") != null && IndustrialPickaxes.SpiritMod.GetItem("CryoliteBar") != null)
+                {
+                    if (type == IndustrialPickaxes.SpiritMod.TileType("CryoliteOreTile"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceCryolite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.SpiritMod.ItemType("CryoliteBar"));
+                            ChanceCryolite = 0;
+                        }
+                        else
+                        {
+                            ChanceCryolite++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltSpirit(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.SpiritLoaded)
+            {
+                if (IndustrialPickaxes.SpiritMod.GetTile("SpiritOreTile") != null && IndustrialPickaxes.SpiritMod.GetItem("SpiritBar") != null)
+                {
+                    if (type == IndustrialPickaxes.SpiritMod.TileType("SpiritOreTile"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceSpirit <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.SpiritMod.ItemType("SpiritBar"));
+                            ChanceSpirit = 0;
+                        }
+                        else
+                        {
+                            ChanceSpirit++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltThermite(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.SpiritLoaded)
+            {
+                if (IndustrialPickaxes.SpiritMod.GetTile("ThermiteOre") != null && IndustrialPickaxes.SpiritMod.GetItem("ThermiteBar") != null)
+                {
+                    if (type == IndustrialPickaxes.SpiritMod.TileType("ThermiteOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceThermite <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.SpiritMod.ItemType("ThermiteBar"));
+                            ChanceThermite = 0;
+                        }
+                        else
+                        {
+                            ChanceThermite++;
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #endregion
+
+        public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
+        {
+            if (!WorldGen.noTileActions && !WorldGen.gen)
+            {
+                var p = Main.LocalPlayer.GetModPlayer<IndustrialPlayer>();
+                int usedTool = p.holdingItem.type;
+                if (!Main.LocalPlayer.HasBuff(BuffID.DrillMount) && Main.netMode == NetmodeID.SinglePlayer && !fail && KillableTile)
+                {
+                    #region Base Pickaxes
+                    if (usedTool == mod.ItemType("AvaliManipulator") || usedTool == mod.ItemType("AscendedFishaxe") || usedTool == mod.ItemType("DraconicStaffOfPower") || usedTool == mod.ItemType("DraconicStaffOfPowerAsiimov") || usedTool == mod.ItemType("DraconicStaffOfPowerDemonic") || usedTool == mod.ItemType("DraconicStaffOfPowerGlacier"))
+                    {
+                        //Smelt(i, j, type, ref noItem);
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltHellstone(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltMythrilOrichalcum(i, j, type, ref noItem);
+                        SmeltAdamantiteTitanium(i, j, type, ref noItem);
+                        SmeltChlorophyte(i, j, type, ref noItem);
+                        SmeltLuminite(i, j, type, ref noItem);
+                        //Shadows of Abaddon
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltOblivion(i, j, type, ref noItem);
+                        //Calamity
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltCryonic(i, j, type, ref noItem);
+                        SmeltCharred(i, j, type, ref noItem);
+                        SmeltPerennial(i, j, type, ref noItem);
+                        SmeltAstral(i, j, type, ref noItem);
+                        SmeltChaotic(i, j, type, ref noItem);
+                        SmeltUelibloom(i, j, type, ref noItem);
+                        SmeltAuric(i, j, type, ref noItem);
+                        //Thorium
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltLodestone(i, j, type, ref noItem);
+                        SmeltValadium(i, j, type, ref noItem);
+                        SmeltIllumite(i, j, type, ref noItem);
+                        //Redemption
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltDragonLead(i, j, type, ref noItem);
+                        SmeltSapphiron(i, j, type, ref noItem);
+                        SmeltScarlion(i, j, type, ref noItem);
+                        //Ancients Awakened
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltUranium(i, j, type, ref noItem);
+                        SmeltHallowed(i, j, type, ref noItem);
+                        SmeltTechnecium(i, j, type, ref noItem);
+                        SmeltRadium(i, j, type, ref noItem);
+                        SmeltApocalyptite(i, j, type, ref noItem);
+                        SmeltAwakenedChaos(i, j, type, ref noItem);
+                        //Spirit Mod
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                        SmeltSpirit(i, j, type, ref noItem);
+                        SmeltThermite(i, j, type, ref noItem);
+                    }
+
+                    if (usedTool == mod.ItemType("IndustrialMoltenPickaxe") || usedTool == mod.ItemType("IndustrialMoltenPickaxeFrostburn"))
+                    {
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                    }
+
+                    if (usedTool == mod.ItemType("GracefulChlorophytePickaxe") || usedTool == mod.ItemType("GracefulChlorophytePickaxePlantera"))
+                    {
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltHellstone(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltMythrilOrichalcum(i, j, type, ref noItem);
+                        SmeltAdamantiteTitanium(i, j, type, ref noItem);
+                        SmeltChlorophyte(i, j, type, ref noItem);
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltCryonic(i, j, type, ref noItem);
+                        SmeltCharred(i, j, type, ref noItem);
+                        SmeltPerennial(i, j, type, ref noItem);
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltLodestone(i, j, type, ref noItem);
+                        SmeltValadium(i, j, type, ref noItem);
+                        SmeltIllumite(i, j, type, ref noItem);
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltDragonLead(i, j, type, ref noItem);
+                        SmeltSapphiron(i, j, type, ref noItem);
+                        SmeltScarlion(i, j, type, ref noItem);
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltUranium(i, j, type, ref noItem);
+                        SmeltHallowed(i, j, type, ref noItem);
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                        SmeltSpirit(i, j, type, ref noItem);
+                        SmeltThermite(i, j, type, ref noItem);
+                    }
+
+                    if (usedTool == mod.ItemType("IndustrialPicksaw") || usedTool == mod.ItemType("IndustrialPicksawBysmal") || usedTool == mod.ItemType("IndustrialPicksawMartian"))
+                    {
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltHellstone(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltMythrilOrichalcum(i, j, type, ref noItem);
+                        SmeltAdamantiteTitanium(i, j, type, ref noItem);
+                        SmeltChlorophyte(i, j, type, ref noItem);
+                        SmeltLuminite(i, j, type, ref noItem);
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltCryonic(i, j, type, ref noItem);
+                        SmeltCharred(i, j, type, ref noItem);
+                        SmeltPerennial(i, j, type, ref noItem);
+                        SmeltChaotic(i, j, type, ref noItem);
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltLodestone(i, j, type, ref noItem);
+                        SmeltValadium(i, j, type, ref noItem);
+                        SmeltIllumite(i, j, type, ref noItem);
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltDragonLead(i, j, type, ref noItem);
+                        SmeltSapphiron(i, j, type, ref noItem);
+                        SmeltScarlion(i, j, type, ref noItem);
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltUranium(i, j, type, ref noItem);
+                        SmeltHallowed(i, j, type, ref noItem);
+                        SmeltTechnecium(i, j, type, ref noItem);
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                        SmeltSpirit(i, j, type, ref noItem);
+                        SmeltThermite(i, j, type, ref noItem);
+                    }
+
+                    if (usedTool == mod.ItemType("IndustrialLunarPickaxe") || usedTool == mod.ItemType("IndustrialLunarPickaxeRagnarok"))
+                    {
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltHellstone(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltMythrilOrichalcum(i, j, type, ref noItem);
+                        SmeltAdamantiteTitanium(i, j, type, ref noItem);
+                        SmeltChlorophyte(i, j, type, ref noItem);
+                        SmeltLuminite(i, j, type, ref noItem);
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltCryonic(i, j, type, ref noItem);
+                        SmeltCharred(i, j, type, ref noItem);
+                        SmeltPerennial(i, j, type, ref noItem);
+                        SmeltAstral(i, j, type, ref noItem);
+                        SmeltChaotic(i, j, type, ref noItem);
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltLodestone(i, j, type, ref noItem);
+                        SmeltValadium(i, j, type, ref noItem);
+                        SmeltIllumite(i, j, type, ref noItem);
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltDragonLead(i, j, type, ref noItem);
+                        SmeltSapphiron(i, j, type, ref noItem);
+                        SmeltScarlion(i, j, type, ref noItem);
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltUranium(i, j, type, ref noItem);
+                        SmeltHallowed(i, j, type, ref noItem);
+                        SmeltTechnecium(i, j, type, ref noItem);
+                        SmeltRadium(i, j, type, ref noItem);
+                        SmeltApocalyptite(i, j, type, ref noItem);
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                        SmeltSpirit(i, j, type, ref noItem);
+                        SmeltThermite(i, j, type, ref noItem);
+                    }
+                    #endregion
+
+                    #region Modded Pickaxes
+                    // Shadows of Abaddon
+                    if (usedTool == mod.ItemType("SolusFlariumPickaxe") || usedTool == mod.ItemType("SolusFlariumPickaxeCernium") || usedTool == mod.ItemType("SolusFlariumPickaxeAsthraltite") || usedTool == mod.ItemType("DraconicAsthraltitePicksaw"))
+                    {
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltHellstone(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltMythrilOrichalcum(i, j, type, ref noItem);
+                        SmeltAdamantiteTitanium(i, j, type, ref noItem);
+                        SmeltChlorophyte(i, j, type, ref noItem);
+                        SmeltLuminite(i, j, type, ref noItem);
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltOblivion(i, j, type, ref noItem);
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltCryonic(i, j, type, ref noItem);
+                        SmeltCharred(i, j, type, ref noItem);
+                        SmeltPerennial(i, j, type, ref noItem);
+                        SmeltAstral(i, j, type, ref noItem);
+                        SmeltChaotic(i, j, type, ref noItem);
+                        SmeltUelibloom(i, j, type, ref noItem);
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltLodestone(i, j, type, ref noItem);
+                        SmeltValadium(i, j, type, ref noItem);
+                        SmeltIllumite(i, j, type, ref noItem);
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltDragonLead(i, j, type, ref noItem);
+                        SmeltSapphiron(i, j, type, ref noItem);
+                        SmeltScarlion(i, j, type, ref noItem);
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltUranium(i, j, type, ref noItem);
+                        SmeltHallowed(i, j, type, ref noItem);
+                        SmeltTechnecium(i, j, type, ref noItem);
+                        SmeltRadium(i, j, type, ref noItem);
+                        SmeltApocalyptite(i, j, type, ref noItem);
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                        SmeltSpirit(i, j, type, ref noItem);
+                        SmeltThermite(i, j, type, ref noItem);
+                    }
+
+                    // Calamity
+                    if (usedTool == mod.ItemType("ViridescentBlossomPickaxe") || usedTool == mod.ItemType("ViridescentBlossomPickaxeProvidence"))
+                    {
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltHellstone(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltMythrilOrichalcum(i, j, type, ref noItem);
+                        SmeltAdamantiteTitanium(i, j, type, ref noItem);
+                        SmeltChlorophyte(i, j, type, ref noItem);
+                        SmeltLuminite(i, j, type, ref noItem);
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltOblivion(i, j, type, ref noItem);
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltCryonic(i, j, type, ref noItem);
+                        SmeltCharred(i, j, type, ref noItem);
+                        SmeltPerennial(i, j, type, ref noItem);
+                        SmeltAstral(i, j, type, ref noItem);
+                        SmeltChaotic(i, j, type, ref noItem);
+                        SmeltUelibloom(i, j, type, ref noItem);
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltLodestone(i, j, type, ref noItem);
+                        SmeltValadium(i, j, type, ref noItem);
+                        SmeltIllumite(i, j, type, ref noItem);
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltDragonLead(i, j, type, ref noItem);
+                        SmeltSapphiron(i, j, type, ref noItem);
+                        SmeltScarlion(i, j, type, ref noItem);
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltUranium(i, j, type, ref noItem);
+                        SmeltHallowed(i, j, type, ref noItem);
+                        SmeltTechnecium(i, j, type, ref noItem);
+                        SmeltRadium(i, j, type, ref noItem);
+                        SmeltApocalyptite(i, j, type, ref noItem);
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                        SmeltSpirit(i, j, type, ref noItem);
+                        SmeltThermite(i, j, type, ref noItem);
+                    }
+
+                    // Redemption
+                    if (usedTool == mod.ItemType("ExperimentalNanoPickaxe") || usedTool == mod.ItemType("ExperimentalNanoPickaxeCreative") || usedTool == mod.ItemType("ExperimentalNanoPickaxeXenium"))
+                    {
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltHellstone(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltMythrilOrichalcum(i, j, type, ref noItem);
+                        SmeltAdamantiteTitanium(i, j, type, ref noItem);
+                        SmeltChlorophyte(i, j, type, ref noItem);
+                        SmeltLuminite(i, j, type, ref noItem);
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltOblivion(i, j, type, ref noItem);
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltCryonic(i, j, type, ref noItem);
+                        SmeltCharred(i, j, type, ref noItem);
+                        SmeltPerennial(i, j, type, ref noItem);
+                        SmeltAstral(i, j, type, ref noItem);
+                        SmeltChaotic(i, j, type, ref noItem);
+                        SmeltUelibloom(i, j, type, ref noItem);
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltLodestone(i, j, type, ref noItem);
+                        SmeltValadium(i, j, type, ref noItem);
+                        SmeltIllumite(i, j, type, ref noItem);
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltDragonLead(i, j, type, ref noItem);
+                        SmeltSapphiron(i, j, type, ref noItem);
+                        SmeltScarlion(i, j, type, ref noItem);
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltUranium(i, j, type, ref noItem);
+                        SmeltHallowed(i, j, type, ref noItem);
+                        SmeltTechnecium(i, j, type, ref noItem);
+                        SmeltRadium(i, j, type, ref noItem);
+                        SmeltApocalyptite(i, j, type, ref noItem);
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                        SmeltSpirit(i, j, type, ref noItem);
+                        SmeltThermite(i, j, type, ref noItem);
+                    }
+
+                    // Elements Awoken
+                    if (usedTool == mod.ItemType("MasterManipulator"))
+                    {
+                        SmeltCopperTin(i, j, type, ref noItem);
+                        SmeltIronLead(i, j, type, ref noItem);
+                        SmeltSilverTungsten(i, j, type, ref noItem);
+                        SmeltGoldPlatinum(i, j, type, ref noItem);
+                        SmeltMeteorite(i, j, type, ref noItem);
+                        SmeltDemoniteCrimtane(i, j, type, ref noItem);
+                        SmeltHellstone(i, j, type, ref noItem);
+                        SmeltCobaltPalladium(i, j, type, ref noItem);
+                        SmeltMythrilOrichalcum(i, j, type, ref noItem);
+                        SmeltAdamantiteTitanium(i, j, type, ref noItem);
+                        SmeltChlorophyte(i, j, type, ref noItem);
+                        SmeltLuminite(i, j, type, ref noItem);
+                        SmeltLapis(i, j, type, ref noItem);
+                        SmeltBismuth(i, j, type, ref noItem);
+                        SmeltOblivion(i, j, type, ref noItem);
+                        SmeltAerialite(i, j, type, ref noItem);
+                        SmeltCryonic(i, j, type, ref noItem);
+                        SmeltCharred(i, j, type, ref noItem);
+                        SmeltPerennial(i, j, type, ref noItem);
+                        SmeltAstral(i, j, type, ref noItem);
+                        SmeltChaotic(i, j, type, ref noItem);
+                        SmeltUelibloom(i, j, type, ref noItem);
+                        SmeltThorium(i, j, type, ref noItem);
+                        SmeltMagma(i, j, type, ref noItem);
+                        SmeltAquaite(i, j, type, ref noItem);
+                        SmeltLodestone(i, j, type, ref noItem);
+                        SmeltValadium(i, j, type, ref noItem);
+                        SmeltIllumite(i, j, type, ref noItem);
+                        SmeltKanite(i, j, type, ref noItem);
+                        SmeltDragonLead(i, j, type, ref noItem);
+                        SmeltSapphiron(i, j, type, ref noItem);
+                        SmeltScarlion(i, j, type, ref noItem);
+                        SmeltChaos(i, j, type, ref noItem);
+                        SmeltYtrium(i, j, type, ref noItem);
+                        SmeltUranium(i, j, type, ref noItem);
+                        SmeltHallowed(i, j, type, ref noItem);
+                        SmeltTechnecium(i, j, type, ref noItem);
+                        SmeltRadium(i, j, type, ref noItem);
+                        SmeltApocalyptite(i, j, type, ref noItem);
+                        SmeltFloran(i, j, type, ref noItem);
+                        SmeltCryolite(i, j, type, ref noItem);
+                        SmeltSpirit(i, j, type, ref noItem);
+                        SmeltThermite(i, j, type, ref noItem);
+                    }
+                    #endregion
+
+                    #region Ore Rejuvenator
+                    if (usedTool == mod.ItemType("OreRejuvenator"))
+                    {
+                        int DroppedGem = Main.rand.Next(6);
+                        if (type == TileID.Diamond)
+                        {
+                            if (Main.rand.Next(8) == 0)
+                            {
+                                if (DroppedGem == 0)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Ruby);
+                                }
+                                else if (DroppedGem == 1)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Emerald);
+                                }
+                                else if (DroppedGem == 2)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Sapphire);
+                                }
+                                else if (DroppedGem == 3)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amethyst);
+                                }
+                                else if (DroppedGem == 4)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Topaz);
+                                }
+                                else if (DroppedGem == 5)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amber);
+                                }
+                            }
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Diamond, 2);
+                        }
+                        if (type == TileID.Ruby)
+                        {
+                            if (Main.rand.Next(8) == 0)
+                            {
+                                if (DroppedGem == 0)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Diamond);
+                                }
+                                else if (DroppedGem == 1)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Emerald);
+                                }
+                                else if (DroppedGem == 2)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Sapphire);
+                                }
+                                else if (DroppedGem == 3)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amethyst);
+                                }
+                                else if (DroppedGem == 4)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Topaz);
+                                }
+                                else if (DroppedGem == 5)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amber);
+                                }
+                            }
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Ruby, 2);
+                        }
+                        if (type == TileID.Emerald)
+                        {
+                            if (Main.rand.Next(8) == 0)
+                            {
+                                if (DroppedGem == 0)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Diamond);
+                                }
+                                else if (DroppedGem == 1)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Ruby);
+                                }
+                                else if (DroppedGem == 2)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Sapphire);
+                                }
+                                else if (DroppedGem == 3)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amethyst);
+                                }
+                                else if (DroppedGem == 4)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Topaz);
+                                }
+                                else if (DroppedGem == 5)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amber);
+                                }
+                            }
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Emerald, 2);
+                        }
+                        if (type == TileID.Sapphire)
+                        {
+                            if (Main.rand.Next(8) == 0)
+                            {
+                                if (DroppedGem == 0)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Diamond);
+                                }
+                                else if (DroppedGem == 1)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Ruby);
+                                }
+                                else if (DroppedGem == 2)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Emerald);
+                                }
+                                else if (DroppedGem == 3)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amethyst);
+                                }
+                                else if (DroppedGem == 4)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Topaz);
+                                }
+                                else if (DroppedGem == 5)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amber);
+                                }
+                            }
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Sapphire, 2);
+                        }
+                        if (type == TileID.Amethyst)
+                        {
+                            if (Main.rand.Next(8) == 0)
+                            {
+                                if (DroppedGem == 0)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Diamond);
+                                }
+                                else if (DroppedGem == 1)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Ruby);
+                                }
+                                else if (DroppedGem == 2)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Emerald);
+                                }
+                                else if (DroppedGem == 3)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Sapphire);
+                                }
+                                else if (DroppedGem == 4)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Topaz);
+                                }
+                                else if (DroppedGem == 5)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amber);
+                                }
+                            }
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amethyst, 2);
+                        }
+                        if (type == TileID.Topaz)
+                        {
+                            if (Main.rand.Next(8) == 0)
+                            {
+                                if (DroppedGem == 0)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Diamond);
+                                }
+                                else if (DroppedGem == 1)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Ruby);
+                                }
+                                else if (DroppedGem == 2)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Emerald);
+                                }
+                                else if (DroppedGem == 3)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Sapphire);
+                                }
+                                else if (DroppedGem == 4)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amethyst);
+                                }
+                                else if (DroppedGem == 5)
+                                {
+                                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Amber);
+                                }
+                            }
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Topaz, 2);
+                        }
+                    }
+                    #endregion
+
+                    #region Violet Thaumaturgy
+                    if (usedTool == mod.ItemType("VioletThaumaturgy"))
+                    {
+                        #region Vanilla Ore Conversion
+                        if (type == TileID.Copper)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.TinOre);
+                        }
+                        else if (type == TileID.Tin)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.CopperOre);
+                        }
+                        else if (type == TileID.Iron)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.LeadOre);
+                        }
+                        else if (type == TileID.Lead)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.IronOre);
+                        }
+                        else if (type == TileID.Silver)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.TungstenOre);
+                        }
+                        else if (type == TileID.Tungsten)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.SilverOre);
+                        }
+                        else if (type == TileID.Gold)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.PlatinumOre);
+                        }
+                        else if (type == TileID.Platinum)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.GoldOre);
+                        }
+                        else if (type == TileID.Demonite)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.CrimtaneOre);
+                        }
+                        else if (type == TileID.Crimtane)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.DemoniteOre);
+                        }
+                        else if (type == TileID.Cobalt)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.PalladiumOre);
+                        }
+                        else if (type == TileID.Palladium)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.CobaltOre);
+                        }
+                        else if (type == TileID.Mythril)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.OrichalcumOre);
+                        }
+                        else if (type == TileID.Orichalcum)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.MythrilOre);
+                        }
+                        else if (type == TileID.Adamantite)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.TitaniumOre);
+                        }
+                        else if (type == TileID.Titanium)
+                        {
+                            noItem = true;
+                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.AdamantiteOre);
+                        }
+                        #endregion
+
+                        #region Modded Ore Conversion
+                        // I'll do this later
+                        #region Shadows of Abaddon
+                        /*if (IndustrialPickaxes.SoALoaded)
+                        {
+                            if (IndustrialPickaxes.SacredTools.GetTile("LapisOre") != null && IndustrialPickaxes.SacredTools.GetTile("BismuthOre") != null)
+                            {
+                                if (type == IndustrialPickaxes.SacredTools.TileType("LapisOre"))
+                                {
+                                    noItem = true;
+                                    Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.SacredTools.ItemType("RefinedLapis"));
+                                }
+                            }
+                        }*/
+                        #endregion
+
+                        #endregion
+                    }
+                    #endregion
+                }
+            }
+        }
+    }
 }

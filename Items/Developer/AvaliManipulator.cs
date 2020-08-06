@@ -33,7 +33,7 @@ namespace IndustrialPickaxes.Items.Developer
 			item.useTime = 2;
 			item.useAnimation = 10;
 			item.pick = 35;
-			item.axe = 25;
+			item.axe = 7;
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.knockBack = 0;
 			item.value = Item.sellPrice(platinum: 5);
@@ -48,13 +48,18 @@ namespace IndustrialPickaxes.Items.Developer
 		public override void UpdateInventory(Player player)
 		{
 			//Set the pickaxe power to the highest pickaxe power pickaxe in the inventory
-			item.pick = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>()).Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
+			item.pick = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>() && i.type != ModContent.ItemType<VioletThaumaturgy>()).Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
 
 			if (item.pick < 65 && NPC.downedBoss2) //If that highest pickaxe power is below 65, and EoW or BoC is defeated, set the pickaxe power to 65
 				item.pick = 65;
 			else if (item.pick < 35) //If that highest pickaxe power is below 35 and BoC or EoW has not been defeated, set pickaxe power to 35
 				item.pick = 35;
-		}
+
+            item.axe = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>()).Select(i => i.axe).DefaultIfEmpty()?.Max() ?? 0;
+            
+            if (item.axe < 7)
+                item.axe = 7;
+        }
 
 		public override bool UseItem(Player player)
 		{

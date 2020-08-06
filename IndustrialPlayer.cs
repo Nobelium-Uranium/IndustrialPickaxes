@@ -9,9 +9,16 @@ namespace IndustrialPickaxes
 {
 	internal class IndustrialPlayer : ModPlayer
 	{
-		public override void OnEnterWorld(Player player)
+        public Item holdingItem;
+
+        public override void PreUpdate()
+        {
+            holdingItem = player.HeldItem;
+        }
+
+        public override void OnEnterWorld(Player player)
 		{
-            Main.NewTextMultiline("Thanks for using Industrial Pickaxes!\nMOTD: Optimization Update Part 1 is live, there may be some bugs!\nAlways send suggestions and bug reports to the Discord which you can join by clicking 'Visit Mod Homepage' when looking at the description of the mod.", c: Color.Cyan);
+            Main.NewTextMultiline("Thanks for using Industrial Pickaxes!\nMOTD: As the result of the great rollback, there will be no multiplayer compatability fixes until further notice.\nAlways send suggestions and bug reports to the Discord which you can join by clicking 'Visit Mod Homepage' when looking at the description of the mod.", c: Color.Cyan);
 			if (IndustrialPickaxes.Veinminer != null)
 				Main.NewText("Since you're using Veinminer, make sure to hold the pickaxe while you veinmine ores, otherwise the rest of the ore will drop as normal.", Color.Cyan);
 		}
@@ -28,9 +35,9 @@ namespace IndustrialPickaxes
 			if (junk)
 				return;
 
-			if (worldLayer == 1 && player.ZoneBeach && Main.rand.NextBool(10))
+			if (liquidType == 0 && worldLayer == 1 && player.ZoneBeach && Main.rand.NextBool(20))
 			{
-				if (power >= 100 && Main.rand.NextBool(50))
+				if (power >= 100 && Main.rand.NextBool(25))
 					caughtType = ModContent.ItemType<FishaxeRitual>();
 				else
 					caughtType = ModContent.ItemType<Fishaxe>();

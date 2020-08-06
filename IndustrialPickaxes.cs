@@ -189,33 +189,5 @@ namespace IndustrialPickaxes
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialNano", group);
 		}
-
-		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-		{
-			int index = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Ruler"));
-
-			layers.Insert(index, new LegacyGameInterfaceLayer("IndustrialPickaxes: Master Manipulator", delegate
-			{
-				Player player = Main.LocalPlayer;
-
-				if (player.HeldItem.type == ModContent.ItemType<MasterManipulator>())
-					DrawMasterManipulator(player);
-
-				return true;
-			}, InterfaceScaleType.Game));
-		}
-
-		public void DrawMasterManipulator(Player player)
-		{
-			float distance = Vector2.Distance(player.Center, Main.MouseWorld);
-
-			if (distance < 160 && player.active && !player.dead)
-			{
-				Texture2D texture = GetTexture("Items/ManipulatorUI/MasterUI");
-				Point uiPositionPoint = Main.MouseWorld.ToTileCoordinates();
-				Vector2 uiPosition = uiPositionPoint.ToVector2();
-				Main.spriteBatch.Draw(texture, uiPosition.ToWorldCoordinates() - Main.screenPosition, null, Color.White * 0.2f, 0f, texture.Size() / 2, 1f, SpriteEffects.None, 0f);
-			}
-		}
 	}
 }
