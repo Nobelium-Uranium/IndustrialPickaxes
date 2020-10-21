@@ -32,7 +32,7 @@ namespace IndustrialPickaxes.Items.Materials
 			base.SetDefaults();
 			item.width = 32;
 			item.height = 32;
-			item.value = Item.sellPrice(0, 1, 0, 0);
+			item.value = Item.sellPrice(1, 0, 0, 0);
 			item.rare = ItemRarityID.Cyan;
 		}
 

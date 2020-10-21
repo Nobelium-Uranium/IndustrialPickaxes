@@ -47,15 +47,16 @@ namespace IndustrialPickaxes.Items
 		}
 	}
 
-	public class IndustrialLunarPickaxeRagnarok : IndustrialPickaxe
+	public class IndustrialLunarPickaxeRagnarok : IndustrialLunarPickaxe
 	{
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialLunarPickaxeRagnarok");
 
 		public override string Texture => mod.Name + "/Items/Reskins/IndustrialLunarPickaxeRagnarok";
 
 		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Reality Breaker Pickaxe");
+        {
+            base.SetStaticDefaults();
+            DisplayName.SetDefault("Reality Breaker Pickaxe");
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'The earth trembles...'");
 		}
 
@@ -81,7 +82,7 @@ namespace IndustrialPickaxes.Items
         }
 	}
 
-    public class IndustrialLunarPickaxeGenesis : IndustrialPickaxe
+    public class IndustrialLunarPickaxeGenesis : IndustrialLunarPickaxe
     {
         public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialLunarPickaxeGenesis");
 
@@ -89,6 +90,7 @@ namespace IndustrialPickaxes.Items
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Primordial Genesis Pickaxe");
             Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'tHIS PALETTE IS   S A T A N' -Crim");
         }

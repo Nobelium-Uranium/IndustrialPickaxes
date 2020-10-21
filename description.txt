@@ -46,7 +46,7 @@ Version History:
 As always, report if something is missing, there ought to be something wrong since it has been a while before Industrial Pickaxes finally got another update
 [+] Added Vlitch skin for the Experimental Nano Pickaxe
 [+] Added the Genesis skin for the Lunatic's Celestial Pick
-[~] Eclipsium Bar resprited and renamed to Eclipsium Catalyst, now crafted with 20 of every respective bar instead of needing 24 Eclipsium Bars to craft the Means to an End
+[~] Eclipsium Bar resprited and renamed to Eclipsium Catalyst, now crafted with 20 of every respective bar instead of needing 24 Eclipsium Bars to craft the Means to an End, which I must admit really is just an arbitrary amount
 [~] The method of obtaining the Ascended Fishaxe has been made more obscure
 
 4.6.1
