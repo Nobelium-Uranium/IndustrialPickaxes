@@ -90,8 +90,8 @@ namespace IndustrialPickaxes.Items
 			//DraconicStaffOfPowerRecipeAchievement recipe = new DraconicStaffOfPowerRecipeAchievement(mod);
 			ModRecipe recipe = new ModRecipe(mod);
 
-			recipe.AddIngredient(ModContent.ItemType<IndustrialSingularity>());
-			recipe.AddIngredient(ModContent.ItemType<EclipsiumBar>(), 24);
+            recipe.AddIngredient(ModContent.ItemType<EclipsiumBar>());
+            recipe.AddIngredient(ModContent.ItemType<IndustrialSingularity>());
 
 			if (IndustrialPickaxes.EALoaded)
 				recipe.AddIngredient(ModContent.ItemType<MasterManipulator>());

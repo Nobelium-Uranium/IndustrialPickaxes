@@ -10,7 +10,7 @@ namespace IndustrialPickaxes.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Frostburn?");
-			Description.SetDefault("It's either blazing hot or frigid. Either way it's agonizing, but not as much as it should be.");
+			Description.SetDefault("It's either blazing hot or frigid\nEither way it's only mildly agonizing");
 
 			Main.debuff[Type] = true;
 			Main.buffNoSave[Type] = true;

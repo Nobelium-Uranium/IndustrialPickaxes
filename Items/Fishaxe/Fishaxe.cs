@@ -53,17 +53,21 @@ namespace IndustrialPickaxes.Items.Fishaxe
 			for (int i = 0; i < Main.maxItems; i++)
 			{
 				Item item = Main.item[i];
+                Item item2 = Main.item[i];
 
-				if (item.active && item.type == ModContent.ItemType<EclipsiumBar>())
+                if (item.active && item.type == ModContent.ItemType<EclipsiumBar>())
 				{
-					if (base.item.getRect().Intersects(item.getRect()) && item.stack == 666 && base.item.lavaWet == item.lavaWet == true)
-					{
-						Item.NewItem(base.item.getRect(), ModContent.ItemType<AscendedFishaxe>());
-						Main.PlaySound(SoundID.Item119, base.item.position);
+                    if (item2.active && item2.type == ModContent.ItemType<IndustrialSingularity>())
+                    {
+                        if (base.item.getRect().Intersects(item.getRect()) && base.item.getRect().Intersects(item2.getRect()) && base.item.lavaWet == item.lavaWet == item2.lavaWet == true && Main.eclipse)
+                        {
+                            Item.NewItem(base.item.getRect(), ModContent.ItemType<AscendedFishaxe>());
+                            Main.PlaySound(SoundID.Item119, base.item.position);
 
-						base.item.active = false;
-						item.active = false;
-					}
+                            base.item.active = false;
+                            item.active = false;
+                        }
+                    }
 				}
 			}
 		}

@@ -18,7 +18,7 @@ namespace IndustrialPickaxes.Items.Materials
 		{
 			item.width = 40;
 			item.height = 30;
-			item.maxStack = 999;
+			item.maxStack = 99;
 			item.value = Item.sellPrice(0, 15, 0, 0);
 			item.rare = ItemRarityID.Purple;
 		}

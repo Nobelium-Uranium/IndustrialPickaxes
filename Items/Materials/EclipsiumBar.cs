@@ -22,14 +22,16 @@ namespace IndustrialPickaxes.Items.Materials
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(0, 0, 0), new Color(255, 170, 0) };
 
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Only craftable during a Solar Eclipse\n'A brilliant alloy of the dark sun'");
-
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Eclipsium Catalyst");
+            Tooltip.SetDefault("Only craftable during a Solar Eclipse\n'A brilliant alloy of the dark sun'");
+        }
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			item.width = 30;
-			item.height = 24;
-			item.maxStack = 999;
+			item.width = 32;
+			item.height = 32;
 			item.value = Item.sellPrice(0, 1, 0, 0);
 			item.rare = ItemRarityID.Cyan;
 		}
@@ -39,41 +41,41 @@ namespace IndustrialPickaxes.Items.Materials
 			EclipseRecipe recipe = new EclipseRecipe(mod);
 
 			if (IndustrialPickaxes.RedemptionLoaded)
-				recipe.AddIngredient(IndustrialPickaxes.Redemption.ItemType("XeniumBar"));
+				recipe.AddIngredient(IndustrialPickaxes.Redemption.ItemType("XeniumBar"), 20);
 
 			if (IndustrialPickaxes.AALoaded)
 			{
-				recipe.AddIngredient(IndustrialPickaxes.AncientsAwakened.ItemType("DaybreakIncinerite"));
-				recipe.AddIngredient(IndustrialPickaxes.AncientsAwakened.ItemType("EventideAbyssium"));
+				recipe.AddIngredient(IndustrialPickaxes.AncientsAwakened.ItemType("DaybreakIncinerite"), 20);
+				recipe.AddIngredient(IndustrialPickaxes.AncientsAwakened.ItemType("EventideAbyssium"), 20);
 			}
 
 			if (IndustrialPickaxes.CalamityLoaded)
 			{
 				if (IndustrialPickaxes.Calamity.GetItem("AuricBar") != null)
-					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("AuricBar"));
+					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("AuricBar"), 20);
 				else
 				{
-					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("BarofLife"));
-					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("Phantoplasm"));
-					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("NightmareFuel"));
-					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("EndothermicEnergy"));
-					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("DarksunFragment"));
-					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("HellcasterFragment"));
+					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("BarofLife"), 20);
+					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("Phantoplasm"), 20);
+					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("NightmareFuel"), 20);
+					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("EndothermicEnergy"), 20);
+					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("DarksunFragment"), 20);
+					recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("HellcasterFragment"), 20);
 				}
 			}
 
 			if (IndustrialPickaxes.SoALoaded)
-				recipe.AddIngredient(IndustrialPickaxes.SacredTools.ItemType("MoonstoneBar"));
+				recipe.AddIngredient(IndustrialPickaxes.SacredTools.ItemType("MoonstoneBar"), 20);
 
 			if (IndustrialPickaxes.ThoriumLoaded)
-				recipe.AddIngredient(IndustrialPickaxes.Thorium.ItemType("TerrariumCore"));
+				recipe.AddIngredient(IndustrialPickaxes.Thorium.ItemType("TerrariumCore"), 20);
 			else
 			{
-				recipe.AddIngredient(ItemID.HallowedBar);
-				recipe.AddIngredient(ItemID.ChlorophyteBar);
+				recipe.AddIngredient(ItemID.HallowedBar, 20);
+				recipe.AddIngredient(ItemID.ChlorophyteBar, 20);
 			}
 
-			recipe.AddIngredient(ItemID.LunarBar);
+			recipe.AddIngredient(ItemID.LunarBar, 20);
 
 			if (IndustrialPickaxes.CalamityLoaded)
 				recipe.AddTile(IndustrialPickaxes.Calamity.TileType("DraedonsForge"));

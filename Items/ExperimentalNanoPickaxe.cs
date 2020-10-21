@@ -89,7 +89,13 @@ namespace IndustrialPickaxes.Items
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxeVlitch>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 	}
 
 	public class ExperimentalNanoPickaxeXenium : ExperimentalNanoPickaxe
@@ -126,6 +132,55 @@ namespace IndustrialPickaxes.Items
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxeVlitch>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 	}
+
+    public class ExperimentalNanoPickaxeVlitch : ExperimentalNanoPickaxe
+    {
+        public override string Texture => mod.Name + "/Items/Reskins/ExperimentalNanoPickaxeVlitch";
+
+        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ExperimentalNanoPickaxeVlitch");
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Corrupted Vlitch Pickaxe");
+            Tooltip.SetDefault("Can mine Black Hardened Sludge\nUses precise strikes to smelt bars from ores, slow as a result\n'Eww, there's black goop stuck on it'");
+        }
+
+        public override void AddRecipes()
+        {
+            if (!IndustrialPickaxes.RedemptionLoaded)
+                return;
+
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(this);
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(ModContent.ItemType<ExperimentalNanoPickaxe>());
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxe>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxeCreative>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxeXenium>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

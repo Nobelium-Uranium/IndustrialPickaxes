@@ -149,7 +149,8 @@ namespace IndustrialPickaxes
 			{
 				ModContent.ItemType<IndustrialLunarPickaxe>(),
 				ModContent.ItemType<IndustrialLunarPickaxeRagnarok>(),
-			});
+                ModContent.ItemType<IndustrialLunarPickaxeGenesis>(),
+            });
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialLunar", group);
 
@@ -185,7 +186,8 @@ namespace IndustrialPickaxes
 				ModContent.ItemType<ExperimentalNanoPickaxe>(),
 				ModContent.ItemType<ExperimentalNanoPickaxeCreative>(),
 				ModContent.ItemType<ExperimentalNanoPickaxeXenium>(),
-			});
+                ModContent.ItemType<ExperimentalNanoPickaxeVlitch>(),
+            });
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialNano", group);
 		}

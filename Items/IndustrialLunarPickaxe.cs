@@ -72,6 +72,46 @@ namespace IndustrialPickaxes.Items
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<IndustrialLunarPickaxeGenesis>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 	}
+
+    public class IndustrialLunarPickaxeGenesis : IndustrialPickaxe
+    {
+        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialLunarPickaxeGenesis");
+
+        public override string Texture => mod.Name + "/Items/Reskins/IndustrialLunarPickaxeGenesis";
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Primordial Genesis Pickaxe");
+            Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'tHIS PALETTE IS   S A T A N' -Crim");
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(this);
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(ModContent.ItemType<IndustrialLunarPickaxe>());
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<IndustrialLunarPickaxe>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<IndustrialLunarPickaxeRagnarok>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

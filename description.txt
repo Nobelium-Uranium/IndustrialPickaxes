@@ -31,17 +31,24 @@ They must be a considerable upgrade from Lunar tier. (So tools like the Terrariu
 This mod pairs very well with Veinminer, just make sure to have the tool equipped while veinmining, otherwise remaining ore will drop as normal.
 
 Developers...
- Ideas and sprites - Crimsoneye495
+ Ideas and sprites - Crimsoneye495 AKA DirgeofSwans
  Code and Master Manipulator sprite - NobeliumUranium_
  (Failed) Multiplayer support (Thanks for trying anyway), bug fixes and code cleaning - GoodPro712
 
-Contributers...
+Contributors...
  Glowmask helper - Qwerty
 
 Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.6.2
+As always, report if something is missing, there ought to be something wrong since it has been a while before Industrial Pickaxes finally got another update
+[+] Added Vlitch skin for the Experimental Nano Pickaxe
+[+] Added the Genesis skin for the Lunatic's Celestial Pick
+[~] Eclipsium Bar resprited and renamed to Eclipsium Catalyst, now crafted with 20 of every respective bar instead of needing 24 Eclipsium Bars to craft the Means to an End
+[~] The method of obtaining the Ascended Fishaxe has been made more obscure
+
 4.6.1
 [~] Slowed down Draconic Asthraltite Picksaw slightly for consistency with other industrial pickaxes
 
