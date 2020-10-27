@@ -42,6 +42,9 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.6.3
+[~] Fixed a glowmask inconsistency
+
 4.6.2
 As always, report if something is missing, there ought to be something wrong since it has been a while before Industrial Pickaxes finally got another update
 [+] Added Vlitch skin for the Experimental Nano Pickaxe
