@@ -11,6 +11,7 @@ namespace IndustrialPickaxes.Helpers
 	internal class GlowmaskHelper : GlobalItem
 	{
 		public Texture2D glowTexture = null;
+        public Color glowColor = Color.White;
 		public int glowOffsetY = 0;
 		public int glowOffsetX = 0;
 
@@ -34,6 +35,7 @@ namespace IndustrialPickaxes.Helpers
 			{
 				Item item = drawPlayer.HeldItem;
 				Texture2D texture = item.GetGlobalItem<GlowmaskHelper>().glowTexture;
+                Color glowColor = item.GetGlobalItem<GlowmaskHelper>().glowColor;
 				Vector2 vecZero = Vector2.Zero;
 
 				if (drawPlayer.itemAnimation <= 0 || texture == null)
@@ -76,7 +78,7 @@ namespace IndustrialPickaxes.Helpers
 							texture,
 							position - Main.screenPosition + new Vector2(zero3.X + textureWidth, 0),
 							new Rectangle?(new Rectangle(0, 0, Main.itemTexture[item.type].Width, Main.itemTexture[item.type].Height)),
-							Color.White,
+							glowColor,
 							num104,
 							zero3,
 							item.scale,
@@ -105,7 +107,7 @@ namespace IndustrialPickaxes.Helpers
 						if (drawPlayer.direction == -1)
 							origin5 = new Vector2(Main.itemTexture[item.type].Width + num107, Main.itemTexture[item.type].Height / 2);
 
-						DrawData value = new DrawData(texture, new Vector2((int)(position.X - Main.screenPosition.X + halfTexture.X), (int)(position.Y - Main.screenPosition.Y + halfTexture.Y)), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, Main.itemTexture[item.type].Width, Main.itemTexture[item.type].Height)), Color.White, drawPlayer.itemRotation, origin5, item.scale, drawInfo.spriteEffects, 0);
+						DrawData value = new DrawData(texture, new Vector2((int)(position.X - Main.screenPosition.X + halfTexture.X), (int)(position.Y - Main.screenPosition.Y + halfTexture.Y)), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, Main.itemTexture[item.type].Width, Main.itemTexture[item.type].Height)), glowColor, drawPlayer.itemRotation, origin5, item.scale, drawInfo.spriteEffects, 0);
 						Main.playerDrawData.Add(value);
 					}
 				}
@@ -116,7 +118,7 @@ namespace IndustrialPickaxes.Helpers
 						texture,
 						new Vector2((int)(position.X - Main.screenPosition.X),
 						(int)(position.Y - Main.screenPosition.Y)), new Rectangle?(new Rectangle(0, 0, texture.Width, texture.Height)),
-						Color.White,
+						glowColor,
 						drawPlayer.itemRotation,
 						 new Vector2(texture.Width * 0.5f - texture.Width * 0.5f * drawPlayer.direction, drawPlayer.gravDir == -1 ? 0f : texture.Height),
 						item.scale,

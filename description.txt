@@ -42,6 +42,11 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.6.4
+[+] Added the Stellar Horizon skin for the Means to an End
+[+] Added the Leeching Shadowflare and Judgemental Flame skins for Draconic Asthraltite Picksaw
+[~] Made Corrupted Vlitch Pickaxe consistent with the other Experimental Nano Pickaxe skins
+
 4.6.3
 [~] Fixed a glowmask inconsistency
 

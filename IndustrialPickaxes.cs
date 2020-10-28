@@ -173,7 +173,16 @@ namespace IndustrialPickaxes
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialFlarium", group);
 
-			group = new RecipeGroup(() => "Viridescent Blossom Pickaxe", new int[]
+            group = new RecipeGroup(() => "Draconic Asthraltite Picksaw", new int[]
+            {
+                ModContent.ItemType<DraconicAsthraltitePicksaw>(),
+                ModContent.ItemType<LeechingShadowflarePicksaw>(),
+                ModContent.ItemType<JudgementalFlamePicksaw>(),
+            });
+
+            RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialAsthraltite", group);
+
+            group = new RecipeGroup(() => "Viridescent Blossom Pickaxe", new int[]
 			{
 				ModContent.ItemType<ViridescentBlossomPickaxe>(),
 				ModContent.ItemType<ViridescentBlossomPickaxeProvidence>(),

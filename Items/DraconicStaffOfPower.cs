@@ -102,7 +102,7 @@ namespace IndustrialPickaxes.Items
 			if (IndustrialPickaxes.SoALoaded)
             {
                 recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialFlarium");
-                recipe.AddIngredient(ModContent.ItemType<DraconicAsthraltitePicksaw>());
+                recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialAsthraltite");
             }
 
 			if (IndustrialPickaxes.RedemptionLoaded)
@@ -171,7 +171,7 @@ namespace IndustrialPickaxes.Items
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+        }
 	}
 
 	public class DraconicStaffOfPowerDemonic : DraconicStaffOfPower
@@ -213,7 +213,7 @@ namespace IndustrialPickaxes.Items
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+        }
 	}
 
 	public class DraconicStaffOfPowerGlacier : DraconicStaffOfPower
@@ -255,6 +255,47 @@ namespace IndustrialPickaxes.Items
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+        }
 	}
+
+    public class DraconicStaffOfPowerStellar : DraconicStaffOfPower
+    {
+        public override string Texture => mod.Name + "/Items/Reskins/DraconicStaffOfPowerStellar";
+
+        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerStellar");
+
+        public override Color GlowColor => Main.DiscoColor;
+
+        public override Color[] ItemNameCycleColors => new Color[] { new Color(255, 255, 255), Main.DiscoColor, new Color(0, 0, 0), Main.DiscoColor };
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Stellar Horizon");
+            Tooltip.SetDefault("Serves as an excellent weapon\nHas a sweeping edge, inflicting extra AoE damage\n<right> to use as a hammer\nCan't be used as a weapon while hammering\nSmelts all ores!\n'Per ardua ad astra'\n'You feel an unusual sense of peace when holding this'");
+        }
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerStellar");
+            Vector2 position = item.position - Main.screenPosition + new Vector2(item.width / 2, item.height - texture.Height * 0.5f + 2f);
+            spriteBatch.Draw(texture, position, null, Main.DiscoColor, rotation, texture.Size() * 0.5f, scale, SpriteEffects.None, 0f);
+        }
+
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/Reskins/DraconicStaffOfPowerStellar");
+            spriteBatch.Draw(texture, position, null, Main.DiscoColor, 0, origin, scale, SpriteEffects.None, 0f);
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<DraconicStaffOfPower>());
+            recipe.AddIngredient(ModContent.ItemType<DraconicStaffOfPowerAsiimov>());
+            recipe.AddIngredient(ModContent.ItemType<DraconicStaffOfPowerDemonic>());
+            recipe.AddIngredient(ModContent.ItemType<DraconicStaffOfPowerGlacier>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

@@ -10,15 +10,24 @@ namespace IndustrialPickaxes.Helpers
 	{
 		public virtual Texture2D GlowmaskTexture => null;
 
+        public virtual Color GlowColor => Color.White;
+
 		public virtual Color[] ItemNameCycleColors => null;
 
 		public override void SetDefaults()
 		{
 			if (!Main.dedServ && GlowmaskTexture != null)
-				item.GetGlobalItem<GlowmaskHelper>().glowTexture = GlowmaskTexture;
+                    item.GetGlobalItem<GlowmaskHelper>().glowTexture = GlowmaskTexture;
 		}
 
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        public override bool UseItem(Player player)
+        {
+            if (GlowColor != null)
+                item.GetGlobalItem<GlowmaskHelper>().glowColor = GlowColor;
+            return base.UseItem(player);
+        }
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			if (GlowmaskTexture != null)
 			{
@@ -31,7 +40,7 @@ namespace IndustrialPickaxes.Helpers
 						item.position.Y - Main.screenPosition.Y + item.height - GlowmaskTexture.Height * 0.5f + 2f
 					),
 					new Rectangle(0, 0, GlowmaskTexture.Width, GlowmaskTexture.Height),
-					Color.White,
+					GlowColor,
 					rotation,
 					GlowmaskTexture.Size() * 0.5f,
 					scale,
