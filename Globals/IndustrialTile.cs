@@ -1298,7 +1298,7 @@ namespace IndustrialPickaxes.Items
 
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
-            if (!WorldGen.noTileActions && !WorldGen.gen)
+            if (!Main.gameMenu)
             {
                 var p = Main.LocalPlayer.GetModPlayer<IndustrialPlayer>();
                 int usedTool = p.holdingItem.type;
