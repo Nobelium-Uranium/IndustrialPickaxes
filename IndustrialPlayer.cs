@@ -19,7 +19,7 @@ namespace IndustrialPickaxes
 
         public override void OnEnterWorld(Player player)
 		{
-            Main.NewTextMultiline("Thanks for using Industrial Pickaxes!\nMOTD: On hiatus for now, you'll know when I'm back.\nAlways send suggestions and bug reports to the Discord which you can join by clicking 'Visit Mod Homepage' when looking at the description of the mod.", c: Color.Cyan);
+            Main.NewTextMultiline("Thanks for using Industrial Pickaxes!\nMOTD: On hiatus for now, you'll know when I'm back.\nAlways send suggestions and bug reports to the Discord which you can join by clicking 'Visit Mod Homepage' when looking at the description of the mod.\nYou can also send bug reports to the github page using ModHelpers, if you've got that installed.", c: Color.Cyan);
 			if (IndustrialPickaxes.Veinminer != null)
 				Main.NewText("Since you're using Veinminer, make sure to hold the pickaxe while you veinmine ores, otherwise the rest of the ore will drop as normal.", Color.Cyan);
             if (Main.netMode != NetmodeID.SinglePlayer)
