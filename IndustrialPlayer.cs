@@ -23,7 +23,7 @@ namespace IndustrialPickaxes
 			if (IndustrialPickaxes.Veinminer != null)
 				Main.NewText("Since you're using Veinminer, make sure to hold the pickaxe while you veinmine ores, otherwise the rest of the ore will drop as normal.", Color.Cyan);
             if (Main.netMode != NetmodeID.SinglePlayer)
-                Main.NewTextMultiline("THIS MOD DOES NOT WORK IN MULTIPLAYER!\nHowever, you'll still be able to craft the pickaxes that this mod adds, they just won't be able to smelt anything.", true, Color.Cyan);
+                Main.NewTextMultiline("INDUSTRIAL PICKAXES DOES NOT WORK IN MULTIPLAYER!\nHowever, you'll still be able to craft the pickaxes that this mod adds, they just won't be able to smelt anything.", true, Color.Red);
         }
 
 		public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath)
