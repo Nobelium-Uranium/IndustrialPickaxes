@@ -3,6 +3,7 @@ using IndustrialPickaxes.Items.Fishaxe;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace IndustrialPickaxes
@@ -18,10 +19,12 @@ namespace IndustrialPickaxes
 
         public override void OnEnterWorld(Player player)
 		{
-            Main.NewTextMultiline("Thanks for using Industrial Pickaxes!\nMOTD: Local mod that adds pickaxes that smelt ores finally gets an update!\nAlways send suggestions and bug reports to the Discord which you can join by clicking 'Visit Mod Homepage' when looking at the description of the mod.", c: Color.Cyan);
+            Main.NewTextMultiline("Thanks for using Industrial Pickaxes!\nMOTD: On hiatus for now, you'll know when I'm back.\nAlways send suggestions and bug reports to the Discord which you can join by clicking 'Visit Mod Homepage' when looking at the description of the mod.", c: Color.Cyan);
 			if (IndustrialPickaxes.Veinminer != null)
 				Main.NewText("Since you're using Veinminer, make sure to hold the pickaxe while you veinmine ores, otherwise the rest of the ore will drop as normal.", Color.Cyan);
-		}
+            if (Main.netMode != NetmodeID.SinglePlayer)
+                Main.NewTextMultiline("THIS MOD DOES NOT WORK IN MULTIPLAYER!\nHowever, you'll still be able to craft the pickaxes that this mod adds, they just won't be able to smelt anything.", true, Color.Cyan);
+        }
 
 		public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath)
 		{

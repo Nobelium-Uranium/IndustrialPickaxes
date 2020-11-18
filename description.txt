@@ -1,3 +1,6 @@
+!!!READ ME!!!: THIS MOD DOES NOT WORK IN MULTIPLAYER!
+While not impossible, trying to find a fix for multiplayer compatability is just a pain. Sorry for the inconvenience!
+
 Industrial Pickaxes adds some pickaxes with a special ability at their disposal, inspired by the Zenith Forge from Keybrands+.
 They can smelt whole bars from ores, the chance is based on how many ores it takes to smelt a bar, the less ore needed, the better the chance.
 There is a catch of course, they're much more expensive than ordinary pickaxes and are considerably slower, plus they can't smelt alloys of the same or a later tier.
@@ -42,6 +45,9 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.6.7
+[~] Added that warning you see at the top of the description, a similar warning appears if you load the mod in multiplayer.
+
 4.6.6
 [~] Finally fixed a bug that caused the game to hang on post-worldgen tasks
 
