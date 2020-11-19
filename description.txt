@@ -45,6 +45,9 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.6.8
+[~] Renamed Judgemental Flame skin for Draconic Asthraltite Picksaw to Crimson Flame Picksaw
+
 4.6.7
 [~] Added that warning you see at the top of the description, a similar warning appears if you load the mod in multiplayer.
 

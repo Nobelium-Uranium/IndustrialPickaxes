@@ -1,6 +1,6 @@
 displayName = Industrial Pickaxes - Rollback
 author = Crimsanity
-version = 4.6.7
+version = 4.6.8
 hideResources = true
 homepage = https://github.com/Nobelium-Uranium/IndustrialPickaxes
 weakReferences = CalamityMod, ThoriumMod, SpiritMod, SacredTools, AAMod, Redemption

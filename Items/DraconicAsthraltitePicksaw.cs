@@ -93,7 +93,11 @@ namespace IndustrialPickaxes.Items
 
         public override Color[] ItemNameCycleColors => new Color[] { new Color(211, 8, 93), new Color(211, 8, 93) };
 
-        public override void SetStaticDefaults() => Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'A demonic energy formed in shape of a... pickaxe?'\n'It seems that only those that are accepted as its true master can unlock its true potential'");
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Crimson Flame Picksaw");
+            Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'A demonic energy formed in shape of a... pickaxe?'\n'It seems that only those that are accepted as its true master can unlock its true potential'");
+        }
 
         public override void AddRecipes()
         {
