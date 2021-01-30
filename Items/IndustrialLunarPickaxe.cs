@@ -92,7 +92,7 @@ namespace IndustrialPickaxes.Items
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Primordial Genesis Pickaxe");
-            Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'tHIS PALETTE IS   S A T A N' -Crim");
+            Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'tHIS PALETTE IS   S A T A N' -Dirge");
         }
 
         public override void AddRecipes()

@@ -36,11 +36,11 @@ namespace IndustrialPickaxes.Items
 			item.pick = 1000;
 			item.axe = 150;
 			item.knockBack = 10;
-			item.value = Item.sellPrice(5, 0, 0, 0);
+			item.value = Item.sellPrice(30, 0, 0, 0);
 			item.rare = ItemRarityID.Purple;
 			item.tileBoost += 10;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = false;
+            item.UseSound = SoundID.Item71;
+            item.autoReuse = false;
 		}
 
 		public override bool AltFunctionUse(Player player) => true;
@@ -90,38 +90,26 @@ namespace IndustrialPickaxes.Items
 			//DraconicStaffOfPowerRecipeAchievement recipe = new DraconicStaffOfPowerRecipeAchievement(mod);
 			ModRecipe recipe = new ModRecipe(mod);
 
-            recipe.AddIngredient(ModContent.ItemType<EclipsiumBar>());
-            recipe.AddIngredient(ModContent.ItemType<IndustrialSingularity>());
+            recipe.AddIngredient(ModContent.ItemType<EclipsiumEviscerator>());
+            recipe.AddIngredient(ModContent.ItemType<EclipsiumBar>(), 35);
+            if (IndustrialPickaxes.EALoaded || IndustrialPickaxes.ThoriumLoaded || IndustrialPickaxes.SoALoaded || IndustrialPickaxes.RedemptionLoaded || IndustrialPickaxes.CalamityLoaded)
+                recipe.AddIngredient(ModContent.ItemType<IndustrialSingularity>());
 
-			if (IndustrialPickaxes.EALoaded)
-				recipe.AddIngredient(ModContent.ItemType<MasterManipulator>());
-
-			if (IndustrialPickaxes.ThoriumLoaded)
-				recipe.AddIngredient(IndustrialPickaxes.Thorium.ItemType("TerrariumCanyonSplitter"));
-
-			if (IndustrialPickaxes.SoALoaded)
-            {
-                recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialFlarium");
-                recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialAsthraltite");
-            }
-
-			if (IndustrialPickaxes.RedemptionLoaded)
-				recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialNano");
+            recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialMolten");
+            recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialChlorophyte");
+            recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialPicksaw");
+            recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialLunar");
 
 			if (IndustrialPickaxes.CalamityLoaded)
-			{
-				recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialBlossom");
 				recipe.AddTile(IndustrialPickaxes.Calamity.TileType("DraedonsForge"));
-			}
-
-			if (IndustrialPickaxes.SoALoaded)
+            else if (IndustrialPickaxes.SoALoaded)
 				recipe.AddTile(IndustrialPickaxes.SacredTools.TileType("LunarAltar"));
-
-			recipe.AddTile(TileID.LunarCraftingStation);
+            else
+			    recipe.AddTile(TileID.LunarCraftingStation);
 
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+        }
 
 		/*private class DraconicStaffOfPowerRecipeAchievement : ModRecipe
 		{

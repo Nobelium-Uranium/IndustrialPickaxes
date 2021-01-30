@@ -19,16 +19,12 @@ namespace IndustrialPickaxes
 
         public override void OnEnterWorld(Player player)
 		{
-            Main.NewTextMultiline("Thanks for using Industrial Pickaxes!\n" +
-                "MOTD: On hiatus for now, you'll know when I'm back.\n" +
-                "If you have a bug to report, install ModHelpers if you haven't already!\n" +
-                "To report a bug, click the MH icon to the top left of the inventory and look for Industrial Pickaxes.\n" +
-                "(NOTE: If you can't find the MH icon, you may have disabled the control panel, check ModHelpers' config to reenable it.)\n" +
-                "From there you can title the bug you're reporting and the details associated with it.\n" +
-                "Before submitting your bug report, check Industrial Pickaxe's github page to see if there's already a report for it.\n" +
-                "For further information, you can join the discord server via the mod hompage.", c: Color.Cyan);
-			if (IndustrialPickaxes.Veinminer != null)
-				Main.NewText("Since you're using Veinminer, make sure to hold the pickaxe while you veinmine ores, otherwise the rest of the ore will drop as normal.", Color.Cyan);
+            Main.NewTextMultiline("Thank you for using Industrial Pickaxes!\n" +
+                "MOTD: Still on hiatus, you'll know when I'm back.\n" +
+                "If you have a bug to report, use ModHelper's built in report feature!\n" +
+                "For further information about Crimsanity's mods, you can join the discord server via the mod hompage.", c: Color.Cyan);
+			if (IndustrialPickaxes.Veinminer == null)
+				Main.NewText("I highly recommend using the Veinminer mod with this, by the way!", Color.Cyan);
             if (Main.netMode != NetmodeID.SinglePlayer)
                 Main.NewTextMultiline("INDUSTRIAL PICKAXES DOES NOT WORK IN MULTIPLAYER!\nHowever, you'll still be able to craft the pickaxes that this mod adds, they just won't be able to smelt anything.", true, Color.Red);
         }

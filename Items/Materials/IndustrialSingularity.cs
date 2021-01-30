@@ -27,17 +27,38 @@ namespace IndustrialPickaxes.Items.Materials
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+            if (IndustrialPickaxes.EALoaded || IndustrialPickaxes.ThoriumLoaded || IndustrialPickaxes.SoALoaded || IndustrialPickaxes.RedemptionLoaded || IndustrialPickaxes.CalamityLoaded)
+            {
+                ModRecipe recipe = new ModRecipe(mod);
 
-			recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialMolten");
-			recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialChlorophyte");
-			recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialPicksaw");
-			recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialLunar");
+                if (IndustrialPickaxes.EALoaded)
+                    recipe.AddIngredient(ModContent.ItemType<MasterManipulator>());
 
-			recipe.AddTile(TileID.LunarCraftingStation);
+                if (IndustrialPickaxes.ThoriumLoaded)
+                    recipe.AddIngredient(IndustrialPickaxes.Thorium.ItemType("TerrariumCanyonSplitter"));
 
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+                if (IndustrialPickaxes.SoALoaded)
+                {
+                    recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialFlarium");
+                    recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialAsthraltite");
+                }
+
+                if (IndustrialPickaxes.RedemptionLoaded)
+                    recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialNano");
+
+                if (IndustrialPickaxes.CalamityLoaded)
+                {
+                    recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialBlossom");
+                    recipe.AddTile(IndustrialPickaxes.Calamity.TileType("DraedonsForge"));
+                }
+                else if (IndustrialPickaxes.SoALoaded)
+                    recipe.AddTile(IndustrialPickaxes.SacredTools.TileType("LunarAltar"));
+                else
+                    recipe.AddTile(TileID.LunarCraftingStation);
+
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
 		}
 	}
 }

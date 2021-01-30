@@ -34,9 +34,9 @@ They must be a considerable upgrade from Lunar tier. (So tools like the Terrariu
 This mod pairs very well with Veinminer, just make sure to have the tool equipped while veinmining, otherwise remaining ore will drop as normal.
 
 Developers...
- Ideas and sprites - Crimsoneye495 AKA DirgeofSwans
+ Ideas and sprites - DirgeofSwans
  Code and Master Manipulator sprite - NobeliumUranium_
- (Failed) Multiplayer support (Thanks for trying anyway), bug fixes and code cleaning - GoodPro712
+ Attempted multiplayer support, bug fixes and code cleaning - GoodPro712
 
 Contributors...
  Glowmask helper - Qwerty
@@ -45,6 +45,14 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.7
+[+] Added Eclipsium Eviscerator, a precursor to the almighty Means to an End
+[~] Renamed Eclipsium Catalyst to Eclipsium Alloy and is once again only made with one of each compatible bar, you will still need multiple alloys to make the Eclipsium Eviscerator and Means to an End
+[~] Changed the recipe of Means to an End, it now uses the vanilla industrial pickaxes instead of other mod industrial pickaxes
+[~] In accordance to MtaE's recipe change, the Industrial Singularity is now made from all respective mod industrial pickaxes, it will not be craftable nor will it be used in the recipe for Means to an End if no compatible mods are installed
+[~] Resprited Violet Thaumaturgy slightly
+[~] Shortened the world entry message quite a lot
+
 4.6.8
 [~] Renamed Judgemental Flame skin for Draconic Asthraltite Picksaw to Crimson Flame Picksaw
 
