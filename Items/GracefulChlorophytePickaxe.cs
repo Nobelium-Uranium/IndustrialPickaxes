@@ -39,11 +39,11 @@ namespace IndustrialPickaxes.Items
 		}
 	}
 
-	public class GracefulChlorophytePickaxePlantera : GracefulChlorophytePickaxe
+	public class BloomingChlorophytePickaxe : GracefulChlorophytePickaxe
 	{
-		public override string Texture => mod.Name + "/Items/Reskins/GracefulChlorophytePickaxePlantera";
+		public override string Texture => mod.Name + "/Items/Reskins/BloomingChlorophytePickaxe";
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/GracefulChlorophytePickaxePlantera");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/BloomingChlorophytePickaxe");
 
 		public override void SetStaticDefaults()
 		{

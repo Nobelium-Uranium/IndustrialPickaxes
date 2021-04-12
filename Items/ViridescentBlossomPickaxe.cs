@@ -9,7 +9,7 @@ namespace IndustrialPickaxes.Items
 {
 	public class ViridescentBlossomPickaxe : IndustrialPickaxe
 	{
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/IndustrialBlossomPickaxe");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/ViridescentBlossomPickaxe");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(0, 255, 200) };
 
@@ -47,11 +47,11 @@ namespace IndustrialPickaxes.Items
 		}
 	}
 
-	public class ViridescentBlossomPickaxeProvidence : ViridescentBlossomPickaxe
+	public class ProfanedShardPickaxe : ViridescentBlossomPickaxe
 	{
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialBlossomPickaxeProvidence");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ProfanedShardPickaxe");
 
-		public override string Texture => mod.Name + "/Items/Reskins/IndustrialBlossomPickaxeProvidence";
+		public override string Texture => mod.Name + "/Items/Reskins/ProfanedShardPickaxe";
 
 		public override void SetStaticDefaults()
 		{

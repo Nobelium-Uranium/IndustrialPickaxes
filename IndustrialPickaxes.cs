@@ -122,8 +122,8 @@ namespace IndustrialPickaxes
 
 			group = new RecipeGroup(() => "Blazing Molten Pickaxe", new int[]
 			{
-				ModContent.ItemType<IndustrialMoltenPickaxe>(),
-				ModContent.ItemType<IndustrialMoltenPickaxeFrostburn>(),
+				ModContent.ItemType<BlazingMoltenPickaxe>(),
+				ModContent.ItemType<FrigidFlarePickaxe>(),
 			});
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialMolten", group);
@@ -131,25 +131,25 @@ namespace IndustrialPickaxes
 			group = new RecipeGroup(() => "Graceful Chlorophyte Pickaxe", new int[]
 			{
 				ModContent.ItemType<GracefulChlorophytePickaxe>(),
-				ModContent.ItemType<GracefulChlorophytePickaxePlantera>(),
+				ModContent.ItemType<BloomingChlorophytePickaxe>(),
 			});
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialChlorophyte", group);
 
 			group = new RecipeGroup(() => "Lihzahrdian Picksaw", new int[]
 			{
-				ModContent.ItemType<IndustrialPicksaw>(),
-				ModContent.ItemType<IndustrialPicksawBysmal>(),
-				ModContent.ItemType<IndustrialPicksawMartian>(),
+				ModContent.ItemType<LihzahrdianPicksaw>(),
+				ModContent.ItemType<BysmalPicksaw>(),
+				ModContent.ItemType<MartianPicksaw>(),
 			});
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialPicksaw", group);
 
 			group = new RecipeGroup(() => "Lunatic's Celestial Pick", new int[]
 			{
-				ModContent.ItemType<IndustrialLunarPickaxe>(),
-				ModContent.ItemType<IndustrialLunarPickaxeRagnarok>(),
-                ModContent.ItemType<IndustrialLunarPickaxeGenesis>(),
+				ModContent.ItemType<LunaticsCelestialPick>(),
+				ModContent.ItemType<RealityBreakerPickaxe>(),
+                ModContent.ItemType<PrimordialGenesisPickaxe>(),
             });
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialLunar", group);
@@ -167,8 +167,8 @@ namespace IndustrialPickaxes
 			group = new RecipeGroup(() => "Solus Flarium Pickaxe", new int[]
 			{
 				ModContent.ItemType<SolusFlariumPickaxe>(),
-				ModContent.ItemType<SolusFlariumPickaxeCernium>(),
-				ModContent.ItemType<SolusFlariumPickaxeAsthraltite>(),
+				ModContent.ItemType<CryoCerniumPickaxe>(),
+				ModContent.ItemType<MirageAsthraltitePickaxe>(),
 			});
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialFlarium", group);
@@ -177,7 +177,7 @@ namespace IndustrialPickaxes
             {
                 ModContent.ItemType<DraconicAsthraltitePicksaw>(),
                 ModContent.ItemType<LeechingShadowflarePicksaw>(),
-                ModContent.ItemType<JudgementalFlamePicksaw>(),
+                ModContent.ItemType<CrimsonFlamePicksaw>(),
             });
 
             RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialAsthraltite", group);
@@ -185,7 +185,7 @@ namespace IndustrialPickaxes
             group = new RecipeGroup(() => "Viridescent Blossom Pickaxe", new int[]
 			{
 				ModContent.ItemType<ViridescentBlossomPickaxe>(),
-				ModContent.ItemType<ViridescentBlossomPickaxeProvidence>(),
+				ModContent.ItemType<ProfanedShardPickaxe>(),
 			});
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialBlossom", group);
@@ -194,8 +194,8 @@ namespace IndustrialPickaxes
 			{
 				ModContent.ItemType<ExperimentalNanoPickaxe>(),
 				ModContent.ItemType<ExperimentalNanoPickaxeCreative>(),
-				ModContent.ItemType<ExperimentalNanoPickaxeXenium>(),
-                ModContent.ItemType<ExperimentalNanoPickaxeVlitch>(),
+				ModContent.ItemType<PrototypeXeniumPickaxe>(),
+                ModContent.ItemType<CorruptedVlitchPickaxe>(),
             });
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialNano", group);

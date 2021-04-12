@@ -49,11 +49,11 @@ namespace IndustrialPickaxes.Items
 		}
 	}
 
-	public class SolusFlariumPickaxeCernium : SolusFlariumPickaxe
+	public class CryoCerniumPickaxe : SolusFlariumPickaxe
 	{
-		public override string Texture => mod.Name + "/Items/Reskins/SolusFlariumPickaxeCernium";
+		public override string Texture => mod.Name + "/Items/Reskins/CryoCerniumPickaxe";
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/SolusFlariumPickaxeCernium");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/CryoCerniumPickaxe");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(115, 204, 219), new Color(115, 204, 219) };
 
@@ -75,7 +75,7 @@ namespace IndustrialPickaxes.Items
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<SolusFlariumPickaxeAsthraltite>());
+			recipe.AddIngredient(ModContent.ItemType<MirageAsthraltitePickaxe>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -88,11 +88,11 @@ namespace IndustrialPickaxes.Items
 		}
 	}
 
-	public class SolusFlariumPickaxeAsthraltite : SolusFlariumPickaxe
+	public class MirageAsthraltitePickaxe : SolusFlariumPickaxe
 	{
-		public override string Texture => mod.Name + "/Items/Reskins/SolusFlariumPickaxeAsthraltite";
+		public override string Texture => mod.Name + "/Items/Reskins/MirageAsthraltitePickaxe";
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/SolusFlariumPickaxeAsthraltite");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/MirageAsthraltitePickaxe");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(185, 0, 67), new Color(185, 0, 67) };
 
@@ -114,7 +114,7 @@ namespace IndustrialPickaxes.Items
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<SolusFlariumPickaxeCernium>());
+			recipe.AddIngredient(ModContent.ItemType<CryoCerniumPickaxe>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -1361,7 +1361,7 @@ namespace IndustrialPickaxes.Items
                         SmeltThermite(i, j, type, ref noItem);
                     }
 
-                    if (usedTool == mod.ItemType("IndustrialMoltenPickaxe") || usedTool == mod.ItemType("IndustrialMoltenPickaxeFrostburn"))
+                    if (usedTool == mod.ItemType("BlazingMoltenPickaxe") || usedTool == mod.ItemType("FrigidFlarePickaxe"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);
@@ -1383,7 +1383,7 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                     }
 
-                    if (usedTool == mod.ItemType("GracefulChlorophytePickaxe") || usedTool == mod.ItemType("GracefulChlorophytePickaxePlantera"))
+                    if (usedTool == mod.ItemType("GracefulChlorophytePickaxe") || usedTool == mod.ItemType("BloomingChlorophytePickaxe"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);
@@ -1422,7 +1422,7 @@ namespace IndustrialPickaxes.Items
                         SmeltThermite(i, j, type, ref noItem);
                     }
 
-                    if (usedTool == mod.ItemType("IndustrialPicksaw") || usedTool == mod.ItemType("IndustrialPicksawBysmal") || usedTool == mod.ItemType("IndustrialPicksawMartian"))
+                    if (usedTool == mod.ItemType("LihzahrdianPicksaw") || usedTool == mod.ItemType("BysmalPicksaw") || usedTool == mod.ItemType("MartianPicksaw"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);
@@ -1464,7 +1464,7 @@ namespace IndustrialPickaxes.Items
                         SmeltThermite(i, j, type, ref noItem);
                     }
 
-                    if (usedTool == mod.ItemType("IndustrialLunarPickaxe") || usedTool == mod.ItemType("IndustrialLunarPickaxeRagnarok") || usedTool == mod.ItemType("IndustrialLunarPickaxeGenesis"))
+                    if (usedTool == mod.ItemType("LunaticsCelestialPick") || usedTool == mod.ItemType("RealityBreakerPickaxe") || usedTool == mod.ItemType("PrimordialGenesisPickaxe"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);
@@ -1512,7 +1512,7 @@ namespace IndustrialPickaxes.Items
 
                     #region Modded Pickaxes
                     // Shadows of Abaddon
-                    if (usedTool == mod.ItemType("SolusFlariumPickaxe") || usedTool == mod.ItemType("SolusFlariumPickaxeCernium") || usedTool == mod.ItemType("SolusFlariumPickaxeAsthraltite") || usedTool == mod.ItemType("DraconicAsthraltitePicksaw") || usedTool == mod.ItemType("LeechingShadowflarePicksaw") || usedTool == mod.ItemType("JudgementalFlamePickaxe"))
+                    if (usedTool == mod.ItemType("SolusFlariumPickaxe") || usedTool == mod.ItemType("CryoCerniumPickaxe") || usedTool == mod.ItemType("MirageAsthraltitePickaxe") || usedTool == mod.ItemType("DraconicAsthraltitePicksaw") || usedTool == mod.ItemType("LeechingShadowflarePicksaw") || usedTool == mod.ItemType("CrimsonFlamePicksaw"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);
@@ -1560,7 +1560,7 @@ namespace IndustrialPickaxes.Items
                     }
 
                     // Calamity
-                    if (usedTool == mod.ItemType("ViridescentBlossomPickaxe") || usedTool == mod.ItemType("ViridescentBlossomPickaxeProvidence"))
+                    if (usedTool == mod.ItemType("ViridescentBlossomPickaxe") || usedTool == mod.ItemType("ProfanedShardPickaxe"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);
@@ -1608,7 +1608,7 @@ namespace IndustrialPickaxes.Items
                     }
 
                     // Redemption
-                    if (usedTool == mod.ItemType("ExperimentalNanoPickaxe") || usedTool == mod.ItemType("ExperimentalNanoPickaxeCreative") || usedTool == mod.ItemType("ExperimentalNanoPickaxeXenium") || usedTool == mod.ItemType("ExperimentalNanoPickaxeVlitch"))
+                    if (usedTool == mod.ItemType("ExperimentalNanoPickaxe") || usedTool == mod.ItemType("ExperimentalNanoPickaxeCreative") || usedTool == mod.ItemType("PrototypeXeniumPickaxe") || usedTool == mod.ItemType("CorruptedVlitchPickaxe"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);

@@ -85,24 +85,24 @@ namespace IndustrialPickaxes.Items
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxeXenium>());
+			recipe.AddIngredient(ModContent.ItemType<PrototypeXeniumPickaxe>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxeVlitch>());
+            recipe.AddIngredient(ModContent.ItemType<CorruptedVlitchPickaxe>());
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
 	}
 
-	public class ExperimentalNanoPickaxeXenium : ExperimentalNanoPickaxe
+	public class PrototypeXeniumPickaxe : ExperimentalNanoPickaxe
 	{
-		public override string Texture => mod.Name + "/Items/Reskins/ExperimentalNanoPickaxeXenium";
+		public override string Texture => mod.Name + "/Items/Reskins/PrototypeXeniumPickaxe";
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ExperimentalNanoPickaxeXenium");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/PrototypeXeniumPickaxe");
 
 		public override void SetStaticDefaults()
 		{
@@ -134,18 +134,18 @@ namespace IndustrialPickaxes.Items
 			recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxeVlitch>());
+            recipe.AddIngredient(ModContent.ItemType<CorruptedVlitchPickaxe>());
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
 	}
 
-    public class ExperimentalNanoPickaxeVlitch : ExperimentalNanoPickaxe
+    public class CorruptedVlitchPickaxe : ExperimentalNanoPickaxe
     {
-        public override string Texture => mod.Name + "/Items/Reskins/ExperimentalNanoPickaxeVlitch";
+        public override string Texture => mod.Name + "/Items/Reskins/CorruptedVlitchPickaxe";
 
-        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ExperimentalNanoPickaxeVlitch");
+        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/CorruptedVlitchPickaxe");
 
         public override void SetStaticDefaults()
         {
@@ -177,7 +177,7 @@ namespace IndustrialPickaxes.Items
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<ExperimentalNanoPickaxeXenium>());
+            recipe.AddIngredient(ModContent.ItemType<PrototypeXeniumPickaxe>());
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -6,9 +6,9 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items
 {
-	public class IndustrialLunarPickaxe : IndustrialPickaxe
+	public class LunaticsCelestialPick : IndustrialPickaxe
 	{
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/IndustrialLunarPickaxe");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/LunaticsCelestialPick");
 
 		public override void SetStaticDefaults()
 		{
@@ -47,11 +47,11 @@ namespace IndustrialPickaxes.Items
 		}
 	}
 
-	public class IndustrialLunarPickaxeRagnarok : IndustrialLunarPickaxe
-	{
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialLunarPickaxeRagnarok");
+	public class RealityBreakerPickaxe : LunaticsCelestialPick
+    {
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/RealityBreakerPickaxe");
 
-		public override string Texture => mod.Name + "/Items/Reskins/IndustrialLunarPickaxeRagnarok";
+		public override string Texture => mod.Name + "/Items/Reskins/RealityBreakerPickaxe";
 
 		public override void SetStaticDefaults()
         {
@@ -65,28 +65,28 @@ namespace IndustrialPickaxes.Items
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(this);
 			recipe.AddTile(TileID.DyeVat);
-			recipe.SetResult(ModContent.ItemType<IndustrialLunarPickaxe>());
+			recipe.SetResult(ModContent.ItemType<LunaticsCelestialPick>());
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<IndustrialLunarPickaxe>());
+			recipe.AddIngredient(ModContent.ItemType<LunaticsCelestialPick>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<IndustrialLunarPickaxeGenesis>());
+            recipe.AddIngredient(ModContent.ItemType<PrimordialGenesisPickaxe>());
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
 	}
 
-    public class IndustrialLunarPickaxeGenesis : IndustrialLunarPickaxe
+    public class PrimordialGenesisPickaxe : LunaticsCelestialPick
     {
-        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialLunarPickaxeGenesis");
+        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/PrimordialGenesisPickaxe");
 
-        public override string Texture => mod.Name + "/Items/Reskins/IndustrialLunarPickaxeGenesis";
+        public override string Texture => mod.Name + "/Items/Reskins/PrimordialGenesisPickaxe";
 
         public override void SetStaticDefaults()
         {
@@ -100,17 +100,17 @@ namespace IndustrialPickaxes.Items
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
             recipe.AddTile(TileID.DyeVat);
-            recipe.SetResult(ModContent.ItemType<IndustrialLunarPickaxe>());
+            recipe.SetResult(ModContent.ItemType<LunaticsCelestialPick>());
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<IndustrialLunarPickaxe>());
+            recipe.AddIngredient(ModContent.ItemType<LunaticsCelestialPick>());
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<IndustrialLunarPickaxeRagnarok>());
+            recipe.AddIngredient(ModContent.ItemType<RealityBreakerPickaxe>());
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(this);
             recipe.AddRecipe();

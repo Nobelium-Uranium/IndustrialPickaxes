@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items
 {
-	public class IndustrialPicksaw : IndustrialPickaxe
+	public class LihzahrdianPicksaw : IndustrialPickaxe
 	{
 		private class PicksawRecipeHelper : ModRecipe
 		{
@@ -15,7 +15,7 @@ namespace IndustrialPickaxes.Items
 			public override bool RecipeAvailable() => NPC.downedGolemBoss;
 		}
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/IndustrialPicksaw");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/LihzahrdianPicksaw");
 
 		public override void SetStaticDefaults()
 		{
@@ -52,11 +52,11 @@ namespace IndustrialPickaxes.Items
 		}
 	}
 
-	public class IndustrialPicksawBysmal : IndustrialPicksaw
-	{
-		public override string Texture => mod.Name + "/Items/Reskins/IndustrialPicksawBysmal";
+	public class BysmalPicksaw : LihzahrdianPicksaw
+    {
+		public override string Texture => mod.Name + "/Items/Reskins/BysmalPicksaw";
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialPicksawBysmal");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/BysmalPicksaw");
 
 		public override void SetStaticDefaults()
 		{
@@ -69,28 +69,28 @@ namespace IndustrialPickaxes.Items
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(this);
 			recipe.AddTile(TileID.DyeVat);
-			recipe.SetResult(ModContent.ItemType<IndustrialPicksaw>());
+			recipe.SetResult(ModContent.ItemType<LihzahrdianPicksaw>());
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<IndustrialPicksawMartian>());
+			recipe.AddIngredient(ModContent.ItemType<MartianPicksaw>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<IndustrialPicksaw>());
+			recipe.AddIngredient(ModContent.ItemType<LihzahrdianPicksaw>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
 	}
 
-	public class IndustrialPicksawMartian : IndustrialPicksaw
-	{
-		public override string Texture => mod.Name + "/Items/Reskins/IndustrialPicksawMartian";
+	public class MartianPicksaw : LihzahrdianPicksaw
+    {
+		public override string Texture => mod.Name + "/Items/Reskins/MartianPicksaw";
 
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialPicksawMartian");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/MartianPicksaw");
 
 		public override void SetStaticDefaults()
 		{
@@ -103,17 +103,17 @@ namespace IndustrialPickaxes.Items
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(this);
 			recipe.AddTile(TileID.DyeVat);
-			recipe.SetResult(ModContent.ItemType<IndustrialPicksaw>());
+			recipe.SetResult(ModContent.ItemType<LihzahrdianPicksaw>());
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<IndustrialPicksawBysmal>());
+			recipe.AddIngredient(ModContent.ItemType<BysmalPicksaw>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<IndustrialPicksaw>());
+			recipe.AddIngredient(ModContent.ItemType<LihzahrdianPicksaw>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

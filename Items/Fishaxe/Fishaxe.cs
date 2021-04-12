@@ -30,11 +30,19 @@ namespace IndustrialPickaxes.Items.Fishaxe
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.useTurn = true;
-		}
+        }
 
-		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit) => crit = false;
+        public override void Update(ref float gravity, ref float maxFallSpeed)
+        {
+            if (item.lavaWet)
+            {
+                Item.NewItem(item.getRect(), ModContent.ItemType<DeadFishaxe>());
 
-		public override void AddRecipes()
+                item.active = false;
+            }
+        }
+
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddRecipeGroup("IndustrialPickaxes:Fishaxe");
@@ -48,35 +56,71 @@ namespace IndustrialPickaxes.Items.Fishaxe
 	{
 		public override void Update(ref float gravity, ref float maxFallSpeed)
 		{
-			// TODO change to whatever its supposed to be?? Temporary but keep in
-            // It was supposed to be more complicated than this but I'll likely keep it as is for now
-			for (int i = 0; i < Main.maxItems; i++)
-			{
-				Item item = Main.item[i];
-                Item item2 = Main.item[i];
+			if (item.lavaWet)
+            {
+                Item.NewItem(item.getRect(), ModContent.ItemType<ExaltedFishaxe>());
 
-                if (item.active && item.type == ModContent.ItemType<EclipsiumBar>())
-				{
-                    if (item2.active && item2.type == ModContent.ItemType<IndustrialSingularity>())
-                    {
-                        if (base.item.getRect().Intersects(item.getRect()) && base.item.getRect().Intersects(item2.getRect()) && base.item.lavaWet == item.lavaWet == item2.lavaWet == true && Main.eclipse)
-                        {
-                            Item.NewItem(base.item.getRect(), ModContent.ItemType<AscendedFishaxe>());
-                            Main.PlaySound(SoundID.Item119, base.item.position);
-
-                            base.item.active = false;
-                            item.active = false;
-                        }
-                    }
-				}
-			}
+                item.active = false;
+            }
 		}
-
-		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit) => crit = target.type == NPCID.TargetDummy;
 
 		public override void AddRecipes()
 		{
 			return;
 		}
 	}
+
+    public class DeadFishaxe : Fishaxe
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Dead Fishaxe");
+            Tooltip.SetDefault("'You monster'");
+        }
+
+        public override void AddRecipes()
+        {
+            return;
+        }
+    }
+
+    public class ExaltedFishaxe : Fishaxe
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Exalted Fishaxe");
+            Tooltip.SetDefault("'It is ready'");
+        }
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            item.rare = ItemRarityID.Quest;
+        }
+
+        public override void Update(ref float gravity, ref float maxFallSpeed)
+        {
+            for (int i = 0; i < Main.maxItems; i++)
+            {
+                Item item = Main.item[i];
+
+                if (item.active && item.type == ModContent.ItemType<EclipsiumBar>() && item.stack >= 99)
+                {
+                    if (base.item.getRect().Intersects(item.getRect()) && base.item.lavaWet == item.lavaWet == true && Main.eclipse)
+                    {
+                        Item.NewItem(base.item.getRect(), ModContent.ItemType<AscendedFishaxe>());
+                        Main.PlaySound(SoundID.Item119, base.item.position);
+
+                        base.item.active = false;
+                        item.active = false;
+                    }
+                }
+            }
+        }
+
+        public override void AddRecipes()
+        {
+            return;
+        }
+    }
 }

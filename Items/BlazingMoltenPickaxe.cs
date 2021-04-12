@@ -7,9 +7,9 @@ using Terraria.ModLoader;
 
 namespace IndustrialPickaxes.Items
 {
-	public class IndustrialMoltenPickaxe : IndustrialPickaxe
+	public class BlazingMoltenPickaxe : IndustrialPickaxe
 	{
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/IndustrialMoltenPickaxe");
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/BlazingMoltenPickaxe");
 
 		public override void SetStaticDefaults()
 		{
@@ -58,15 +58,15 @@ namespace IndustrialPickaxes.Items
 		}
 	} 
 
-	public class IndustrialMoltenPickaxeFrostburn : IndustrialMoltenPickaxe
-	{
-		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/IndustrialMoltenPickaxeFrostburn");
+	public class FrigidFlarePickaxe : BlazingMoltenPickaxe
+    {
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/FrigidFlarePickaxe");
 
-		public override string Texture => mod.Name + "/Items/Reskins/IndustrialMoltenPickaxeFrostburn";
+		public override string Texture => mod.Name + "/Items/Reskins/FrigidFlarePickaxe";
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Frost Flare Pickaxe");
+			DisplayName.SetDefault("Frigid Flare Pickaxe");
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'It's either really hot or really cold, either way it's really useful!'");
 		}
 
@@ -75,11 +75,11 @@ namespace IndustrialPickaxes.Items
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(this);
 			recipe.AddTile(TileID.DyeVat);
-			recipe.SetResult(ModContent.ItemType<IndustrialMoltenPickaxe>());
+			recipe.SetResult(ModContent.ItemType<BlazingMoltenPickaxe>());
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ModContent.ItemType<IndustrialMoltenPickaxe>());
+			recipe.AddIngredient(ModContent.ItemType<BlazingMoltenPickaxe>());
 			recipe.AddTile(TileID.DyeVat);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

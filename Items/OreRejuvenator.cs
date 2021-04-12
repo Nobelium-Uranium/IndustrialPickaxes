@@ -47,7 +47,6 @@ namespace IndustrialPickaxes.Items
 			recipe.AddRecipeGroup("IndustrialPickaxes:LargeGem");
 
 			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.AddTile(TileID.GemLocks);
 
 			recipe.SetResult(this);
 			recipe.AddRecipe();

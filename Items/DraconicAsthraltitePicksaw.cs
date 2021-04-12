@@ -72,7 +72,7 @@ namespace IndustrialPickaxes.Items
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<JudgementalFlamePicksaw>());
+            recipe.AddIngredient(ModContent.ItemType<CrimsonFlamePicksaw>());
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -85,11 +85,11 @@ namespace IndustrialPickaxes.Items
         }
     }
 
-    public class JudgementalFlamePicksaw : DraconicAsthraltitePicksaw
+    public class CrimsonFlamePicksaw : DraconicAsthraltitePicksaw
     {
-        public override string Texture => mod.Name + "/Items/Reskins/JudgementalFlamePicksaw";
+        public override string Texture => mod.Name + "/Items/Reskins/CrimsonFlamePicksaw";
 
-        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/JudgementalFlamePicksaw");
+        public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/CrimsonFlamePicksaw");
 
         public override Color[] ItemNameCycleColors => new Color[] { new Color(211, 8, 93), new Color(211, 8, 93) };
 

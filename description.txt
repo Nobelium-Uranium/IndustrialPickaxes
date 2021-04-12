@@ -45,6 +45,14 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.7.2
+[~] Fixed some pickaxes not doing what they should, this was a direct result of the internal name changes
+
+4.7.1
+[~] Changed the internal name of nearly every industrial pickaxe for more parity
+[~] Industrial pickaxes no longer roll a prefix when crafted, this is a workaround to prevent rolling prefixes for free when crafting a reskin of a pickaxe at a Dye Vat
+[~] Changed the method of obtaining the Ascended Fishaxe slightly
+
 4.7
 [+] Added Eclipsium Eviscerator, a precursor to the almighty Means to an End
 [~] Renamed Eclipsium Catalyst to Eclipsium Alloy and is once again only made with one of each compatible bar, you will still need multiple alloys to make the Eclipsium Eviscerator and Means to an End
