@@ -41,7 +41,7 @@ namespace IndustrialPickaxes.Items
 
 		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 		{
-			Texture2D texture = mod.GetTexture("Items/MasterManipulatorINV");
+			Texture2D texture = mod.GetTexture("Items/MasterManipulatorIcon");
 			spriteBatch.Draw(texture, position, null, Color.White, 0, origin, scale / 2, SpriteEffects.None, 0f);
 			return false;
 		}

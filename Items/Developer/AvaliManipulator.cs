@@ -17,35 +17,38 @@ namespace IndustrialPickaxes.Items.Developer
 
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Pickaxe power is dependant on what other pickaxes you have\nShreds foes on contact, cannot critically hit\n'Full of fancy modified matter manipulator tech'");
+            DisplayName.SetDefault("A.C.D.E.");
+			Tooltip.SetDefault("Pickaxe and axe power adapts to your other tools\nSmelts all ores!\n'Apparatus for Construction and Destruction of Elements'\n'Or simply, in layman's terms, a Matter Manipulator'");
 		}
 
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			item.damage = 100;
-			item.crit = -4;
-			item.melee = true;
-			item.noMelee = true;
-			item.knockBack = 5;
-			item.width = 44;
-			item.height = 56;
+			item.width = 20;
+			item.height = 20;
 			item.useTime = 2;
 			item.useAnimation = 10;
 			item.pick = 35;
 			item.axe = 7;
+            item.tileBoost += 5;
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.knockBack = 0;
-			item.value = Item.sellPrice(platinum: 5);
 			item.rare = ItemRarityID.Cyan;
 			item.autoReuse = true;
             item.channel = true;
             item.useTurn = false;
 			item.shoot = ModContent.ProjectileType<OtherworldlyForces>();
 			item.shootSpeed = 2f;
-		}
+        }
 
-		public override void UpdateInventory(Player player)
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D texture = mod.GetTexture("Items/Developer/AvaliManipulatorIcon");
+            spriteBatch.Draw(texture, position, null, Color.White, 0, origin, scale / 2, SpriteEffects.None, 0f);
+            return false;
+        }
+
+        public override void UpdateInventory(Player player)
 		{
 			//Set the pickaxe power to the highest pickaxe power pickaxe in the inventory
 			item.pick = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>() && i.type != ModContent.ItemType<VioletThaumaturgy>()).Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
