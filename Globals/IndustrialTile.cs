@@ -1294,6 +1294,115 @@ namespace IndustrialPickaxes.Items
         }
         #endregion
 
+        #region Qwerty's Random Content
+        int ChanceLune;
+        int ChanceRhuthinium;
+
+        public void SmeltLune(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.QwertysLoaded)
+            {
+                if (IndustrialPickaxes.Qwertys.GetTile("LuneOre") != null && IndustrialPickaxes.Qwertys.GetItem("LuneBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Qwertys.TileType("LuneOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceLune <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Qwertys.ItemType("LuneBar"));
+                            ChanceLune = 0;
+                        }
+                        else
+                        {
+                            ChanceLune++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltRhuthinium(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.QwertysLoaded)
+            {
+                if (IndustrialPickaxes.Qwertys.GetTile("RhuthiniumOre") != null && IndustrialPickaxes.Qwertys.GetItem("RhuthiniumBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Qwertys.TileType("RhuthiniumOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(4) - ChanceRhuthinium <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Qwertys.ItemType("RhuthiniumBar"));
+                            ChanceRhuthinium = 0;
+                        }
+                        else
+                        {
+                            ChanceRhuthinium++;
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
+
+        #region Ultranium
+        int ChanceAurora;
+        int ChanceTenebris;
+
+        public void SmeltAurora(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.UltraniumLoaded)
+            {
+                if (IndustrialPickaxes.Ultranium.GetTile("AuroraOre") != null && IndustrialPickaxes.Ultranium.GetItem("AuroraBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Ultranium.TileType("AuroraOre"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(5) - ChanceAurora <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Ultranium.ItemType("AuroraBar"));
+                            ChanceAurora = 0;
+                        }
+                        else
+                        {
+                            ChanceAurora++;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void SmeltTenebris(int i, int j, int type, ref bool noItem)
+        {
+            if (IndustrialPickaxes.UltraniumLoaded)
+            {
+                if (IndustrialPickaxes.Ultranium.GetTile("ShadowOreTile") != null && IndustrialPickaxes.Ultranium.GetItem("NightmareBar") != null)
+                {
+                    if (type == IndustrialPickaxes.Ultranium.TileType("ShadowOreTile"))
+                    {
+                        noItem = true;
+                        if (Main.rand.Next(3) - ChanceTenebris <= 0)
+                        {
+                            Main.PlaySound(SoundID.LiquidsWaterLava, i * 16, j * 16);
+                            Item.NewItem(i * 16, j * 16, 16, 16, IndustrialPickaxes.Ultranium.ItemType("NightmareBar"));
+                            ChanceTenebris = 0;
+                        }
+                        else
+                        {
+                            ChanceTenebris++;
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
         #endregion
 
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
@@ -1359,6 +1468,12 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                         SmeltSpirit(i, j, type, ref noItem);
                         SmeltThermite(i, j, type, ref noItem);
+                        //Qwerty's Random Content
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        //Ultranium
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
 
                     if (usedTool == mod.ItemType("BlazingMoltenPickaxe") || usedTool == mod.ItemType("FrigidFlarePickaxe"))
@@ -1381,6 +1496,10 @@ namespace IndustrialPickaxes.Items
                         SmeltYtrium(i, j, type, ref noItem);
                         SmeltFloran(i, j, type, ref noItem);
                         SmeltCryolite(i, j, type, ref noItem);
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
 
                     if (usedTool == mod.ItemType("GracefulChlorophytePickaxe") || usedTool == mod.ItemType("BloomingChlorophytePickaxe"))
@@ -1420,6 +1539,10 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                         SmeltSpirit(i, j, type, ref noItem);
                         SmeltThermite(i, j, type, ref noItem);
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
 
                     if (usedTool == mod.ItemType("LihzahrdianPicksaw") || usedTool == mod.ItemType("BysmalPicksaw") || usedTool == mod.ItemType("MartianPicksaw"))
@@ -1462,6 +1585,10 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                         SmeltSpirit(i, j, type, ref noItem);
                         SmeltThermite(i, j, type, ref noItem);
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
 
                     if (usedTool == mod.ItemType("LunaticsCelestialPick") || usedTool == mod.ItemType("RealityBreakerPickaxe") || usedTool == mod.ItemType("PrimordialGenesisPickaxe"))
@@ -1507,6 +1634,10 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                         SmeltSpirit(i, j, type, ref noItem);
                         SmeltThermite(i, j, type, ref noItem);
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
                     #endregion
 
@@ -1557,6 +1688,10 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                         SmeltSpirit(i, j, type, ref noItem);
                         SmeltThermite(i, j, type, ref noItem);
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
 
                     // Calamity
@@ -1605,6 +1740,10 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                         SmeltSpirit(i, j, type, ref noItem);
                         SmeltThermite(i, j, type, ref noItem);
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
 
                     // Redemption
@@ -1653,6 +1792,10 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                         SmeltSpirit(i, j, type, ref noItem);
                         SmeltThermite(i, j, type, ref noItem);
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
 
                     // Elements Awoken
@@ -1701,6 +1844,10 @@ namespace IndustrialPickaxes.Items
                         SmeltCryolite(i, j, type, ref noItem);
                         SmeltSpirit(i, j, type, ref noItem);
                         SmeltThermite(i, j, type, ref noItem);
+                        SmeltLune(i, j, type, ref noItem);
+                        SmeltRhuthinium(i, j, type, ref noItem);
+                        SmeltAurora(i, j, type, ref noItem);
+                        SmeltTenebris(i, j, type, ref noItem);
                     }
                     #endregion
 

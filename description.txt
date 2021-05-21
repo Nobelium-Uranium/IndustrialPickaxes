@@ -20,8 +20,10 @@ Currently supported mods...
  - Ancients Awakened (Ores Only)
  - Elements Awoken (Master Manipulator Only)
  - Spirit Mod (Ores Only)
+ - Qwerty's Bosses and Items (Ores Only)
+ - Ultranium (Ores Only)
 
-Next planned mod: Qwerty's Random Content
+Next planned mod: Currently none, suggest a mod in the discord!
 
 Support for mods will be added one by one. (But in some special cases, multiple may be added)
 Let it be known that the more you demand support for a specific mod, the more it'll be delayed. (Well not really, but it's very annoying)
@@ -45,6 +47,11 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.7.3
+[+] Added support for Qwerty's and Ultranium
+[~] Avali Manipulator got a makeover, it no longer inflicts damage
+[~] Made Fishaxes a bit rarer
+
 4.7.2
 [~] Fixed some pickaxes not doing what they should, this was a direct result of the internal name changes
 

@@ -15,34 +15,33 @@ namespace IndustrialPickaxes
 	public class IndustrialPickaxes : Mod
 	{
 		public static Mod SacredTools;
-
 		public static bool SoALoaded;
 
 		public static Mod Calamity;
-
 		public static bool CalamityLoaded;
 
 		public static Mod Thorium;
-
 		public static bool ThoriumLoaded;
 
 		public static Mod Redemption;
-
 		public static bool RedemptionLoaded;
 
 		public static Mod AncientsAwakened;
-
 		public static bool AALoaded;
 
 		public static Mod ElementsAwoken;
-
 		public static bool EALoaded;
 
 		public static Mod SpiritMod;
-
 		public static bool SpiritLoaded;
 
-		public static Mod Veinminer;
+        public static Mod Qwertys;
+        public static bool QwertysLoaded;
+
+        public static Mod Ultranium;
+        public static bool UltraniumLoaded;
+
+        public static Mod Veinminer;
 
 		internal static PropertyInfo SteamID = null;
 
@@ -60,18 +59,30 @@ namespace IndustrialPickaxes
 
 			SacredTools = ModLoader.GetMod("SacredTools");
 			SoALoaded = SacredTools != null;
+
 			Calamity = ModLoader.GetMod("CalamityMod");
 			CalamityLoaded = Calamity != null;
+
 			Thorium = ModLoader.GetMod("ThoriumMod");
 			ThoriumLoaded = Thorium != null;
+
 			Redemption = ModLoader.GetMod("Redemption");
 			RedemptionLoaded = Redemption != null;
+
 			AncientsAwakened = ModLoader.GetMod("AAMod");
 			AALoaded = AncientsAwakened != null;
+
 			ElementsAwoken = ModLoader.GetMod("ElementsAwoken");
 			EALoaded = ElementsAwoken != null;
+
 			SpiritMod = ModLoader.GetMod("SpiritMod");
 			SpiritLoaded = SpiritMod != null;
+
+            Qwertys = ModLoader.GetMod("QwertysRandomContent");
+            QwertysLoaded = Qwertys != null;
+
+            Ultranium = ModLoader.GetMod("Ultranium");
+            UltraniumLoaded = Ultranium != null;
 
 			Veinminer = ModLoader.GetMod("VeinMiner");
 		}
@@ -80,18 +91,30 @@ namespace IndustrialPickaxes
 		{
 			SacredTools = null;
 			SoALoaded = false;
+
 			Calamity = null;
 			CalamityLoaded = false;
+
 			Thorium = null;
 			ThoriumLoaded = false;
+
 			Redemption = null;
 			RedemptionLoaded = false;
+
 			AncientsAwakened = null;
 			AALoaded = false;
+
 			ElementsAwoken = null;
 			EALoaded = false;
+
 			SpiritMod = null;
 			SpiritLoaded = false;
+
+            Qwertys = null;
+            QwertysLoaded = false;
+
+            Ultranium = null;
+            UltraniumLoaded = false;
 
 			Veinminer = null;
 			SteamID = null;

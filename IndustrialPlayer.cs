@@ -20,7 +20,7 @@ namespace IndustrialPickaxes
         public override void OnEnterWorld(Player player)
 		{
             Main.NewTextMultiline("Thank you for using Industrial Pickaxes!\n" +
-                "MOTD: Still on hiatus, you'll know when I'm back.\n" +
+                "MOTD: A rewrite to fix multiplayer issues is still in the works, please be patient.\n" +
                 "If you have a bug to report, use ModHelper's built in report feature!\n" +
                 "For further information about Crimsanity's mods, you can join the discord server via the mod hompage.", c: Color.Cyan);
 			if (IndustrialPickaxes.Veinminer == null)
@@ -41,9 +41,9 @@ namespace IndustrialPickaxes
 			if (junk)
 				return;
 
-			if (liquidType == 0 && worldLayer == 1 && player.ZoneBeach && Main.rand.NextBool(20))
+			if (liquidType == 0 && worldLayer == 1 && player.ZoneBeach && Main.rand.NextBool(30))
 			{
-				if (power >= 100 && Main.rand.NextBool(25))
+				if (power >= 100 && Main.rand.NextBool(10))
 					caughtType = ModContent.ItemType<FishaxeRitual>();
 				else
 					caughtType = ModContent.ItemType<Fishaxe>();
