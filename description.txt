@@ -48,7 +48,7 @@ Very special thanks to FuryForged for giving this mod a quick spotlight, I appre
  
 Version History:
 4.7.4
-[~] Fixed an issue with the A.C.D.E.
+[~] Fixed a multiplayer issue with the A.C.D.E.
 
 4.7.3
 [+] Added support for Qwerty's and Ultranium
