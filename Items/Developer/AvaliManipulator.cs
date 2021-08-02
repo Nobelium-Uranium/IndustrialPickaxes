@@ -64,10 +64,11 @@ namespace IndustrialPickaxes.Items.Developer
                 item.axe = 7;
         }
 
-		public override bool UseItem(Player player)
+		/*public override bool UseItem(Player player)
 		{
-			player.PickTile(Player.tileTargetX, Player.tileTargetY, item.pick);
+			if (Main.myPlayer == player.whoAmI)
+				player.PickTile(Player.tileTargetX, Player.tileTargetY, item.pick);
 			return true;
-		}
+		}*/
 	}
 }
