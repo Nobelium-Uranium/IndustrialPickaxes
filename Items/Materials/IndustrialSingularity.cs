@@ -6,8 +6,9 @@ using Terraria.ModLoader;
 namespace IndustrialPickaxes.Items.Materials
 {
 	public class IndustrialSingularity : ModItem
-	{
-		public override void SetStaticDefaults()
+    {
+        public override bool Autoload(ref string name) => IndustrialPickaxes.SoALoaded || IndustrialPickaxes.CalamityLoaded || IndustrialPickaxes.ThoriumLoaded || IndustrialPickaxes.RedemptionLoaded || IndustrialPickaxes.EALoaded;
+        public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("'Industria Aeterna'");
 

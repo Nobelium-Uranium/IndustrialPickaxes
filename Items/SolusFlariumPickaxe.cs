@@ -9,6 +9,7 @@ namespace IndustrialPickaxes.Items
 {
 	public class SolusFlariumPickaxe : IndustrialPickaxe
 	{
+		public override bool Autoload(ref string name) => IndustrialPickaxes.SoALoaded;
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/SolusFlariumPickaxe");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(253, 143, 76), new Color(253, 143, 76) };

@@ -9,6 +9,7 @@ namespace IndustrialPickaxes.Items
 {
     public class DraconicAsthraltitePicksaw : IndustrialPickaxe
     {
+        public override bool Autoload(ref string name) => IndustrialPickaxes.SoALoaded;
         public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/DraconicAsthraltitePicksaw");
 
         public override Color[] ItemNameCycleColors => new Color[] { new Color(185, 0, 67), new Color(185, 0, 67) };

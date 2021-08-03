@@ -47,6 +47,9 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.8.2
+[~] Cross-mod pickaxes are now unloaded if the respective mods are not enabled
+
 4.8.1
 [~] Enchanted Pickaxe and its skins now emits particles on swing
 
