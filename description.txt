@@ -47,6 +47,9 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.8.1
+[~] Enchanted Pickaxe and its skins now emits particles on swing
+
 4.8.0 - Tying Up Loose Ends
 [+] Added a new skin for the A.C.D.E. and Violet Thaumaturgy
 [+] Added the Enchanted Pickaxe, a new prehardmode industrial pickaxe, bought from the Merchant after the Eye of Cthulhu is defeated

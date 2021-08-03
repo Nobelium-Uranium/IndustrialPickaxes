@@ -1,6 +1,6 @@
 displayName = Industrial Pickaxes
 author = Crimsanity
-version = 4.8.0
+version = 4.8.1
 hideResources = true
 homepage = https://github.com/Nobelium-Uranium/IndustrialPickaxes
 weakReferences = CalamityMod, ThoriumMod, ElementsAwoken, SpiritMod, SacredTools, AAMod, Redemption, QwertysRandomContent, Ultranium

@@ -1,4 +1,5 @@
 ﻿using IndustrialPickaxes.Helpers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -26,6 +27,28 @@ namespace IndustrialPickaxes.Items
 			item.rare = ItemRarityID.Blue;
 			item.UseSound = SoundID.Item1;
 		}
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			if (Main.rand.NextBool(1))
+			{
+				int dustid;
+				switch (Main.rand.Next(3))
+                {
+					case 0:
+						dustid = 15;
+						break;
+					case 1:
+						dustid = 57;
+						break;
+					default:
+						dustid = 58;
+						break;
+                }
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, dustid, 0f, 0f, 150, default, 1f);
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].velocity *= .25f;
+			}
+		}
 	}
 
 	public class Pickhalis : EnchantedPickaxe
@@ -38,6 +61,25 @@ namespace IndustrialPickaxes.Items
 		{
 			DisplayName.SetDefault("Pickhalis");
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Dropped by the rare and threatening Spelunker Schmoo'");
+		}
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			if (Main.rand.NextBool(1))
+			{
+				int dustid;
+				switch (Main.rand.Next(2))
+				{
+					case 0:
+						dustid = 15;
+						break;
+					default:
+						dustid = 56;
+						break;
+				}
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, dustid, 0f, 0f, 150, default, 1f);
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].velocity *= .25f;
+			}
 		}
 
 		public override void AddRecipes()
@@ -72,6 +114,25 @@ namespace IndustrialPickaxes.Items
 		{
 			DisplayName.SetDefault("Pickagrim");
 			Tooltip.SetDefault("Uses precise strikes to smelt bars from ores, slow as a result\n'Not to be confused with a Crissaegrim'");
+		}
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			if (Main.rand.NextBool(1))
+			{
+				int dustid;
+				switch (Main.rand.Next(2))
+				{
+					case 0:
+						dustid = 15;
+						break;
+					default:
+						dustid = 56;
+						break;
+				}
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, dustid, 0f, 0f, 150, default, 1f);
+				Main.dust[dust].noGravity = true;
+				Main.dust[dust].velocity *= .25f;
+			}
 		}
 
 		public override void AddRecipes()
