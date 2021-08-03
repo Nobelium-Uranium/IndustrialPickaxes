@@ -51,24 +51,52 @@ namespace IndustrialPickaxes.Items.Developer
         public override void UpdateInventory(Player player)
 		{
 			//Set the pickaxe power to the highest pickaxe power pickaxe in the inventory
-			item.pick = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>() && i.type != ModContent.ItemType<VioletThaumaturgy>()).Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
+			item.pick = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>() && i.type != ModContent.ItemType<ChimeraManipulator>() && i.type != ModContent.ItemType<VioletThaumaturgy>() && i.type != ModContent.ItemType<AmberThaumaturgy>()).Select(i => i.pick).DefaultIfEmpty()?.Max() ?? 0;
 
 			if (item.pick < 65 && NPC.downedBoss2) //If that highest pickaxe power is below 65, and EoW or BoC is defeated, set the pickaxe power to 65
 				item.pick = 65;
 			else if (item.pick < 35) //If that highest pickaxe power is below 35 and BoC or EoW has not been defeated, set pickaxe power to 35
 				item.pick = 35;
 
-            item.axe = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>()).Select(i => i.axe).DefaultIfEmpty()?.Max() ?? 0;
+            item.axe = player.inventory.Where(i => i.type != ModContent.ItemType<AvaliManipulator>() && i.type != ModContent.ItemType<ChimeraManipulator>()).Select(i => i.axe).DefaultIfEmpty()?.Max() ?? 0;
             
             if (item.axe < 7)
                 item.axe = 7;
         }
+	}
+	public class ChimeraManipulator : AvaliManipulator
+	{
+		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/Reskins/ChimeraManipulator");
 
-		/*public override bool UseItem(Player player)
+		public override string Texture => mod.Name + "/Items/Reskins/ChimeraManipulator";
+		public override Color[] ItemNameCycleColors => new Color[] { new Color(20, 17, 30), new Color(31, 114, 255) };
+
+		public override void SetStaticDefaults()
 		{
-			if (Main.myPlayer == player.whoAmI)
-				player.PickTile(Player.tileTargetX, Player.tileTargetY, item.pick);
-			return true;
-		}*/
+			DisplayName.SetDefault("A.C.D.E. Model C");
+			Tooltip.SetDefault("Pickaxe and axe power adapts to your other tools\nSmelts all ores!\n'Modified to boast increased performance!'\n'Disclaimer: Does not actually perform better'");
+		}
+
+		public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		{
+			Texture2D texture = mod.GetTexture("Items/Reskins/ChimeraManipulatorIcon");
+			spriteBatch.Draw(texture, position, null, Color.White, 0, origin, scale / 2, SpriteEffects.None, 0f);
+			return false;
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(this);
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(ModContent.ItemType<AvaliManipulator>());
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<AvaliManipulator>());
+			recipe.AddTile(TileID.DyeVat);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
 	}
 }

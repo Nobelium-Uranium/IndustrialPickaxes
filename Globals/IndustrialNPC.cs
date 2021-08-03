@@ -133,6 +133,20 @@ namespace IndustrialPickaxes.Globals
 			}*/
 		}
 
+		public override void SetupShop(int type, Chest shop, ref int nextSlot)
+		{
+			if (type == NPCID.Merchant && NPC.downedBoss1)
+			{
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<EnchantedPickaxe>());
+				nextSlot++;
+			}
+			else if (type == NPCID.Steampunker && NPC.downedMechBossAny)
+			{
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<SteampunkExcavator>());
+				nextSlot++;
+			}
+		}
+
 		public override bool PreAI(NPC npc)
 		{
 			if (npc.HasBuff(BuffID.OnFire) && npc.HasBuff(ModContent.BuffType<OnFrostburn>()))

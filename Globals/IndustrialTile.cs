@@ -1414,7 +1414,7 @@ namespace IndustrialPickaxes.Items
                 if (!Main.LocalPlayer.HasBuff(BuffID.DrillMount) && Main.netMode == NetmodeID.SinglePlayer && !fail && KillableTile)
                 {
                     #region Base Pickaxes
-                    if (usedTool == mod.ItemType("AvaliManipulator") || usedTool == mod.ItemType("AscendedFishaxe") || usedTool == mod.ItemType("DraconicStaffOfPower") || usedTool == mod.ItemType("DraconicStaffOfPowerAsiimov") || usedTool == mod.ItemType("DraconicStaffOfPowerDemonic") || usedTool == mod.ItemType("DraconicStaffOfPowerGlacier") || usedTool == mod.ItemType("DraconicStaffOfPowerStellar"))
+                    if (usedTool == mod.ItemType("AvaliManipulator") || usedTool == mod.ItemType("ChimeraManipulator") || usedTool == mod.ItemType("AscendedFishaxe") || usedTool == mod.ItemType("DraconicStaffOfPower") || usedTool == mod.ItemType("DraconicStaffOfPowerAsiimov") || usedTool == mod.ItemType("DraconicStaffOfPowerDemonic") || usedTool == mod.ItemType("DraconicStaffOfPowerGlacier") || usedTool == mod.ItemType("DraconicStaffOfPowerStellar"))
                     {
                         //Smelt(i, j, type, ref noItem);
                         SmeltCopperTin(i, j, type, ref noItem);
@@ -1476,7 +1476,7 @@ namespace IndustrialPickaxes.Items
                         SmeltTenebris(i, j, type, ref noItem);
                     }
 
-                    if (usedTool == mod.ItemType("BlazingMoltenPickaxe") || usedTool == mod.ItemType("FrigidFlarePickaxe"))
+                    if (usedTool == mod.ItemType("EnchantedPickaxe") || usedTool == mod.ItemType("Pickhalis") || usedTool == mod.ItemType("Pickagrim") || usedTool == mod.ItemType("BlazingMoltenPickaxe") || usedTool == mod.ItemType("FrigidFlarePickaxe"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);
@@ -1502,7 +1502,7 @@ namespace IndustrialPickaxes.Items
                         SmeltTenebris(i, j, type, ref noItem);
                     }
 
-                    if (usedTool == mod.ItemType("GracefulChlorophytePickaxe") || usedTool == mod.ItemType("BloomingChlorophytePickaxe"))
+                    if (usedTool == mod.ItemType("SteampunkExcavator") || usedTool == mod.ItemType("MechanicalExcavator") || usedTool == mod.ItemType("GracefulChlorophytePickaxe") || usedTool == mod.ItemType("BloomingChlorophytePickaxe"))
                     {
                         SmeltCopperTin(i, j, type, ref noItem);
                         SmeltIronLead(i, j, type, ref noItem);
@@ -2045,7 +2045,7 @@ namespace IndustrialPickaxes.Items
                     #endregion
 
                     #region Violet Thaumaturgy
-                    if (usedTool == mod.ItemType("VioletThaumaturgy"))
+                    if (usedTool == mod.ItemType("VioletThaumaturgy") || usedTool == mod.ItemType("AmberThaumaturgy"))
                     {
                         #region Vanilla Ore Conversion
                         if (type == TileID.Copper)

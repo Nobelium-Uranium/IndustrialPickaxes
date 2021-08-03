@@ -5,7 +5,7 @@ Industrial Pickaxes adds some pickaxes with a special ability at their disposal,
 They can smelt whole bars from ores, the chance is based on how many ores it takes to smelt a bar, the less ore needed, the better the chance.
 There is a catch of course, they're much more expensive than ordinary pickaxes and are considerably slower, plus they can't smelt alloys of the same or a later tier.
 For an example of what an industrial pickaxe can do, the Blazing Molten Pickaxe can smelt Copper/Tin, Iron/Lead, Silver/Tungsten, Gold/Platinum and Cobalt/Palladium (etc), but not Hellstone since it's an alloy of the same tier as the pickaxe.
-There are Industrial Pickaxes for pretty much every tier, starting at Molten, skipping to Chlorophyte, and continuing normally from then on.
+There are Industrial Pickaxes for pretty much every tier starting with the Enchanted Pickaxe, which can be bought from the Merchant after defeating the Eye of Cthulhu, all the way to the endgame.
 
 TL;DR
 Adds several new pickaxes that can smelt bars from ores
@@ -23,7 +23,7 @@ Currently supported mods...
  - Qwerty's Bosses and Items (Ores Only)
  - Ultranium (Ores Only)
 
-Next planned mod: Currently none, suggest a mod in the discord!
+Next planned mod: Polarities
 
 Support for mods will be added one by one. (But in some special cases, multiple may be added)
 Let it be known that the more you demand support for a specific mod, the more it'll be delayed. (Well not really, but it's very annoying)
@@ -47,6 +47,13 @@ Special Thanks...
 Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
  
 Version History:
+4.8.0 - Tying Up Loose Ends
+[+] Added a new skin for the A.C.D.E. and Violet Thaumaturgy
+[+] Added the Enchanted Pickaxe, a new prehardmode industrial pickaxe, bought from the Merchant after the Eye of Cthulhu is defeated
+The Enchanted Pickaxe is now the first industrial pickaxe you can obtain, no more waiting to get the Blazing Molten Pickaxe!
+[+] Added the Steampunk Excavator, a new hardmode industrial pickaxe, bought from the Steampunker after any mechanical boss is defeated
+The Steampunk Excavator bridges the gap between the Blazing Molten Pickaxe and Graceful Chlorophyte Pickaxe
+
 4.7.4
 [~] Fixed a multiplayer issue with the A.C.D.E.
 

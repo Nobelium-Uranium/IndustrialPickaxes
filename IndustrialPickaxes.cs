@@ -143,6 +143,15 @@ namespace IndustrialPickaxes
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:Fishaxe", group);
 
+			group = new RecipeGroup(() => "Enchanted Pickaxe", new int[]
+			{
+				ModContent.ItemType<EnchantedPickaxe>(),
+				ModContent.ItemType<Pickhalis>(),
+				ModContent.ItemType<Pickagrim>(),
+			});
+
+			RecipeGroup.RegisterGroup("IndustrialPickaxes:EnchantedPickaxe", group);
+
 			group = new RecipeGroup(() => "Blazing Molten Pickaxe", new int[]
 			{
 				ModContent.ItemType<BlazingMoltenPickaxe>(),
@@ -150,6 +159,14 @@ namespace IndustrialPickaxes
 			});
 
 			RecipeGroup.RegisterGroup("IndustrialPickaxes:IndustrialMolten", group);
+
+			group = new RecipeGroup(() => "Steampunk Excavator", new int[]
+			{
+				ModContent.ItemType<SteampunkExcavator>(),
+				ModContent.ItemType<MechanicalExcavator>(),
+			});
+
+			RecipeGroup.RegisterGroup("IndustrialPickaxes:SteampunkExcavator", group);
 
 			group = new RecipeGroup(() => "Graceful Chlorophyte Pickaxe", new int[]
 			{

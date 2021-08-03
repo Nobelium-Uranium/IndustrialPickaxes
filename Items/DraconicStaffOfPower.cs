@@ -95,8 +95,10 @@ namespace IndustrialPickaxes.Items
             if (IndustrialPickaxes.EALoaded || IndustrialPickaxes.ThoriumLoaded || IndustrialPickaxes.SoALoaded || IndustrialPickaxes.RedemptionLoaded || IndustrialPickaxes.CalamityLoaded)
                 recipe.AddIngredient(ModContent.ItemType<IndustrialSingularity>());
 
-            recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialMolten");
-            recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialChlorophyte");
+			recipe.AddRecipeGroup("IndustrialPickaxes:EnchantedPickaxe");
+			recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialMolten");
+			recipe.AddRecipeGroup("IndustrialPickaxes:SteampunkExcavator");
+			recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialChlorophyte");
             recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialPicksaw");
             recipe.AddRecipeGroup("IndustrialPickaxes:IndustrialLunar");
 
