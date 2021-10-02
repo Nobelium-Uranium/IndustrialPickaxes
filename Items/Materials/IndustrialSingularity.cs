@@ -7,7 +7,7 @@ namespace IndustrialPickaxes.Items.Materials
 {
 	public class IndustrialSingularity : ModItem
     {
-        public override bool Autoload(ref string name) => IndustrialPickaxes.SoALoaded || IndustrialPickaxes.CalamityLoaded || IndustrialPickaxes.ThoriumLoaded || IndustrialPickaxes.RedemptionLoaded || IndustrialPickaxes.EALoaded;
+        //public override bool Autoload(ref string name) => IndustrialPickaxes.SoALoaded || IndustrialPickaxes.CalamityLoaded || IndustrialPickaxes.ThoriumLoaded || IndustrialPickaxes.RedemptionLoaded || IndustrialPickaxes.EALoaded;
         public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("'Industria Aeterna'");

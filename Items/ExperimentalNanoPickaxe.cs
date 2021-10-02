@@ -8,7 +8,7 @@ namespace IndustrialPickaxes.Items
 {
 	public class ExperimentalNanoPickaxe : IndustrialPickaxe
 	{
-		public override bool Autoload(ref string name) => IndustrialPickaxes.RedemptionLoaded;
+		//public override bool Autoload(ref string name) => IndustrialPickaxes.RedemptionLoaded;
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/ExperimentalNanoPickaxe");
 
 		public override void SetStaticDefaults() => Tooltip.SetDefault("Can mine Black Hardened Sludge\nUses precise strikes to smelt bars from ores, slow as a result\n'Overcharged with cybertech'");

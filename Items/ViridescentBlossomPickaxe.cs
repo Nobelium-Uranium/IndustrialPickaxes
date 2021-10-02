@@ -9,7 +9,7 @@ namespace IndustrialPickaxes.Items
 {
 	public class ViridescentBlossomPickaxe : IndustrialPickaxe
 	{
-		public override bool Autoload(ref string name) => IndustrialPickaxes.CalamityLoaded;
+		//public override bool Autoload(ref string name) => IndustrialPickaxes.CalamityLoaded;
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/ViridescentBlossomPickaxe");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(0, 255, 200) };

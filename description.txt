@@ -41,6 +41,9 @@ Contributors...
  Glowmask helper - Qwerty
 
 Version History:
+5.0.2
+[~] Fixed mod-specific pickaxes not loading for whatever reason
+
 5.0.1
 [~] Whoops, forgot to change some decription stuff
 

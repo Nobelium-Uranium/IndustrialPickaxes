@@ -9,7 +9,7 @@ namespace IndustrialPickaxes.Items
 {
 	public class MasterManipulator : IndustrialPickaxe
 	{
-		public override bool Autoload(ref string name) => IndustrialPickaxes.EALoaded;
+		//public override bool Autoload(ref string name) => IndustrialPickaxes.EALoaded;
 		public override Texture2D GlowmaskTexture => mod.GetTexture("Glowmasks/MasterManipulator");
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(186, 0, 67) };
