@@ -5,8 +5,11 @@ namespace IndustrialPickaxes.Helpers
 {
 	public abstract class IndustrialPickaxe : GlowmaskItem
 	{
+		public bool isIndustrialPickaxe;
+
 		public override void SetDefaults()
 		{
+			isIndustrialPickaxe = true;
 			base.SetDefaults();
 			item.maxStack = 1;
 			item.useStyle = ItemUseStyleID.SwingThrow;

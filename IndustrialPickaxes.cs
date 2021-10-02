@@ -1,5 +1,6 @@
 using IndustrialPickaxes.Items;
 using IndustrialPickaxes.Items.Fishaxe;
+using IndustrialPickaxes.Helpers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
+using System.IO;
 
 namespace IndustrialPickaxes
 {
@@ -110,14 +112,114 @@ namespace IndustrialPickaxes
 			SpiritMod = null;
 			SpiritLoaded = false;
 
-            Qwertys = null;
-            QwertysLoaded = false;
+			Qwertys = null;
+			QwertysLoaded = false;
 
-            Ultranium = null;
-            UltraniumLoaded = false;
+			Ultranium = null;
+			UltraniumLoaded = false;
 
 			Veinminer = null;
 			SteamID = null;
+
+			OreList.oreType = null;
+			OreList.smeltChance = null;
+			OreList.barType = null;
+		}
+        public override void PostSetupContent()
+        {
+			if (OreList.oreType != null && OreList.oreType.Count == 0 && OreList.smeltChance != null && OreList.smeltChance.Count == 0 && OreList.barType != null && OreList.barType.Count == 0)
+            {
+				for (int i = 0; i < OreList.defaultOreType.Length; i++) //Initialize default ore lists
+					OreList.AddOres(OreList.defaultOreType[i], OreList.defaultSmeltChance[i], OreList.defaultBarType[i]);
+				//Insert mod-specific ores to the list
+				#region Shadows of Abaddon
+				if (SoALoaded)
+				{
+					OreList.AddOres(SacredTools.TileType("LapisOre"), 3, SacredTools.ItemType("RefinedLapis"));
+					OreList.AddOres(SacredTools.TileType("BismuthOre"), 3, SacredTools.ItemType("RefinedBismuth"));
+					OreList.AddOres(SacredTools.TileType("OblivionOreBlock"), 3, SacredTools.ItemType("OblivionBar"));
+				}
+				#endregion
+				#region Calamity
+				if (CalamityLoaded)
+				{
+					OreList.AddOres(Calamity.TileType("AerialiteOre"), 5, Calamity.ItemType("AerialiteBar"));
+					OreList.AddOres(Calamity.TileType("CryonicOre"), 6, Calamity.ItemType("VerstaltiteBar"));
+					OreList.AddOres(Calamity.TileType("CharredOre"), 5, Calamity.ItemType("UnholyCore"));
+					OreList.AddOres(Calamity.TileType("PerennialOre"), 6, Calamity.ItemType("DraedonBar"));
+					OreList.AddOres(Calamity.TileType("AstralOre"), 3, Calamity.ItemType("AstralBar"));
+					OreList.AddOres(Calamity.TileType("ChaoticOre"), 6, Calamity.ItemType("CruptixBar"));
+					OreList.AddOres(Calamity.TileType("UelibloomOre"), 6, Calamity.ItemType("UeliaceBar"));
+					OreList.AddOres(Calamity.TileType("AuricOre"), 20, Calamity.ItemType("AuricBar"));
+				}
+				#endregion
+				#region Thorium
+				if (ThoriumLoaded)
+				{
+					OreList.AddOres(Thorium.TileType("ThoriumOre"), 5, Thorium.ItemType("ThoriumBar"));
+					OreList.AddOres(Thorium.TileType("MagmaOre"), 6, Thorium.ItemType("MagmaCore"));
+					OreList.AddOres(Thorium.TileType("AquaiteBare"), 6, Thorium.ItemType("AquaiteBar"));
+					OreList.AddOres(Thorium.TileType("LodeStone"), 5, Thorium.ItemType("LodeStoneIngot"));
+					OreList.AddOres(Thorium.TileType("ValadiumChunk"), 5, Thorium.ItemType("ValadiumIngot"));
+					OreList.AddOres(Thorium.TileType("IllumiteChunk"), 5, Thorium.ItemType("IllumiteIngot"));
+				}
+				#endregion
+				#region Mod of Redemption
+				if (RedemptionLoaded)
+				{
+					OreList.AddOres(Redemption.TileType("KaniteOreTile"), 3, Redemption.ItemType("KaniteBar"));
+					OreList.AddOres(Redemption.TileType("DragonLeadOreTile"), 4, Redemption.ItemType("DragonLeadBar"));
+					OreList.AddOres(Redemption.TileType("SapphironOreTile"), 4, Redemption.ItemType("SapphireBar"));
+					OreList.AddOres(Redemption.TileType("ScarlionOreTile"), 4, Redemption.ItemType("ScarletBar"));
+				}
+				#endregion
+				#region Spirit
+				if (SpiritLoaded)
+				{
+					OreList.AddOres(SpiritMod.TileType("FloranOreTile"), 4, SpiritMod.ItemType("FloranBar"));
+					OreList.AddOres(SpiritMod.TileType("CryoliteOreTile"), 4, SpiritMod.ItemType("CryoliteBar"));
+					OreList.AddOres(SpiritMod.TileType("SpiritOreTile"), 5, SpiritMod.ItemType("SpiritBar"));
+					OreList.AddOres(SpiritMod.TileType("ThermiteOre"), 5, SpiritMod.ItemType("ThermiteBar"));
+				}
+				#endregion
+				#region Qwertys
+				if (QwertysLoaded)
+				{
+					OreList.AddOres(Qwertys.TileType("LuneOre"), 4, Qwertys.ItemType("LuneBar"));
+					OreList.AddOres(Qwertys.TileType("RhuthiniumOre"), 4, Qwertys.ItemType("RhuthiniumBar"));
+				}
+				#endregion
+				#region Ultranium
+				if (UltraniumLoaded)
+				{
+					OreList.AddOres(Ultranium.TileType("AuroraOre"), 5, Ultranium.ItemType("AuroraBar"));
+					OreList.AddOres(Ultranium.TileType("ShadowOreTile"), 3, Ultranium.ItemType("NightmareBar"));
+				}
+				#endregion
+			}
+		}
+
+		public override void HandlePacket(BinaryReader reader, int whoAmI)
+		{
+			ModPacket packet = this.GetPacket();
+
+			if (Main.netMode == NetmodeID.Server)
+			{
+				ushort x = reader.ReadUInt16(), y = reader.ReadUInt16();
+				ushort targetType = reader.ReadUInt16();
+				packet.Write((ushort)x);
+				packet.Write((ushort)y);
+				packet.Send(-1, whoAmI);
+				IndustrialTile industrialTile = ModContent.GetInstance<IndustrialTile>();
+				industrialTile.SmeltOres(x, y, targetType);
+			}
+			else
+			{
+				ushort x = reader.ReadUInt16(), y = reader.ReadUInt16();
+				ushort targetType = reader.ReadUInt16();
+				IndustrialTile industrialTile = ModContent.GetInstance<IndustrialTile>();
+				industrialTile.SmeltOres(x, y, targetType);
+			}
 		}
 
 		public override void AddRecipeGroups()

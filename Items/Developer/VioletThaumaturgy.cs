@@ -14,7 +14,7 @@ namespace IndustrialPickaxes.Items.Developer
 
 		public override Color[] ItemNameCycleColors => new Color[] { new Color(24, 28, 33), new Color(98, 0, 198) };
 
-		public override void SetStaticDefaults() => Tooltip.SetDefault("Pickaxe power adapts to your other pickaxes\nAlchemically transmutes ores into their counterpart, if they have one\nCurrently only supports vanilla ores\n'Not at its full potential... for now'");
+		public override void SetStaticDefaults() => Tooltip.SetDefault("Pickaxe power adapts to your other pickaxes\n'Not at its full potential... for now'");
 
 		public override void SetDefaults()
 		{
@@ -31,6 +31,7 @@ namespace IndustrialPickaxes.Items.Developer
 			item.rare = ItemRarityID.Cyan;
 			item.tileBoost--;
 			item.UseSound = SoundID.Item71;
+			isIndustrialPickaxe = false;
 		}
 
 		public override void UpdateInventory(Player player)

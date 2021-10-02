@@ -1,6 +1,3 @@
-!!!READ ME!!!: THIS MOD DOES NOT WORK IN MULTIPLAYER!
-While not impossible, trying to find a fix for multiplayer compatability is just a pain. Sorry for the inconvenience!
-
 Industrial Pickaxes adds some pickaxes with a special ability at their disposal, inspired by the Zenith Forge from Keybrands+.
 They can smelt whole bars from ores, the chance is based on how many ores it takes to smelt a bar, the less ore needed, the better the chance.
 There is a catch of course, they're much more expensive than ordinary pickaxes and are considerably slower, plus they can't smelt alloys of the same or a later tier.
@@ -11,13 +8,13 @@ TL;DR
 Adds several new pickaxes that can smelt bars from ores
 
 It even has mod support!
+(README: Mod support does not currently work, however the respective pickaxes are still available)
 
 Currently supported mods...
  - Shadows of Abaddon (Solus Flarium Pickaxe and Draconic Asthraltite Picksaw + Ores)
  - Calamity (Viridescent Blossom Pickaxe + Ores)
  - Thorium (Ores Only)
  - Mod of Redemption (Experimental Nano Pickaxe + Ores)
- - Ancients Awakened (Ores Only)
  - Elements Awoken (Master Manipulator Only)
  - Spirit Mod (Ores Only)
  - Qwerty's Bosses and Items (Ores Only)
@@ -32,21 +29,27 @@ Support for just about every mod that have pickaxes and ore are already planned.
 As for what pickaxes will be industrialized, we only have plans for those obtained post-Moonlord.
 They must be a considerable upgrade from Lunar tier. (So tools like the Terrarium Canyon Splitter or the Gallant Pickaxe won't be supported, since you get them shortly after Moon lord, and Industrial Celestial Pickaxe already exists for that purpose)
 
-
 This mod pairs very well with Veinminer, just make sure to have the tool equipped while veinmining, otherwise remaining ore will drop as normal.
 
 Developers...
  Ideas and sprites - DirgeofSwans
- Code and Master Manipulator sprite - NobeliumUranium_
- Attempted multiplayer support, bug fixes and code cleaning - GoodPro712
+ Code and Master Manipulator sprite - ChemAtDark
+ Some bug fixes and code cleaning - GoodPro712
 
 Contributors...
+ Help with multiplayer compatibility - CrazyContraption
  Glowmask helper - Qwerty
 
-Special Thanks...
-Very special thanks to FuryForged for giving this mod a quick spotlight, I appreciate it!
- 
 Version History:
+5.0.1
+[~] Whoops, forgot to change some decription stuff
+
+5.0.0 - Rewarded Patience
+[+] The smelting system has been revamped, using the new system backported from 1.4 Industrial Pickaxes! This doesn't affect gameplay, but it DOES have a significant boost on code performance and efficiency, which is always nice
+[+] Finally added support for multiplayer! Took long enough...
+[+] Added a prefix available to all non-industrial pickaxes that will allow you to smelt ores, with the same drawback of being slowed down
+[-] Removed support for Ancients Awakened, a soul for a soul
+
 4.8.2
 [~] Cross-mod pickaxes are now unloaded if the respective mods are not enabled
 

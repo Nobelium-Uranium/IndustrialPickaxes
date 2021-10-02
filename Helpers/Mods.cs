@@ -38,6 +38,8 @@ namespace IndustrialPickaxes.Helpers
 
 		public static Mod RecipeBrowser => ModLoader.GetMod("RecipeBrowser");
 
+		public static Mod SacredTools => ModLoader.GetMod("SacredTools");
+
 		public static Mod Spirit => ModLoader.GetMod("SpiritMod");
 
 		public static Mod Thorium => ModLoader.GetMod("ThoriumMod");

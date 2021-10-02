@@ -1,6 +1,7 @@
-displayName = Industrial Pickaxes
+displayName = Industrial Pickaxes (Auto-smelt Pickaxes!)
 author = Crimsanity
-version = 4.8.2
+version = 5.0.1
 hideResources = true
 homepage = https://github.com/Nobelium-Uranium/IndustrialPickaxes
-weakReferences = CalamityMod, ThoriumMod, ElementsAwoken, SpiritMod, SacredTools, AAMod, Redemption, QwertysRandomContent, Ultranium
+weakReferences = CalamityMod, ThoriumMod, ElementsAwoken, SpiritMod, SacredTools, Redemption, QwertysRandomContent, Ultranium
+sortAfter =  CalamityMod, ThoriumMod, ElementsAwoken, SpiritMod, SacredTools, Redemption, QwertysRandomContent, Ultranium
