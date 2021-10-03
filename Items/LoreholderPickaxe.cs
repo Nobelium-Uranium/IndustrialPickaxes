@@ -114,7 +114,7 @@ namespace IndustrialPickaxes.Items
 							break;
 
 						case TileID.Orichalcum:
-							Main.NewText("<Loreholder> Hey, this reminds me of a certain ore... Zanithite, it was called?", new Color(184, 134, 11));
+							Main.NewText("<Loreholder> Hey, this reminds me of a certain ore... Zanithite, it was called? In fantasy, it is a legendary ore that is renowned for its beauty.", new Color(184, 134, 11));
 							break;
 
 						case TileID.Adamantite:
@@ -130,7 +130,7 @@ namespace IndustrialPickaxes.Items
 							break;
 
 						case TileID.LunarOre:
-							Main.NewText("<Loreholder> A metal that some people call moonstone that's out of this world.", new Color(184, 134, 11));
+							Main.NewText("<Loreholder> Is it stone or is it metal? I can't seem to tell...", new Color(184, 134, 11));
 							break;
 					}
 
@@ -211,7 +211,7 @@ namespace IndustrialPickaxes.Items
 
 				if (IndustrialPickaxes.SacredTools.GetTile("Flarium") != null)
 					if (tile.type == IndustrialPickaxes.SacredTools.TileType("Flarium"))
-						Main.NewText("<Loreholder> These Flarium crystals are most similar to those that grow in the caves and mountains of Magamantez, they're fueled by the thermal energy flow channeled by giant Flarium cores and their respective guardian. If that guardian dies for any reason, so do the core and any Flarium crystals connected to it. That being said, it is strange to see Flarium crystals being CREATED when Araghur was defeated, but I'm sure that is soon to change.", new Color(184, 134, 11));
+						Main.NewText("<Loreholder> These Flarium crystals are most similar to those that grow in the caves and mountains of Magamantez, they're fueled by the thermal energy flow channeled by giant Flarium cores and their respective guardian. If that guardian dies for any reason, so do the core and any Flarium crystals connected to it.", new Color(184, 134, 11));
 			}
 		}
 
