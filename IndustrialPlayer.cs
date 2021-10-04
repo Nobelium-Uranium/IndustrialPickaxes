@@ -3,7 +3,6 @@ using IndustrialPickaxes.Items.Fishaxe;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace IndustrialPickaxes
@@ -19,12 +18,15 @@ namespace IndustrialPickaxes
 
         public override void OnEnterWorld(Player player)
 		{
-            Main.NewTextMultiline("Thank you for using Industrial Pickaxes!\n" +
-                "MOTD: Your patience has been rewarded... Have fun!\n" +
-                "If you have a bug to report, use ModHelper's built in report feature!\n" +
-                "For further information about Crimsanity's mods, you can join the discord server via the mod hompage.", c: Color.Cyan);
-			if (IndustrialPickaxes.Veinminer == null)
-				Main.NewText("I highly recommend using the Veinminer mod with this, by the way!", Color.Cyan);
+			Main.NewText("Thank you for using Industrial Pickaxes!", Color.Cyan);
+			if (!ModContent.GetInstance<IndustrialClientConfig>().ShortenEntryMessage)
+			{
+				Main.NewTextMultiline("MOTD: Your patience has been rewarded... Have fun!\n" +
+					"If you have a bug to report, use ModHelper's built in report feature!\n" +
+					"For further information about Crimsanity's mods, you can join the discord server via the mod hompage.", c: Color.Cyan);
+				if (IndustrialPickaxes.Veinminer == null)
+					Main.NewText("I highly recommend using the Veinminer mod with this, by the way!", Color.Cyan);
+			}
         }
 
 		public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath)

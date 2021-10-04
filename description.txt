@@ -40,6 +40,9 @@ Contributors...
  Glowmask helper - Qwerty
 
 Version History:
+5.0.5
+[~] Added a config option to shorten the world entry message
+
 5.0.4
 [~] Adjusted Experimental Nano Pickaxe recipe, it no longer requires cyberscrap or KS3 drops, instead using their respective Mk3 counterparts
 
