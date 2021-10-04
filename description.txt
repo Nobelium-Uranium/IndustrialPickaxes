@@ -8,7 +8,6 @@ TL;DR
 Adds several new pickaxes that can smelt bars from ores
 
 It even has mod support!
-(README: Mod support does not currently work, however the respective pickaxes are still available)
 
 Currently supported mods...
  - Shadows of Abaddon (Solus Flarium Pickaxe and Draconic Asthraltite Picksaw + Ores)
@@ -41,6 +40,9 @@ Contributors...
  Glowmask helper - Qwerty
 
 Version History:
+5.0.4
+[~] Adjusted Experimental Nano Pickaxe recipe, it no longer requires cyberscrap or KS3 drops, instead using their respective Mk3 counterparts
+
 5.0.3
 [~] Updated some of Loreholder's quotes
 

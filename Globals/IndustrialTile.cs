@@ -49,18 +49,21 @@ namespace IndustrialPickaxes.Items
                 return;
             }
             Player myPlayer = Main.player[Main.myPlayer];
-            if (Main.LocalPlayer == myPlayer && !myPlayer.CCed && !myPlayer.noBuilding && !myPlayer.noItems && !myPlayer.HasBuff(BuffID.DrillMount))
+            if (Main.netMode != NetmodeID.Server && Main.LocalPlayer == myPlayer && !myPlayer.CCed && !myPlayer.noBuilding && !myPlayer.noItems && !myPlayer.HasBuff(BuffID.DrillMount))
             {
                 if (myPlayer.HeldItem.modItem is IndustrialPickaxe || myPlayer.HeldItem.prefix == ModContent.PrefixType<Prefixes.IndustrialPrefix>())
                 {
-                    for (int t = 0; t < OreList.oreType.Count; t++)
+                    if (myPlayer.HeldItem.type != ModContent.ItemType<Developer.VioletThaumaturgy>() && myPlayer.HeldItem.type != ModContent.ItemType<Developer.AmberThaumaturgy>())
                     {
-                        if (type == OreList.oreType[t])
+                        for (int t = 0; t < OreList.oreType.Count; t++)
                         {
-                            noItem = true;
-                            HandleOres(i, j, type);
-                            lastTile = type;
-                            break;
+                            if (type == OreList.oreType[t])
+                            {
+                                noItem = true;
+                                HandleOres(i, j, type);
+                                lastTile = type;
+                                break;
+                            }
                         }
                     }
                 }

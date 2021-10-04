@@ -44,12 +44,6 @@ namespace IndustrialPickaxes.Items.Materials
 			if (IndustrialPickaxes.RedemptionLoaded)
 				recipe.AddIngredient(IndustrialPickaxes.Redemption.ItemType("XeniumBar"));
 
-			if (IndustrialPickaxes.AALoaded)
-			{
-				recipe.AddIngredient(IndustrialPickaxes.AncientsAwakened.ItemType("DaybreakIncinerite"));
-				recipe.AddIngredient(IndustrialPickaxes.AncientsAwakened.ItemType("EventideAbyssium"));
-			}
-
 			if (IndustrialPickaxes.CalamityLoaded)
                 recipe.AddIngredient(IndustrialPickaxes.Calamity.ItemType("AuricBar"));
 

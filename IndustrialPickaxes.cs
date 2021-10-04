@@ -28,9 +28,6 @@ namespace IndustrialPickaxes
 		public static Mod Redemption;
 		public static bool RedemptionLoaded;
 
-		public static Mod AncientsAwakened;
-		public static bool AALoaded;
-
 		public static Mod ElementsAwoken;
 		public static bool EALoaded;
 
@@ -71,9 +68,6 @@ namespace IndustrialPickaxes
 			Redemption = ModLoader.GetMod("Redemption");
 			RedemptionLoaded = Redemption != null;
 
-			AncientsAwakened = ModLoader.GetMod("AAMod");
-			AALoaded = AncientsAwakened != null;
-
 			ElementsAwoken = ModLoader.GetMod("ElementsAwoken");
 			EALoaded = ElementsAwoken != null;
 
@@ -102,9 +96,6 @@ namespace IndustrialPickaxes
 
 			Redemption = null;
 			RedemptionLoaded = false;
-
-			AncientsAwakened = null;
-			AALoaded = false;
 
 			ElementsAwoken = null;
 			EALoaded = false;
