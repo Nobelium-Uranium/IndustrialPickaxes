@@ -111,17 +111,10 @@ namespace IndustrialPickaxes
 
 			Veinminer = null;
 			SteamID = null;
-
-			OreList.defaultOreType = null;
-			OreList.defaultSmeltChance = null;
-			OreList.defaultBarType = null;
-
-			OreList.oreType = null;
-			OreList.smeltChance = null;
-			OreList.barType = null;
 		}
         public override void PostSetupContent()
         {
+			OreList.ClearOres(); //Ensure a fresh list
 			if (OreList.oreType != null && OreList.oreType.Count == 0 && OreList.smeltChance != null && OreList.smeltChance.Count == 0 && OreList.barType != null && OreList.barType.Count == 0)
             {
 				for (int i = 0; i < OreList.defaultOreType.Length; i++) //Initialize default ore lists

@@ -42,7 +42,7 @@ Contributors...
 Version History:
 5.0.6
 [~] Updated amount of ore required to smelt Auric Ore to match its new conversion rate since Calamity 1.5
-[~] Hopefully fixed a bug that would cause the mod to not work after a reload
+[~] Fixed a bug that would cause the mod to not work after a reload
 
 5.0.5
 [~] Added a config option to shorten the world entry message
