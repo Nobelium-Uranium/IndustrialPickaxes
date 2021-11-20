@@ -112,6 +112,10 @@ namespace IndustrialPickaxes
 			Veinminer = null;
 			SteamID = null;
 
+			OreList.defaultOreType = null;
+			OreList.defaultSmeltChance = null;
+			OreList.defaultBarType = null;
+
 			OreList.oreType = null;
 			OreList.smeltChance = null;
 			OreList.barType = null;
@@ -141,7 +145,7 @@ namespace IndustrialPickaxes
 					OreList.AddOres(Calamity.TileType("AstralOre"), 3, Calamity.ItemType("AstralBar"));
 					OreList.AddOres(Calamity.TileType("ChaoticOre"), 6, Calamity.ItemType("CruptixBar"));
 					OreList.AddOres(Calamity.TileType("UelibloomOre"), 6, Calamity.ItemType("UeliaceBar"));
-					OreList.AddOres(Calamity.TileType("AuricOre"), 20, Calamity.ItemType("AuricBar"));
+					OreList.AddOres(Calamity.TileType("AuricOre"), 12, Calamity.ItemType("AuricBar"));
 				}
 				#endregion
 				#region Thorium
