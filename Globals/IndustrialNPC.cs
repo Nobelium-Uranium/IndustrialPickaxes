@@ -135,10 +135,15 @@ namespace IndustrialPickaxes.Globals
 
 		public override void SetupShop(int type, Chest shop, ref int nextSlot)
 		{
-			if (type == NPCID.Merchant && NPC.downedBoss1)
+			if (type == NPCID.Merchant)
 			{
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<EnchantedPickaxe>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<IndustrialReforgeKit>());
 				nextSlot++;
+				if (NPC.downedBoss1)
+				{
+					shop.item[nextSlot].SetDefaults(ModContent.ItemType<EnchantedPickaxe>());
+					nextSlot++;
+				}
 			}
 			else if (type == NPCID.Steampunker && NPC.downedMechBossAny)
 			{

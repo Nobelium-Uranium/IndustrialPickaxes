@@ -40,6 +40,10 @@ Contributors...
  Glowmask helper - Qwerty
 
 Version History:
+5.0.7
+[+] Added a much more convenient way to apply the Industrial prefix to standard pickaxes, sold by the Merchant
+[-] Removed the ability to obtain the Industrial prefix via reforging
+
 5.0.6
 [~] Updated amount of ore required to smelt Auric Ore to match its new conversion rate since Calamity 1.5
 [~] Fixed a bug that would cause the mod to not work after a reload

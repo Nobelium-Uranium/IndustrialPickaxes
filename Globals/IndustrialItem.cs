@@ -18,7 +18,7 @@ namespace IndustrialPickaxes.Globals
                 && (tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Material") || tt.Name.StartsWith("TileBoost") || tt.Name.StartsWith("PickPower")));
                 if (index != -1)
                 {
-                    TooltipLine line = new TooltipLine(ModContent.GetInstance<IndustrialPickaxes>(), "PrefixIndustrial", "+Autosmelt") { isModifier = true };
+                    TooltipLine line = new TooltipLine(ModContent.GetInstance<IndustrialPickaxes>(), "PrefixIndustrial", item.pick > 0 ? "+Autosmelt" : "+100% Hubris") { isModifier = true };
                     tooltips.Insert(index + 1, line);
                 }
             }

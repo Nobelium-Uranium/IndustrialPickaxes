@@ -14,8 +14,8 @@ namespace IndustrialPickaxes.Prefixes
             return false;
         }
         public override PrefixCategory Category => PrefixCategory.AnyWeapon;
-        public override void ModifyValue(ref float valueMult) => valueMult *= 2f;
-        public override bool CanRoll(Item item) => item.pick > 0 && !(item.modItem is Helpers.IndustrialPickaxe);
+        public override void ModifyValue(ref float valueMult) => valueMult *= 1.45f;
+        public override bool CanRoll(Item item) => false; //item.pick > 0 && !(item.modItem is Helpers.IndustrialPickaxe);
         public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus) => useTimeMult = 1.3f;
     }
 }
